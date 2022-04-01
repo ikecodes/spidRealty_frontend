@@ -1,8 +1,7 @@
 const colors = {
   primary: '#0f3677',
-  primaryLight: '#2280b9',
   secondary: '#def1fa',
-  tertiary: '#0078ff',
+  tertiary: '#2280b9',
   textColor: '#14274A',
   headerColor: '#0f3677',
   overlay: '#4C509780',
@@ -13,4 +12,5 @@ const colors = {
   grey2: '#444',
 };
 
+// background-image: linear-gradient(to right,#1562a4 0,#0f3677 100%);
 export default colors;

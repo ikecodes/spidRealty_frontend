@@ -3,31 +3,26 @@ const menus = [
     id: '1',
     name: 'about us',
     path: '/about-us',
-    sub: [],
   },
   {
     id: '2',
     name: 'marketplace',
     path: '/marketplace',
-    sub: [],
   },
   {
     id: '3',
     name: 'invest',
     path: '/invest',
-    sub: [],
   },
   {
     id: '4',
     name: 'advertise',
     path: '/advertise',
-    sub: [],
   },
   {
     id: '5',
     name: 'news',
     path: '/blog',
-    sub: [],
   },
 ];
 

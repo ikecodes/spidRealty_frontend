@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { MdArrowDropDown } from 'react-icons/md';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import colors from '../constants/colors';
 import styled from 'styled-components';
@@ -9,30 +8,15 @@ interface Props {
     id: string;
     name: string;
     path: string;
-    sub: { id: string; name: string; path: string }[];
   };
 }
 const NavItemLg: React.FC<Props> = ({ menu }) => {
-  const [show, setShow] = useState(false);
   return (
-    <div
-      className='position-relative'
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
-    >
-      <NavItem>
+    <div className='position-relative'>
+      <NavItem role='button'>
         <Link to={menu.path}>{menu.name}</Link>
-        {menu.sub.length > 0 && <MdArrowDropDown size={20} color='#C386C0' />}
+        <MenuLine></MenuLine>
       </NavItem>
-      {menu.sub.length > 0 && (
-        <ContainerMenu className={`px-3 py-1 ${show ? 'hovered' : ''}`}>
-          {menu.sub.map((item) => (
-            <ContainerItem className='my-3' key={item.id}>
-              <Link to={item.path}>{item.name}</Link>
-            </ContainerItem>
-          ))}
-        </ContainerMenu>
-      )}
     </div>
   );
 };
@@ -40,52 +24,30 @@ const NavItemLg: React.FC<Props> = ({ menu }) => {
 const NavItem = styled.li`
   font-weight: 500;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-transform: capitalize;
-  cursor: pointer;
-  & a {
-    color: ${colors.white};
-    text-decoration: none;
+  &:hover div {
+    width: 100%;
   }
-  & a:hover,
-  a:active {
-    color: ${colors.primary}; // <Thing> when hovered
-  }
-  &:hover {
-    color: ${colors.primary}; // <Thing> when hovered
-  }
-`;
-const ContainerMenu = styled.ul`
-  position: absolute;
-  z-index: 100;
-  width: 170px;
-  background-color: ${colors.white};
-  border-radius: 10px;
-  left: -50%;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.3s ease-in;
-  &.hovered {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-const ContainerItem = styled.li`
-  white-space: nowrap;
-  font-size: 0.9rem;
-  text-transform: capitalize;
-  font-weight: 500;
-  cursor: pointer;
   & a {
     color: ${colors.black};
     text-decoration: none;
+    /* padding: 1rem; */
+    transition: all 0.3s ease-in;
   }
-  & a:hover,
+  /* & a:hover,
   a:active {
-    color: ${colors.primary}; // <Thing> when hovered
-  }
+    color: ${colors.white};
+    background-color: ${colors.primary};
+  } */
+`;
+const MenuLine = styled.div`
+  height: 3px;
+  border-radius: 5px;
+  width: 0%;
+  background-color: ${colors.primary};
+  transition: all 0.3s linear;
 `;
 export default NavItemLg;

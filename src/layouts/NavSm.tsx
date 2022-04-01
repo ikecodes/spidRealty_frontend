@@ -23,14 +23,6 @@ const NavSm = () => {
               <Heading>
                 <Link to={menu.path}>{menu.name}</Link>
               </Heading>
-              {/* <List>
-                  {menu.sub.length > 0 &&
-                    menu.sub.map((item) => (
-                      <li key={item.id}>
-                        <Link to={item.path}>{item.name} </Link>{' '}
-                      </li>
-                    ))}
-                </List> */}
             </div>
           ))}
 
