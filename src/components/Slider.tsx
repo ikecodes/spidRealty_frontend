@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import { Carousel } from 'react-bootstrap';
 import NavLg from '../layouts/NavLg';
 import NavSm from '../layouts/NavSm';
+import Filter from './Filter';
 const Slider = () => {
   return (
     <div className='position-relative'>
       <NavSm />
       <NavLg />
-      <Carousel>
-        <Carousel.Item className='position-relative' interval={1000}>
+      <Filter />
+      <Carousel fade>
+        <Carousel.Item className='position-relative' interval={1500}>
           <div className='slider_image_box'>
             <div className='slider_overlay'></div>
             <img
@@ -20,15 +22,14 @@ const Slider = () => {
           </div>
           <Caption>
             <Carousel.Caption>
-              <h1 className='text-start'>grooming trust</h1>
-              <p className='text-start'>
+              <h1>find your dream home</h1>
+              <p>
                 Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </p>
             </Carousel.Caption>
           </Caption>
         </Carousel.Item>
-        <Carousel.Item interval={500}>
+        <Carousel.Item interval={750}>
           <div className='slider_image_box'>
             <div className='slider_overlay'></div>
             <img
@@ -40,10 +41,9 @@ const Slider = () => {
 
           <Caption>
             <Carousel.Caption>
-              <h1 className='text-start'>mission statement</h1>
-              <p className='text-start'>
+              <h1>join investment plan</h1>
+              <p>
                 Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </p>
             </Carousel.Caption>
           </Caption>
@@ -59,10 +59,9 @@ const Slider = () => {
           </div>
           <Caption>
             <Carousel.Caption>
-              <h1 className='text-start'>vision statement</h1>
-              <p className='text-start'>
+              <h1>scale solutions</h1>
+              <p>
                 Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </p>
             </Carousel.Caption>
           </Caption>

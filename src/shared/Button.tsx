@@ -6,13 +6,13 @@ interface Props {
   title: string;
   primary?: boolean;
   handleClick: () => void;
-  norounded: boolean;
+  norounded?: boolean;
   loading: boolean;
   disabled?: boolean;
 }
 interface BProps {
   primary?: boolean;
-  norounded: boolean;
+  norounded?: boolean;
   disabled?: boolean;
 }
 
@@ -48,7 +48,7 @@ const B = styled.button<BProps>`
     props.primary ? colors.primary : colors.tertiary};
   text-transform: capitalize;
   color: ${colors.white};
-  padding: 4px 15px;
+  padding: 5px 20px;
   border-radius: ${(props) => (props.norounded ? '0' : '5px')};
   transition: all 0.2s linear;
   &:hover {

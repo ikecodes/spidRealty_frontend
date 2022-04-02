@@ -49,21 +49,21 @@ table {
 p {
   font-size: 1rem;
 }
+
+/* website scrollbar */
 body::-webkit-scrollbar {
   width: 5px;
 }
-
 body::-webkit-scrollbar-track {
   box-shadow: none;
-  background-color: #999bcb;
+  background-color: #2280b9;
 }
-
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(96, 99, 173);
+  background-color: #0f3677;
   outline: none;
 }
 
-/* //////////////////////////////////////// FOR HOME PAGE CAROUSEL */
+/* carousel */
 .slider_image_box {
   position: relative;
   width: 100%;
@@ -80,10 +80,12 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
   object-fit: cover;
 }
-
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: none !important;
+}
 .carousel-caption {
-  top: 40% !important;
-  bottom: 0;
+  bottom: 40% !important;
 }
 
 textarea:focus,
