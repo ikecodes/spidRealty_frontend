@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { RiMenu4Fill } from 'react-icons/ri';
-import { FaTimes } from 'react-icons/fa';
+import { FiMenu } from 'react-icons/fi';
 import colors from '../constants/colors';
 import menus from '../constants/menus';
 const NavSm = () => {
@@ -11,7 +10,7 @@ const NavSm = () => {
   return (
     <>
       <OpenIcon onClick={() => setIsAnimating(true)}>
-        <RiMenu4Fill size={40} color={colors.white} />
+        <FiMenu role='button' size={40} color={colors.black} />
       </OpenIcon>
       <AnimatingContainer
         className={isAnimating ? 'clicked' : ''}
@@ -25,10 +24,12 @@ const NavSm = () => {
               </Heading>
             </div>
           ))}
-
-          <CloseIcon onClick={() => setIsAnimating(false)}>
-            <FaTimes size={30} color={colors.white} />
-          </CloseIcon>
+          <Link to='/login'>
+            <LoginBtn className='py-2'>login</LoginBtn>
+          </Link>
+          <Link to='/signup'>
+            <SignUpBtn className='py-2'>Sign Up</SignUpBtn>
+          </Link>
         </NavContainer>
       </AnimatingContainer>
     </>
@@ -45,12 +46,6 @@ const OpenIcon = styled.span`
   @media (max-width: 768px) {
     display: block;
   }
-`;
-const CloseIcon = styled.span`
-  position: absolute;
-  top: 1.5rem;
-  z-index: 100;
-  right: 6rem;
 `;
 
 const AnimatingContainer = styled.div`
@@ -73,14 +68,14 @@ const NavContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
-  background: ${colors.tertiary};
+  background: ${colors.white};
   position: absolute;
   color: ${colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-transform: capitalize;
-  transform: translateX(20%);
+  transform: translateX(50%);
   gap: 2rem;
   & li {
     margin: 1rem 0;
@@ -88,19 +83,41 @@ const NavContainer = styled.div`
 `;
 const Heading = styled.h6`
   color: ${colors.primary};
-  text-transform: uppercase;
-  font-weight: bold;
+  text-transform: capitalize;
   & a,
   a:link {
     color: ${colors.primary};
     text-decoration: none;
   }
+  & a:hover {
+    color: ${colors.tertiary};
+  }
 `;
-// const List = styled.ul`
-//   & a,
-//   a:link {
-//     color: ${colors.white};
-//     text-decoration: none;
-//   }
-// `;
+const LoginBtn = styled.button`
+  background-color: ${colors.white};
+  color: ${colors.black};
+  border: 1px solid ${colors.primary};
+  /* padding: 0.5rem 3rem; */
+  width: 50%;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: ${colors.primary};
+    color: ${colors.white};
+  }
+`;
+const SignUpBtn = styled.button`
+  background-color: ${colors.primary};
+  color: ${colors.white};
+  border: 1px solid ${colors.primary};
+  /* padding: 0.5rem 3rem; */
+  text-transform: capitalize;
+  width: 50%;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: ${colors.white};
+    color: ${colors.black};
+  }
+`;
 export default NavSm;
