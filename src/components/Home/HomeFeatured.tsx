@@ -7,16 +7,18 @@ import PropertyCard from '../PropertyCard';
 const HomeFeatured = () => {
   return (
     <Section>
-      <h1 className='text-capitalize fw-bold my-5 align-items-center'>
-        featured properties
-      </h1>
-      <div className='row'>
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-      </div>
-      <div className='text-center my-3'>
-        <Button>explore all</Button>
+      <div className='container'>
+        <h1 className='text-capitalize fw-bold my-5 align-items-center'>
+          featured properties
+        </h1>
+        <div className='row'>
+          <PropertyCard />
+          <PropertyCard />
+          <PropertyCard />
+        </div>
+        <div className='text-center my-3'>
+          <Button>explore all</Button>
+        </div>
       </div>
     </Section>
   );

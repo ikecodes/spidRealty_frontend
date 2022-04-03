@@ -6,16 +6,18 @@ import ArticleCard from '../ArticleCard';
 const HomeArticles = () => {
   return (
     <Section>
-      <h1 className='text-capitalize fw-bold my-5 align-items-center'>
-        recent article & updates
-      </h1>
-      <div className='row'>
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-      </div>
-      <div className='text-center my-3'>
-        <Button>explore all</Button>
+      <div className='container'>
+        <h1 className='text-capitalize fw-bold my-5 align-items-center'>
+          recent article & updates
+        </h1>
+        <div className='row'>
+          <ArticleCard />
+          <ArticleCard />
+          <ArticleCard />
+        </div>
+        <div className='text-center my-3'>
+          <Button>explore all</Button>
+        </div>
       </div>
     </Section>
   );

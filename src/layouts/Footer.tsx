@@ -66,7 +66,9 @@ const Footer = () => {
           </div>
         </div>
         <div className='text-center my-3'>
-          <p>© 2022 Spid realty. All rights reserved.</p>
+          <p className='text-secondary'>
+            © 2022 Spid realty. All rights reserved.
+          </p>
         </div>
       </div>
     </Container>

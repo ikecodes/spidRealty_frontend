@@ -48,6 +48,6 @@ const MenuLine = styled.div`
   border-radius: 5px;
   width: 0%;
   background-color: ${colors.primary};
-  transition: all 0.3s linear;
+  transition: all 0.2s linear;
 `;
 export default NavItemLg;

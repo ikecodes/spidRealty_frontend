@@ -6,11 +6,7 @@ interface Props {
   children: React.ReactNode;
 }
 const Section: React.FC<Props> = ({ children }) => {
-  return (
-    <Container>
-      <div className='container'>{children}</div>
-    </Container>
-  );
+  return <Container>{children}</Container>;
 };
 const Container = styled.section`
   margin: 5rem 0;

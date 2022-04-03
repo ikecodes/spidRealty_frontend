@@ -8,7 +8,7 @@ import colors from '../constants/colors';
 
 const NavbarLg = () => {
   return (
-    <NavContainer className='px-2'>
+    <NavContainer className='px-2 shadow'>
       <div className='row p-0 m-0 py-2 align-items-ceenter'>
         <div className='col-lg-4'>
           <Link to='/'>
