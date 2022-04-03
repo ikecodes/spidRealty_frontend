@@ -6,10 +6,14 @@ interface Props {
   children: React.ReactNode;
 }
 const Section: React.FC<Props> = ({ children }) => {
-  return <Container>{children}</Container>;
+  return (
+    <Container>
+      <div className='container'>{children}</div>
+    </Container>
+  );
 };
 const Container = styled.section`
-  margin: 5rem 0;
-  color: ${colors.textColor};
+  padding: 2.5rem 0;
+  color: ${colors.primary};
 `;
 export default Section;

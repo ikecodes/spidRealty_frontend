@@ -8,9 +8,7 @@ const HomeFeatured = () => {
   return (
     <Section>
       <div className='container'>
-        <h1 className='text-capitalize fw-bold my-5 align-items-center'>
-          featured properties
-        </h1>
+        <h1 className='text-capitalize fw-bold my-5'>featured properties</h1>
         <div className='row'>
           <PropertyCard />
           <PropertyCard />

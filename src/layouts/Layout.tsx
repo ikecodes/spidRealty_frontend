@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeSubscription from '../components/Home/HomeSubscription';
 import Footer from './Footer';
 import Header from './Header';
 interface Props {
@@ -6,11 +7,12 @@ interface Props {
 }
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div>
+    <>
       <Header />
-      <div className='container'>{children}</div>
+      {children}
+      <HomeSubscription />
       <Footer />
-    </div>
+    </>
   );
 };
 
