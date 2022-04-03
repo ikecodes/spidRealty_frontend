@@ -5,22 +5,25 @@ import colors from '../constants/colors';
 interface Props {
   title: string;
   primary?: boolean;
-  handleClick: () => void;
-  norounded?: boolean;
+  handleClick?: () => void;
+  rounded?: boolean;
   loading: boolean;
   disabled?: boolean;
+  inverse?: boolean;
 }
 interface BProps {
   primary?: boolean;
-  norounded?: boolean;
+  rounded?: boolean;
   disabled?: boolean;
+  inverse?: boolean;
 }
 
 const Button: React.FC<Props> = ({
   title,
   primary,
+  inverse,
   handleClick,
-  norounded,
+  rounded,
   loading,
   disabled,
 }) => {
@@ -34,8 +37,9 @@ const Button: React.FC<Props> = ({
   return (
     <B
       primary={primary}
-      norounded={norounded}
+      rounded={rounded}
       disabled={disabled}
+      inverse={inverse}
       onClick={handleClick}
     >
       {loading ? Loader : title}
@@ -45,11 +49,16 @@ const Button: React.FC<Props> = ({
 
 const B = styled.button<BProps>`
   background-color: ${(props) =>
-    props.primary ? colors.primary : colors.tertiary};
+    props.primary
+      ? colors.primary
+      : props.inverse
+      ? 'transparent'
+      : colors.tertiary};
   text-transform: capitalize;
   color: ${colors.white};
   padding: 5px 20px;
-  border-radius: ${(props) => (props.norounded ? '0' : '5px')};
+  border-radius: ${(props) => (props.rounded ? '5px' : '0')};
+  border: ${(props) => (props.inverse ? '1px solid #fff' : 0)};
   transition: all 0.2s linear;
   &:hover {
     transform: scale(1.05);

@@ -53,7 +53,7 @@ const AnimatingContainer = styled.div`
   position: fixed;
   width: 100%;
   height: 100vh;
-  z-index: 100;
+  z-index: 200;
   background-color: rgb(0, 0, 0, 0.3);
   transform: translateX(100%);
   transition: all 0.3s ease-in;

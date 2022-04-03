@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 interface Props {
   src: string;
-  h: string;
+  h: number;
   unit: string;
   alt: string;
   rounded?: boolean;
 }
 
 interface ImageContainerProps {
-  h: string;
+  h: number;
   unit: string;
 }
 interface ImgProps {

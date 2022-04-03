@@ -106,8 +106,8 @@ input[type='search']:focus,
 input[type='tel']:focus,
 input[type='color']:focus,
 .uneditable-input:focus {
-  border-color: #6063ad !important;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01) inset, 0 0 8px #6063ad !important;
+  border-color: #2280b9 !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01) inset, 0 0 8px #2280b9 !important;
   outline: 0 none !important;
 }
 .spinner {
