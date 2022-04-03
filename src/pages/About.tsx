@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../layouts/Layout';
 import Section from '../layouts/Section';
 import Image from '../shared/Image';
@@ -6,7 +6,14 @@ import AboutImg1 from '../assets/images/family.jpg';
 import styled from 'styled-components';
 import colors from '../constants/colors';
 import TeamCard from '../components/TeamCard';
+import Loader from '../shared/Loader';
 const About = () => {
+  const [loading, setloading] = useState(true);
+
+  setTimeout(() => {
+    setloading(false);
+  }, 2000);
+  if (loading) return <Loader />;
   return (
     <Layout>
       <Container>
