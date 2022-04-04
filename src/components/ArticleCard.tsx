@@ -17,7 +17,6 @@ const ArticleCard = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod amet
             error ullam odio.
           </p>
-
           <div className='d-flex justify-content-between mt-3'>
             <div className='p-0 d-flex justify-content-end align-items-center'>
               <BsFillCalendarDateFill size={15} />

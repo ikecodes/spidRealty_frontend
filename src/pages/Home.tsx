@@ -8,7 +8,6 @@ import HomeTestimonials from '../components/Home/HomeTestimonials';
 import Slider from '../components/Slider';
 import Footer from '../layouts/Footer';
 import Loader from '../shared/Loader';
-
 const Home = () => {
   const [loading, setloading] = useState(true);
 

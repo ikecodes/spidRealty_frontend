@@ -2,19 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../shared/Button';
 
-interface Props {
-  home?: boolean;
-}
-const Filter: React.FC<Props> = ({ home }) => {
+const HomeFilter = () => {
   return (
-    <FilterContainer home={home}>
+    <FilterContainer>
       <div className='d-flex justify-content-center'>
         <select name='state' id='state' className='form-select'>
           <option value='lagos'>State</option>
           <option value='lagos'>Lagos</option>
         </select>
         <select name='lga' id='lga' className='form-select'>
-          <option value='lagos'>LGA</option>
+          <option value='lagos'>City</option>
           <option value='lagos'>Lagos</option>
         </select>
         <select name='lga' id='lga' className='form-select'>
@@ -33,10 +30,7 @@ const Filter: React.FC<Props> = ({ home }) => {
   );
 };
 
-const FilterContainer = styled.div<Props>`
-  background-color: ${(props) =>
-    props.home ? 'transparent' : 'rgba(0, 0, 0, 0.4)'};
-  padding: ${(props) => (props.home ? '0' : '2rem 0')};
+const FilterContainer = styled.div`
   width: 70%;
   position: absolute;
   z-index: 150;
@@ -51,4 +45,4 @@ const FilterContainer = styled.div<Props>`
   }
 `;
 
-export default Filter;
+export default HomeFilter;

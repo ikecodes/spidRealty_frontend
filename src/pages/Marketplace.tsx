@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-// import styled from 'styled-components';
-import Filter from '../components/Filter';
+import MarketFilter from '../components/MarketFilter';
 import PropertyCard from '../components/PropertyCard';
 import Layout from '../layouts/Layout';
 import Section from '../layouts/Section';
 import Loader from '../shared/Loader';
 
 const Marketplace = () => {
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState<boolean>(true);
 
   setTimeout(() => {
     setloading(false);
@@ -19,20 +18,20 @@ const Marketplace = () => {
         <h1 className='text-capitalize fw-bold m-0 p-0 mb-5 text-center'>
           all listings
         </h1>
-
-        <Filter />
-        <div className='row'>
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+        <div className='position-relative'>
+          <MarketFilter />
+          <div className='row'>
+            <PropertyCard />
+            <PropertyCard />
+            <PropertyCard />
+            <PropertyCard />
+            <PropertyCard />
+            <PropertyCard />
+          </div>
         </div>
       </Section>
     </Layout>
   );
 };
 
-// const FilterBox = styled.div``;
 export default Marketplace;

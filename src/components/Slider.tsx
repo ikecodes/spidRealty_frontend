@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { Carousel } from 'react-bootstrap';
 import NavLg from '../layouts/NavLg';
 import NavSm from '../layouts/NavSm';
-import Filter from './Filter';
+import HomeFilter from './HomeFilter';
 const Slider = () => {
   return (
     <div className='position-relative'>
       <NavSm />
       <NavLg />
-      <Filter home />
+      <HomeFilter />
       <Carousel fade>
         <Carousel.Item className='position-relative' interval={1500}>
           <div className='slider_image_box'>

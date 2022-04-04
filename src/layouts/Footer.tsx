@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import colors from '../constants/colors';
 import Logo from '../assets/images/logo-placeholder.png';
+import ScrollToTop from 'react-scroll-to-top';
 
 const Footer = () => {
   return (
@@ -43,7 +44,7 @@ const Footer = () => {
           </div>
           <div className='col-lg-3'>
             <h6 className='text-capitalize fw-bolder mb-3'>contact us</h6>
-            <ul className='mb-4 d-flex justify-content-between'>
+            <ul className='my-4 d-flex justify-content-between'>
               <a href='/facebook' target='_blank'>
                 <FaFacebook size={25} />
               </a>
@@ -71,6 +72,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
+      <ScrollToTop smooth color={colors.primary} />
     </Container>
   );
 };
