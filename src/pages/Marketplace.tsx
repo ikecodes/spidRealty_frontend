@@ -15,8 +15,8 @@ const Marketplace = () => {
   return (
     <Layout>
       <Section>
-        <h1 className='text-capitalize fw-bold m-0 p-0 mb-5 text-center'>
-          all listings
+        <h1 className='text-capitalize  m-0 p-0 mb-5 text-center'>
+          all active listings
         </h1>
         <div className='position-relative'>
           <MarketFilter />

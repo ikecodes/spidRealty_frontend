@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import ArticleCard from '../components/ArticleCard';
 import Layout from '../layouts/Layout';
 import Section from '../layouts/Section';
 import Loader from '../shared/Loader';
 
-const Blog = () => {
-  const [loading, setloading] = useState<boolean>(true);
+const Invest = () => {
+  const [loading, setloading] = useState(true);
 
   setTimeout(() => {
     setloading(false);
@@ -15,19 +14,11 @@ const Blog = () => {
     <Layout>
       <Section>
         <h1 className='text-capitalize  m-0 p-0 mb-5 text-center'>
-          latest news and articles
+          investment opportunities
         </h1>
-        <div className='row'>
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
-        </div>
       </Section>
     </Layout>
   );
 };
 
-export default Blog;
+export default Invest;

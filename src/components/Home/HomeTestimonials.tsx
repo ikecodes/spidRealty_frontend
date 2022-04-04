@@ -9,7 +9,7 @@ const HomeTestimonials = () => {
   return (
     <Container>
       <div className='container'>
-        <h1 className='text-capitalize fw-bold my-5 text-center'>
+        <h1 className='text-capitalize my-5 text-center'>
           here what our clients say about us
         </h1>
 

@@ -9,7 +9,7 @@ const HomeAbout = () => {
   return (
     <Section>
       <div className='container'>
-        <h1 className='text-capitalize fw-bold my-3 '>about us</h1>
+        <h1 className='text-capitalize  my-5 '>about us</h1>
         <div className='row flex-md-row-reverse'>
           <div className='col-lg-6'>
             <Image src={BgImage} alt='chairman' h={100} unit='%' />

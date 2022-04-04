@@ -8,9 +8,7 @@ const HomeArticles = () => {
   return (
     <Section>
       <div className='container'>
-        <h1 className='text-capitalize fw-bold my-5 align-items-center'>
-          recent article & updates
-        </h1>
+        <h1 className='text-capitalize my-5'>recent article & updates</h1>
         <div className='row'>
           <ArticleCard />
           <ArticleCard />
