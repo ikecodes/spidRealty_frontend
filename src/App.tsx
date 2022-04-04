@@ -1,8 +1,7 @@
 import React from 'react';
-import { Home, About } from './pages';
+import { Home, About, Marketplace, Blog } from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './utils/ScrollToTop';
-import Marketplace from './pages/Marketplace';
 
 function App() {
   return (
@@ -12,6 +11,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about-us' element={<About />} />
           <Route path='/marketplace' element={<Marketplace />} />
+          <Route path='/blog' element={<Blog />} />
         </Routes>
       </ScrollToTop>
     </Router>

@@ -21,7 +21,7 @@ const menus = [
   },
   {
     id: '5',
-    name: 'news',
+    name: 'blog',
     path: '/blog',
   },
 ];
