@@ -5,24 +5,25 @@ import styled from 'styled-components';
 import { Card } from 'react-bootstrap';
 import BgImage from '../assets/images/event.jpg';
 import Button from '../shared/Button';
+import Image from '../shared/Image';
 
 const PropertyCard = () => {
   return (
     <div className='col-lg-4 col-md-6 mb-5'>
       <CardContainer className='shadow'>
         <Card className='bg-transparent border-0'>
-          <CardImage alt='event' src={BgImage} />
+          <Image src={BgImage} h={10} unit='rem' alt='property' />
           <Card.Body>
-            <Card.Title className='text-capitalize fs-4 m-0 p-0'>
-              kings villa
+            <Card.Title className='text-capitalize fs-6 m-0 p-0'>
+              5 bed duplex apartment
             </Card.Title>
-            <Location className='p-0 text-secondary'>
+            <Price className='my-2'>₦30,000,000</Price>
+            <Location className='p-0 text-secondary d-flex justify-content-end align-items-center'>
               <MdLocationPin size={15} />
               <span className='text-capitalize'>ikeja, lagos</span>
             </Location>
-            <Price className='my-2'>₦30,000,000</Price>
-            <div className='text-end my-3'>
-              <Button title='view' loading={false} primary rounded />
+            <div className='text-center mt-3'>
+              <Button title='view' loading={false} primary />
             </div>
           </Card.Body>
         </Card>
@@ -35,11 +36,8 @@ const CardContainer = styled.div`
   overflow: hidden;
   background-color: ${colors.grey};
 `;
-const CardImage = styled.img`
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-`;
-const Price = styled.h5`
+
+const Price = styled.h6`
   padding: 0;
   margin: 0;
   color: ${colors.tertiary};

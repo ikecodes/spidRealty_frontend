@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import colors from '../constants/colors';
-// import Button from '../shared/Button';
-const Filter = () => {
+import Button from '../shared/Button';
+
+interface Props {
+  home?: boolean;
+}
+const Filter: React.FC<Props> = ({ home }) => {
   return (
-    <FilterContainer>
+    <FilterContainer home={home}>
       <div className='d-flex justify-content-center'>
         <select name='state' id='state' className='form-select'>
           <option value='lagos'>State</option>
@@ -24,13 +27,16 @@ const Filter = () => {
         </select>
       </div>
       <div className='text-center mt-3'>
-        <Button>search</Button>
+        <Button title='search' loading={false} rounded />
       </div>
     </FilterContainer>
   );
 };
 
-const FilterContainer = styled.div`
+const FilterContainer = styled.div<Props>`
+  background-color: ${(props) =>
+    props.home ? 'transparent' : 'rgba(0, 0, 0, 0.4)'};
+  padding: ${(props) => (props.home ? '0' : '2rem 0')};
   width: 70%;
   position: absolute;
   z-index: 150;
@@ -44,19 +50,5 @@ const FilterContainer = styled.div`
     border-radius: 0;
   }
 `;
-const Button = styled.button`
-  text-transform: capitalize;
-  font-size: 1rem;
-  padding: 0.8rem 2rem;
-  color: ${colors.white};
-  background: ${colors.tertiary};
-  border-radius: 5rem;
-  transform-origin: bottom;
-  transition: all 0.3s linear;
 
-  &:hover {
-    background: ${colors.primary};
-    transform: scale(1.05);
-  }
-`;
 export default Filter;

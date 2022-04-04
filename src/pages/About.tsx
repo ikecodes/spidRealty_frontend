@@ -18,9 +18,10 @@ const About = () => {
     <Layout>
       <Container>
         <Section>
-          <h1 className='text-capitalize fw-bold m-0 p-0 my-5 text-center'>
+          <h1 className='text-capitalize fw-bold m-0 p-0 mb-5 text-center'>
             about us
           </h1>
+
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
             deleniti voluptatem, facilis enim similique animi illum laudantium
@@ -66,7 +67,7 @@ const About = () => {
         </Section>
       </Container>
       <Section>
-        <h1 className='text-capitalize fw-bold m-0 p-0 my-5 text-center'>
+        <h1 className='text-capitalize fw-bold m-0 p-0 mb-5 text-center'>
           meet the team
         </h1>
         <div className='row'>
@@ -82,6 +83,7 @@ const About = () => {
 
 const Container = styled.div`
   background-color: ${colors.grey};
+  text-align: center;
 `;
 
 export default About;

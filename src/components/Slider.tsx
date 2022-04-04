@@ -9,7 +9,7 @@ const Slider = () => {
     <div className='position-relative'>
       <NavSm />
       <NavLg />
-      <Filter />
+      <Filter home />
       <Carousel fade>
         <Carousel.Item className='position-relative' interval={1500}>
           <div className='slider_image_box'>

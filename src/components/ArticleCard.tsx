@@ -3,21 +3,27 @@ import styled from 'styled-components';
 import colors from '../constants/colors';
 import ArticleImage from '../assets/images/family.jpg';
 import { BsFillCalendarDateFill } from 'react-icons/bs';
+import Image from '../shared/Image';
+import Button from '../shared/Button';
 
 const ArticleCard = () => {
   return (
     <div className='col-lg-4 col-md-6 mb-5'>
       <CardContainer className='shadow'>
-        <Image src={ArticleImage} />
+        <Image src={ArticleImage} h={15} unit='rem' alt='property' />
         <TextContainer>
-          <h5 className='text-capitalize'>welcome to the new des</h5>
-          <p className='p-0 m-0'>
+          <h5 className='text-capitalize m-0 mb-1'>welcome to the new des</h5>
+          <p className='m-0'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod amet
             error ullam odio.
           </p>
-          <div className='d-flex align-items-center justify-content-end'>
-            <BsFillCalendarDateFill size={15} />
-            <p className='p-0 m-0 ms-1'>22-12-2022</p>
+
+          <div className='d-flex justify-content-between mt-3'>
+            <div className='p-0 d-flex justify-content-end align-items-center'>
+              <BsFillCalendarDateFill size={15} />
+              <span className='ms-1 mt-1'>22-12-2022</span>
+            </div>
+            <Button title='read' loading={false} inverse />
           </div>
         </TextContainer>
       </CardContainer>
@@ -29,21 +35,19 @@ const CardContainer = styled.div`
   overflow: hidden;
   background-color: ${colors.grey};
   position: relative;
-  height: 20rem;
 `;
-const Image = styled.img`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-`;
+
 const TextContainer = styled.div`
   padding: 0.5rem;
   color: ${colors.white};
   position: absolute;
   bottom: 0;
-  background-color: rgb(0, 0, 0, 0.4);
+  background-color: rgb(0, 0, 0, 0.5);
   width: 100%;
   & p {
+    font-size: 0.8rem;
+  }
+  & > div span {
     font-size: 0.8rem;
   }
 `;
