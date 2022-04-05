@@ -17,7 +17,7 @@ const ArticleCard = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod amet
             error ullam odio.
           </p>
-          <div className='d-flex justify-content-between mt-3'>
+          <div className='d-flex justify-content-between mt-2 mb-1'>
             <div className='p-0 d-flex justify-content-end align-items-center'>
               <BsFillCalendarDateFill size={15} />
               <span className='ms-1 mt-1'>22-12-2022</span>
@@ -37,11 +37,11 @@ const CardContainer = styled.div`
 `;
 
 const TextContainer = styled.div`
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   color: ${colors.white};
   position: absolute;
   bottom: 0;
-  background-color: rgb(0, 0, 0, 0.5);
+  background-color: rgb(0, 0, 0, 0.4);
   width: 100%;
   & p {
     font-size: 0.8rem;

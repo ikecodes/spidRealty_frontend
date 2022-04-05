@@ -70,6 +70,7 @@ const FilterContainer = styled.div`
   z-index: 100;
   text-align: center;
   width: 100%;
+  background-color: ${colors.white};
   /* @media (max-width: 576px) {
     width: 100%;
   } */
