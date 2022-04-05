@@ -119,7 +119,7 @@ const Invest = () => {
 };
 
 const List = styled.ul`
-  list-style: circle;
+  list-style-type: square;
 `;
 
 const Button = styled.button`
