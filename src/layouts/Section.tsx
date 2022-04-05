@@ -13,7 +13,7 @@ const Section: React.FC<Props> = ({ children }) => {
   );
 };
 const Container = styled.section`
-  padding: 5rem 0;
+  padding: 2.5rem 0;
   color: ${colors.primary};
 `;
 export default Section;

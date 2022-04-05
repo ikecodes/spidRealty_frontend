@@ -3,8 +3,6 @@ import Layout from '../layouts/Layout';
 import Section from '../layouts/Section';
 import Image from '../shared/Image';
 import AboutImg1 from '../assets/images/family.jpg';
-import styled from 'styled-components';
-import colors from '../constants/colors';
 import TeamCard from '../components/TeamCard';
 import Loader from '../shared/Loader';
 const About = () => {
@@ -16,7 +14,7 @@ const About = () => {
   if (loading) return <Loader />;
   return (
     <Layout>
-      <Container>
+      <div className='bg-light text-center'>
         <Section>
           <h1 className='text-capitalize m-0 p-0 mb-5 text-center'>about us</h1>
 
@@ -63,7 +61,7 @@ const About = () => {
             ducimus quaerat.
           </p>
         </Section>
-      </Container>
+      </div>
       <Section>
         <h1 className='text-capitalize m-0 p-0 mb-5 text-center'>
           meet the team
@@ -78,10 +76,5 @@ const About = () => {
     </Layout>
   );
 };
-
-const Container = styled.div`
-  background-color: ${colors.grey};
-  text-align: center;
-`;
 
 export default About;
