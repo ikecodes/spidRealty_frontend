@@ -5,6 +5,7 @@ import ArticleImage from '../assets/images/family.jpg';
 import { BsFillCalendarDateFill } from 'react-icons/bs';
 import Image from '../shared/Image';
 import Button from '../shared/Button';
+import { Link } from 'react-router-dom';
 
 const ArticleCard = () => {
   return (
@@ -22,7 +23,9 @@ const ArticleCard = () => {
               <BsFillCalendarDateFill size={15} />
               <span className='ms-1 mt-1'>22-12-2022</span>
             </div>
-            <Button title='read' loading={false} inverse />
+            <Link to='/blog/new-country'>
+              <Button title='read' loading={false} inverse />
+            </Link>
           </div>
         </TextContainer>
       </CardContainer>

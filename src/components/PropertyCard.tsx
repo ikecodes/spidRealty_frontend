@@ -6,6 +6,7 @@ import { Card } from 'react-bootstrap';
 import BgImage from '../assets/images/event.jpg';
 import Button from '../shared/Button';
 import Image from '../shared/Image';
+import { Link } from 'react-router-dom';
 
 const PropertyCard = () => {
   return (
@@ -23,7 +24,9 @@ const PropertyCard = () => {
               <span className='text-capitalize'>ikeja, lagos</span>
             </Location>
             <div className='text-center mt-3'>
-              <Button title='view' loading={false} primary />
+              <Link to='/marketplace/silicon-valley'>
+                <Button title='view' loading={false} primary />
+              </Link>
             </div>
           </Card.Body>
         </Card>

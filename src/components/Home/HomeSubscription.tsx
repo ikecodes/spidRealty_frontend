@@ -42,7 +42,7 @@ const HomeSubscription = () => {
 
 const Container = styled.div`
   color: ${colors.white};
-  padding: 5rem 0;
+  padding: 2.5rem 0;
   background-color: ${colors.tertiary};
 `;
 

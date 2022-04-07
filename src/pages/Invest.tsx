@@ -28,7 +28,7 @@ const Invest = () => {
           <InvestmentCard />
         </div>
         <div className='text-center my-3'>
-          <Link to='/marketplace'>
+          <Link to='/investment'>
             <Button>explore all investments</Button>
           </Link>
         </div>

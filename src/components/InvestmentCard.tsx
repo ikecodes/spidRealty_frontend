@@ -1,10 +1,10 @@
 import React from 'react';
-import { BsFillCalendarDateFill } from 'react-icons/bs';
 import InvestmentImage from '../assets/images/family.jpg';
 import styled from 'styled-components';
 import colors from '../constants/colors';
 import Button from '../shared/Button';
 import Image from '../shared/Image';
+import { Link } from 'react-router-dom';
 
 const InvestmentCard = () => {
   return (
@@ -35,7 +35,9 @@ const InvestmentCard = () => {
             </div>
           </div>
           <div className='text-center my-2'>
-            <Button title='view' loading={false} primary />
+            <Link to='/investment/top-house'>
+              <Button title='view' loading={false} primary />
+            </Link>
           </div>
         </TextContainer>
       </CardContainer>
