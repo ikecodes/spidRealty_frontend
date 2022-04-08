@@ -7,7 +7,6 @@ import {
   BsLinkedin,
   BsShare,
 } from 'react-icons/bs';
-import styled from 'styled-components';
 import Layout from '../layouts/Layout';
 import Section from '../layouts/Section';
 import Loader from '../shared/Loader';
@@ -25,16 +24,16 @@ const BlogView = () => {
   return (
     <Layout>
       <Section>
-        <h1 className='text-capitalize  m-0 p-0 mb-5 text-center'>
+        <h1 className='text-capitalize mb-3 text-center'>
           How to Create a Productive Work-From-Home Office
         </h1>
-        <ArticleDetail className='text-dark p-2 d-flex justify-content-around mb-3 gap-2 flex-wrap'>
+        <div className='text-dark  d-flex justify-content-around mb-3  flex-wrap bg-light gap-3 py-2'>
           <div className='d-flex align-items-center '>
             <BsShare size={15} className='me-1' />
-            <span className='mt-1 me-3'>Share</span>
-            <BsFacebook color='#3b5998' size={15} className='me-3' />
-            <BsTwitter color='#00acee' size={15} className='me-3' />
-            <BsLinkedin color='#0e76a8' size={15} className='me-3' />
+            <span className='me-3 mt-1'>Share</span>
+            <BsFacebook color='#3b5998' size={20} className='me-3' />
+            <BsTwitter color='#00acee' size={20} className='me-3' />
+            <BsLinkedin color='#0e76a8' size={20} className='me-3' />
           </div>
           <div className='d-flex align-items-center'>
             <BsCalendarDate size={15} className='me-1' />
@@ -44,7 +43,7 @@ const BlogView = () => {
             <BsBookmark size={15} className='me-1' />
             <span className='mt-1'>4 minutes read</span>
           </div>
-        </ArticleDetail>
+        </div>
 
         <div className='row'>
           <div className='col-lg-8'>
@@ -88,9 +87,4 @@ const BlogView = () => {
   );
 };
 
-const ArticleDetail = styled.div`
-  & span {
-    font-size: 0.8rem;
-  }
-`;
 export default BlogView;

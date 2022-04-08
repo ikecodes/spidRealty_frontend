@@ -7,7 +7,7 @@ interface Props {
   primary?: boolean;
   handleClick?: () => void;
   rounded?: boolean;
-  loading: boolean;
+  loading?: boolean;
   disabled?: boolean;
   inverse?: boolean;
 }
