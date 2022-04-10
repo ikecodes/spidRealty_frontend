@@ -6,6 +6,7 @@ import Blog from './Blog';
 import BlogView from './BlogView';
 import Invest from './Invest';
 import Investment from './Investment';
+import PurchaseForm from './PurchaseForm';
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   BlogView,
   Invest,
   Investment,
+  PurchaseForm,
 };

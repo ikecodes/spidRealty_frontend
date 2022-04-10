@@ -10,12 +10,14 @@ import {
   BsFacebook,
   BsLinkedin,
   BsTwitter,
-  BsHeart,
+  BsBookmarkHeart,
 } from 'react-icons/bs';
 import { MdOutlineBathroom, MdOutlineBedroomParent } from 'react-icons/md';
 import { MdLocationPin } from 'react-icons/md';
 import Button from '../shared/Button';
 import PropertyCard from '../components/PropertyCard';
+import Tip from '../shared/Tip';
+import { Link } from 'react-router-dom';
 
 const MarketplaceView = () => {
   const [loading, setloading] = useState(true);
@@ -81,15 +83,12 @@ const MarketplaceView = () => {
                 showIndex={true}
               />
             </div>
-            <Disclaimer className='shadow p-3 mt-2'>
-              <h5 className='text-capitalize text-dark'>disclaimer</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <Tip
+              title='disclaimer'
+              description='Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Laudantium repellendus perferendis odit nisi, dolores voluptas
-                mollitia aut. Praesentium placeat eligendi, dolorum earum, a
-                culpa iure nam quisquam vero laboriosam ipsa?
-              </p>
-            </Disclaimer>
+                mollitia aut. Praesentium placeat eligend'
+            />
           </div>
           <div className='col-lg-4'>
             <DescriptionHeader className='mb-3 p-2'>
@@ -104,6 +103,22 @@ const MarketplaceView = () => {
               dignissimos suscipit consequuntur odit assumenda excepturi ab
               eius, ipsam officiis? Rerum illum fugiat veritatis illo maxime.
             </p>
+
+            <div className='text-dark d-flex my-3 py-2 justify-content-between text-capitalize border-bottom border-top'>
+              <div className='d-flex flex-column'>
+                <span>newly-built</span>
+                <span className='text-secondary'>condition</span>
+              </div>
+              <div className='d-flex flex-column'>
+                <span>furnished</span>
+                <span className='text-secondary'>furnishing</span>
+              </div>
+              <div className='d-flex flex-column'>
+                <span>88 sqm</span>
+                <span className='text-secondary'>size</span>
+              </div>
+            </div>
+
             <div className='text-dark d-flex my-3 gap-3'>
               <div>
                 <MdOutlineBedroomParent size={25} />
@@ -130,8 +145,10 @@ const MarketplaceView = () => {
               <li className='my-1'>Electric Fence</li>
             </ul>
             <div className='d-flex justify-content-between mt-3'>
-              <Button title='purchase property' />
-              <BsHeart size={25} role='button' color={colors.primary} />
+              <Link to='/purchase-form'>
+                <Button title='purchase property' />
+              </Link>
+              <BsBookmarkHeart size={25} role='button' color={colors.primary} />
             </div>
             <div className='d-flex align-items-center justify-content-center gap-2 border-top border-bottom py-2 my-3 '>
               <BsFacebook color='#3b5998' size={20} className='me-3' />
@@ -152,9 +169,6 @@ const MarketplaceView = () => {
   );
 };
 
-const Disclaimer = styled.div`
-  background-color: ${colors.secondary};
-`;
 const DescriptionHeader = styled.h6`
   background-color: ${colors.primary};
   color: ${colors.white};

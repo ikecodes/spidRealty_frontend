@@ -8,6 +8,7 @@ import {
   BlogView,
   Invest,
   Investment,
+  PurchaseForm,
 } from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './utils/ScrollToTop';
@@ -26,6 +27,7 @@ function App() {
           <Route path='/invest' element={<Invest />} />
           <Route path='/investment' element={<Investment />} />
           <Route path='/investment/:id' element={<Investment />} />
+          <Route path='/purchase-form' element={<PurchaseForm />} />
         </Routes>
       </ScrollToTop>
     </Router>
