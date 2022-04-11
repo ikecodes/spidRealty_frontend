@@ -23,8 +23,8 @@ const RegisterAs = () => {
               <Image src={AgentImg} h={15} unit='rem' alt='agent' />
               <h5 className='text-uppercase m-0 my-3 text-dark'>agent</h5>
               <div className='text-center mb-3'>
-                <Link to='/signUp'>
-                  <Button title='get started' rounded primary />
+                <Link to='/signUp?agent'>
+                  <Button title='get started' rounded />
                 </Link>
               </div>
             </CardContainer>
@@ -34,8 +34,8 @@ const RegisterAs = () => {
               <Image src={InvestotImg} h={15} unit='rem' alt='agent' />
               <h5 className='text-uppercase m-0 my-3 text-dark'>investor</h5>
               <div className='text-center mb-3'>
-                <Link to='/signUp'>
-                  <Button title='get started' rounded primary />
+                <Link to='/signUp?investor'>
+                  <Button title='get started' rounded />
                 </Link>
               </div>
             </CardContainer>
@@ -45,8 +45,8 @@ const RegisterAs = () => {
               <Image src={UserImg} h={15} unit='rem' alt='agent' />
               <h5 className='text-uppercase m-0 my-3 text-dark'>user</h5>
               <div className='text-center mb-3'>
-                <Link to='/signUp'>
-                  <Button title='get started' rounded primary />
+                <Link to='/signUp?user'>
+                  <Button title='get started' rounded />
                 </Link>
               </div>
             </CardContainer>
