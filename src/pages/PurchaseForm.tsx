@@ -43,7 +43,7 @@ const PurchaseForm = () => {
                 <Form.Control type='phone' placeholder='Enter phone number' />
               </Form.Group>
 
-              <Button primary title='submit' />
+              <Button title='submit' />
             </Form>
           </div>
         </div>

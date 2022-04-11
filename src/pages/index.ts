@@ -7,6 +7,9 @@ import BlogView from './BlogView';
 import Invest from './Invest';
 import Investment from './Investment';
 import PurchaseForm from './PurchaseForm';
+import RegisterAs from './RegisterAs';
+import SignUp from './SignUp';
+import Login from './Login';
 
 export {
   Home,
@@ -18,4 +21,7 @@ export {
   Invest,
   Investment,
   PurchaseForm,
+  RegisterAs,
+  SignUp,
+  Login,
 };

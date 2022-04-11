@@ -13,15 +13,15 @@ const TeamCard = () => {
         image={StaffImage}
         alt='Ike'
         onHide={() => setModalShow(false)}
-        name='Onuoraj Ike'
-        position='Lead developer'
+        name='Mary Sian'
+        position='CTO'
         about='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus ex tempora eligendi vel iure distinctio veritatis rerum! Consectetur tempore cupiditate cumque repudiandae vitae. Ducimus alias ipsa asperiores aperiam, velit enim?'
       />
       <Card className='border-0 text-center shadow '>
         <Image src={StaffImage} h={15} unit='rem' alt='staff' />
         <Card.Body>
-          <Card.Title>Onuorah Ike</Card.Title>
-          <Card.Text>Lead developer</Card.Text>
+          <Card.Title>Mary Sian</Card.Title>
+          <Card.Text>CTO</Card.Text>
           <Button
             title='read bio'
             loading={false}

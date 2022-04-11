@@ -9,6 +9,9 @@ import {
   Invest,
   Investment,
   PurchaseForm,
+  RegisterAs,
+  SignUp,
+  Login,
 } from './pages';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './utils/ScrollToTop';
@@ -28,6 +31,9 @@ function App() {
           <Route path='/investment' element={<Investment />} />
           <Route path='/investment/:id' element={<Investment />} />
           <Route path='/purchase-form' element={<PurchaseForm />} />
+          <Route path='/registerAs' element={<RegisterAs />} />
+          <Route path='/signUp' element={<SignUp />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </ScrollToTop>
     </Router>

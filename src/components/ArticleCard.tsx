@@ -13,18 +13,15 @@ const ArticleCard = () => {
       <CardContainer className='shadow'>
         <Image src={ArticleImage} h={15} unit='rem' alt='property' />
         <TextContainer>
-          <h5 className='text-capitalize m-0 mb-1'>welcome to the new des</h5>
-          <p className='m-0'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod amet
-            error ullam odio.
-          </p>
+          <h5 className='text-capitalize m-0 mt-1'>welcome to the new des</h5>
+          <p className='m-0'>Lorem ipsum dolor sit amet consectetur elit...</p>
           <div className='d-flex justify-content-between mt-2 mb-1'>
             <div className='p-0 d-flex justify-content-end align-items-center'>
               <BsFillCalendarDateFill size={15} />
               <span className='ms-1 mt-1'>22-12-2022</span>
             </div>
             <Link to='/blog/new-country'>
-              <Button title='read' loading={false} inverse />
+              <Button title='read' inverse />
             </Link>
           </div>
         </TextContainer>

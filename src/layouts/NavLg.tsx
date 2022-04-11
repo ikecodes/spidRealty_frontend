@@ -24,7 +24,7 @@ const NavbarLg = () => {
               <Link to='/login'>
                 <LoginBtn className='mx-1'>login</LoginBtn>
               </Link>
-              <Link to='/signup'>
+              <Link to='/registerAs'>
                 <SignUpBtn className='mx-1'>Sign Up</SignUpBtn>
               </Link>
             </ul>

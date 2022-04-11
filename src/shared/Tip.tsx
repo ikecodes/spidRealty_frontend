@@ -9,7 +9,7 @@ const Tip: React.FC<{ title: string; description: string }> = ({
   return (
     <Container className='p-2'>
       <h6 className='text-capitalize text-dark'>{title}</h6>
-      <p className='m-0'>{description}</p>
+      <p className='m-0 text-secondary'>{description}</p>
     </Container>
   );
 };

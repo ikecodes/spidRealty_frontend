@@ -27,7 +27,7 @@ const NavSm = () => {
           <Link to='/login'>
             <LoginBtn className='py-2'>login</LoginBtn>
           </Link>
-          <Link to='/signup'>
+          <Link to='/registerAs'>
             <SignUpBtn className='py-2'>Sign Up</SignUpBtn>
           </Link>
         </NavContainer>
