@@ -1,12 +1,18 @@
-import React from 'react';
-import Layout from '../layouts/Layout';
-import Section from '../layouts/Section';
-import { useLocation } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
-import Button from '../shared/Button';
+import React from "react";
+import Layout from "../layouts/Layout";
+import Section from "../layouts/Section";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Form } from "react-bootstrap";
+import Button from "../shared/Button";
 const SignUp = () => {
   const location = useLocation();
-  const userType = location.search.split('?')[1];
+  const navigate = useNavigate();
+  const userType = location.search.split("?")[1];
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    navigate(`/profile/${userType}`);
+  };
   return (
     <Layout>
       <Section>
@@ -51,7 +57,7 @@ const SignUp = () => {
                   className='bg-light rounded-0'
                 />
               </Form.Group>
-              <Button title='submit' />
+              <Button title='submit' handleClick={(e) => handleSubmit(e)} />
             </Form>
           </div>
         </div>

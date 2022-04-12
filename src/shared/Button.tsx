@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import colors from '../constants/colors';
+import React from "react";
+import styled from "styled-components";
+import colors from "../constants/colors";
 
 interface Props {
   title: string;
   primary?: boolean;
-  handleClick?: () => void;
+  handleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   rounded?: boolean;
   loading?: boolean;
   disabled?: boolean;
@@ -52,13 +52,13 @@ const B = styled.button<BProps>`
     props.primary
       ? colors.primary
       : props.inverse
-      ? 'transparent'
+      ? "transparent"
       : colors.tertiary};
   text-transform: capitalize;
   color: ${colors.white};
   padding: 5px 20px;
-  border-radius: ${(props) => (props.rounded ? '5px' : '0')};
-  border: ${(props) => (props.inverse ? '1px solid #fff' : 0)};
+  border-radius: ${(props) => (props.rounded ? "5px" : "0")};
+  border: ${(props) => (props.inverse ? "1px solid #fff" : 0)};
   transition: all 0.2s linear;
   &:hover {
     transform: scale(1.05);
