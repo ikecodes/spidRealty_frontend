@@ -12,7 +12,8 @@ interface Props {
 const AgentPage: React.FC<Props> = ({ children }) => {
   return (
     <Layout>
-      <Container className='d-flex justify-content-between align-items-center'>
+      <Container className='d-flex flex-wrap flex-md-row-reverse justify-content-between align-items-center'>
+        <Profile className='m-0 ms-1 mb-3'>Hello, mary</Profile>
         <div className='d-flex gap-4'>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}
@@ -29,7 +30,7 @@ const AgentPage: React.FC<Props> = ({ children }) => {
           >
             <div className='d-flex flex-column align-items-center p-1'>
               <MdUpload size={20} />
-              <h6 className='m-0 ms-1'>post</h6>
+              <h6 className='m-0 ms-1'>post property</h6>
             </div>
           </NavLink>
           <NavLink
@@ -42,7 +43,6 @@ const AgentPage: React.FC<Props> = ({ children }) => {
             </div>
           </NavLink>
         </div>
-        <Profile className='m-0 ms-1'>Hello, mary</Profile>
       </Container>
       <Section>
         <div className='bg-light py-5'>{children}</div>
@@ -76,5 +76,8 @@ const Container = styled.div`
 const Profile = styled.h6`
   color: ${colors.secondary};
   font-weight: bold;
+  margin-left: 2rem;
+  justify-self: end;
+  white-space: nowrap;
 `;
 export default AgentPage;

@@ -40,9 +40,6 @@ export const data = {
 const AgentDashboard = () => {
   return (
     <AgentLayout>
-      {/* <h2 className='text-capitalize shadow d-inline rounded m-0 p-2 mb-2'>
-        welcome back, mary!
-      </h2> */}
       <div className='row my-3 justify-content-around'>
         <div className='col-lg-4'>
           <Doughnut data={data} />
