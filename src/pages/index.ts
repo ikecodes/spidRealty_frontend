@@ -7,15 +7,20 @@ import BlogView from "./BlogView";
 import Invest from "./Invest";
 import Advertise from "./Advertise";
 import Investment from "./Investment";
+import InvestmentView from "./InvestmentView";
 import PurchaseForm from "./PurchaseForm";
 import RegisterAs from "./RegisterAs";
 import SignUp from "./SignUp";
 import Login from "./Login";
 
-// Profile pages
-import AgentPage from "./profile/AgentPage";
-import UserPage from "./profile/UserPage";
-import InvestorPage from "./profile/InvestorPage";
+// Profile layouts
+import AgentDashboard from "./agent/AgentDashboard";
+import AgentPost from "./agent/AgentPost";
+import AgentListings from "./agent/AgentListings";
+import AgentProfile from "./agent/AgentProfile";
+
+import UserLayout from "./profile/UserLayout";
+import InvestorLayout from "./profile/InvestorLayout";
 
 export {
   Home,
@@ -27,11 +32,15 @@ export {
   Invest,
   Advertise,
   Investment,
+  InvestmentView,
   PurchaseForm,
   RegisterAs,
   SignUp,
   Login,
-  AgentPage,
-  UserPage,
-  InvestorPage,
+  AgentDashboard,
+  AgentPost,
+  AgentListings,
+  AgentProfile,
+  UserLayout,
+  InvestorLayout,
 };

@@ -11,7 +11,7 @@ const SignUp = () => {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    navigate(`/profile/${userType}`);
+    navigate(`/${userType}/dashboard`);
   };
   return (
     <Layout>

@@ -9,13 +9,17 @@ import {
   Invest,
   Advertise,
   Investment,
+  InvestmentView,
   PurchaseForm,
   RegisterAs,
   SignUp,
   Login,
-  AgentPage,
-  UserPage,
-  InvestorPage,
+  AgentDashboard,
+  AgentPost,
+  AgentListings,
+  AgentProfile,
+  UserLayout,
+  InvestorLayout,
 } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop";
@@ -34,14 +38,20 @@ function App() {
           <Route path='/invest' element={<Invest />} />
           <Route path='/advertise' element={<Advertise />} />
           <Route path='/investment' element={<Investment />} />
-          <Route path='/investment/:id' element={<Investment />} />
+          <Route path='/investment/:id' element={<InvestmentView />} />
           <Route path='/purchase-form' element={<PurchaseForm />} />
           <Route path='/registerAs' element={<RegisterAs />} />
           <Route path='/signUp' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/profile/agent' element={<AgentPage />} />
-          <Route path='/profile/user' element={<UserPage />} />
-          <Route path='/profile/investor' element={<InvestorPage />} />
+
+          {/* // agent */}
+          <Route path='/agent/dashboard' element={<AgentDashboard />} />
+          <Route path='/agent/post' element={<AgentPost />} />
+          <Route path='/agent/listings' element={<AgentListings />} />
+          <Route path='/agent/profile' element={<AgentProfile />} />
+
+          <Route path='/profile/user' element={<UserLayout />} />
+          <Route path='/profile/investor' element={<InvestorLayout />} />
         </Routes>
       </ScrollToTop>
     </Router>
