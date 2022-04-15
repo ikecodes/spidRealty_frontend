@@ -17,7 +17,6 @@ import Login from "./Login";
 import AgentDashboard from "./agent/AgentDashboard";
 import AgentPost from "./agent/AgentPost";
 import AgentListings from "./agent/AgentListings";
-import AgentProfile from "./agent/AgentProfile";
 
 import UserLayout from "./profile/UserLayout";
 import InvestorLayout from "./profile/InvestorLayout";
@@ -40,7 +39,6 @@ export {
   AgentDashboard,
   AgentPost,
   AgentListings,
-  AgentProfile,
   UserLayout,
   InvestorLayout,
 };

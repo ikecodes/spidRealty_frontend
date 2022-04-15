@@ -17,7 +17,6 @@ import {
   AgentDashboard,
   AgentPost,
   AgentListings,
-  AgentProfile,
   UserLayout,
   InvestorLayout,
 } from "./pages";
@@ -48,7 +47,6 @@ function App() {
           <Route path='/agent/dashboard' element={<AgentDashboard />} />
           <Route path='/agent/post' element={<AgentPost />} />
           <Route path='/agent/listings' element={<AgentListings />} />
-          <Route path='/agent/profile' element={<AgentProfile />} />
 
           <Route path='/profile/user' element={<UserLayout />} />
           <Route path='/profile/investor' element={<InvestorLayout />} />

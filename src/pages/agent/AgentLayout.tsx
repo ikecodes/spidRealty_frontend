@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../../layouts/Layout";
-import ProfileImg from "../../assets/images/p2.jpg";
 import styled from "styled-components";
 import colors from "../../constants/colors";
 import { MdDashboard, MdUpload, MdHome } from "react-icons/md";
@@ -13,7 +12,7 @@ interface Props {
 const AgentPage: React.FC<Props> = ({ children }) => {
   return (
     <Layout>
-      <Container className='d-flex justify-content-between'>
+      <Container className='d-flex justify-content-between align-items-center'>
         <div className='d-flex gap-4'>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}
@@ -43,21 +42,7 @@ const AgentPage: React.FC<Props> = ({ children }) => {
             </div>
           </NavLink>
         </div>
-        <NavLink
-          className={({ isActive }) => (isActive ? "active" : "")}
-          to='/agent/profile'
-        >
-          <div className='d-flex align-items-center p-1'>
-            <ProfileBox>
-              <Profile
-                src={ProfileImg}
-                alt='profile'
-                className='rounded-circle'
-              />
-            </ProfileBox>
-            <h6 className='m-0 ms-1'>mary</h6>
-          </div>
-        </NavLink>
+        <Profile className='m-0 ms-1'>Hello, mary</Profile>
       </Container>
       <Section>
         <div className='bg-light py-5'>{children}</div>
@@ -79,7 +64,7 @@ const Container = styled.div`
   }
   & a.active {
     background-color: ${colors.white};
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
     color: ${colors.primary};
   }
 
@@ -87,13 +72,9 @@ const Container = styled.div`
     padding: 1rem 0.5rem;
   }
 `;
-const ProfileBox = styled.div`
-  width: 2.5rem;
-  height: 2.5rem;
-`;
-const Profile = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+
+const Profile = styled.h6`
+  color: ${colors.secondary};
+  font-weight: bold;
 `;
 export default AgentPage;
