@@ -2,14 +2,7 @@ import React from "react";
 import UserLayout from "./UserLayout";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { Card } from "react-bootstrap";
-import {
-  MdHome,
-  MdShowChart,
-  MdUpload,
-  MdEmail,
-  MdLocalPhone,
-} from "react-icons/md";
+import { MdEmail, MdLocalPhone } from "react-icons/md";
 import colors from "../../constants/colors";
 import styled from "styled-components";
 
