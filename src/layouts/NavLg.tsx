@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import Logo from '../assets/images/logo-placeholder.png';
-import NavItemLg from './NavItemLg';
-import menus from '../constants/menus';
-import colors from '../constants/colors';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Logo from "../assets/images/logo-placeholder.png";
+import NavItemLg from "./NavItemLg";
+import menus from "../constants/menus";
+import colors from "../constants/colors";
 
 const NavbarLg = () => {
   return (
@@ -51,27 +51,27 @@ const Image = styled.img`
 
 const LoginBtn = styled.button`
   background-color: ${colors.white};
-  color: ${colors.black};
+  color: ${colors.primary};
   border: 1px solid ${colors.primary};
-  padding: 0.5rem 1.2rem;
+  padding: 0.5rem 1.3rem;
   text-transform: capitalize;
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: ${colors.primary};
-    color: ${colors.white};
+    border: 1px solid ${colors.tertiary};
+    color: ${colors.tertiary};
   }
 `;
 const SignUpBtn = styled.button`
   background-color: ${colors.primary};
   color: ${colors.white};
   border: 1px solid ${colors.primary};
-  padding: 0.5rem 1.2rem;
+  padding: 0.5rem 1.3rem;
   text-transform: capitalize;
   transition: all 0.3s ease-in-out;
   &:hover {
-    background-color: ${colors.white};
-    color: ${colors.black};
+    background-color: ${colors.tertiary};
+    border: 1px solid ${colors.tertiary};
   }
 `;
 

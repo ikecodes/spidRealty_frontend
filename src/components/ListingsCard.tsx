@@ -3,7 +3,11 @@ import ListingImg from "..//assets/images/chairman.jpg";
 import Image from "../shared/Image";
 import Button from "../shared/Button";
 import styled from "styled-components";
-const ListingsCard = () => {
+
+interface Props {
+  remove?: boolean;
+}
+const ListingsCard: React.FC<Props> = ({ remove }) => {
   return (
     <Container className='row bg-white py-2 mb-3 bordered'>
       <div className='col-lg-4'>
@@ -20,7 +24,11 @@ const ListingsCard = () => {
         <h6 className='mt-2'>₦50,0000,000</h6>
       </div>
       <div className='col-lg-2'>
-        <Button title='view' primary />
+        {remove ? (
+          <Button title='remove' primary />
+        ) : (
+          <Button title='view' primary />
+        )}
       </div>
     </Container>
   );
