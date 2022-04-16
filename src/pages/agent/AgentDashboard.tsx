@@ -1,12 +1,17 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { Card, Form } from "react-bootstrap";
-import { MdHome, MdShowChart, MdUpload } from "react-icons/md";
+import { Card } from "react-bootstrap";
+import {
+  MdHome,
+  MdShowChart,
+  MdUpload,
+  MdEmail,
+  MdLocalPhone,
+} from "react-icons/md";
 import AgentLayout from "./AgentLayout";
-import Button from "../../shared/Button";
+import colors from "../../constants/colors";
 import styled from "styled-components";
-import ProfileImg from "../../assets/images/p2.jpg";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -40,64 +45,7 @@ export const data = {
 const AgentDashboard = () => {
   return (
     <AgentLayout>
-      <div className='row my-3 justify-content-around'>
-        <div className='col-lg-4'>
-          <Doughnut data={data} />
-        </div>
-        <div className='col-lg-6'>
-          <ProfileBox>
-            <Profile
-              src={ProfileImg}
-              alt='profile'
-              className='rounded-circle'
-            />
-          </ProfileBox>
-          <Form className='mt-3 text-dark'>
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter first name'
-                className='bg-light rounded-0'
-                value='mary'
-              />
-            </Form.Group>
-
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter last name'
-                className='bg-light rounded-0'
-                value='slain'
-              />
-            </Form.Group>
-
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type='email'
-                placeholder='Enter email'
-                className='rounded-0'
-                value='mary@gmail.com'
-                disabled
-              />
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control
-                type='phone'
-                placeholder='Enter phone number'
-                className='rounded-0'
-                value='0904569888'
-                disabled
-              />
-            </Form.Group>
-            <Button title='update' />
-          </Form>
-        </div>
-      </div>
-      <div className='row'>
+      <div className='row mb-5'>
         <div className='col-lg-4 mb-3'>
           <Card className='p-2 border-0 shadow'>
             <div className='d-flex align-items-center justify-content-evenly'>
@@ -146,17 +94,30 @@ const AgentDashboard = () => {
           </Card>
         </div>
       </div>
+      <div className='row my-3 justify-content-around'>
+        <div className='col-lg-4'>
+          <Doughnut data={data} />
+        </div>
+        <ProfileDetails className='col-lg-6 p-5'>
+          <h2 className='text-capitalize text-center border-bottom pb-2 mb-3'>
+            mary jessica smith
+          </h2>
+          <div className='d-flex mb-2'>
+            <MdEmail size={30} />
+            <h4 className='m-0 ms-2'>mary@gmail.com</h4>
+          </div>
+          <div className='d-flex'>
+            <MdLocalPhone size={30} />
+            <h4 className='m-0 ms-2'>09056779797</h4>
+          </div>
+        </ProfileDetails>
+      </div>
     </AgentLayout>
   );
 };
 
-const ProfileBox = styled.div`
-  width: 7rem;
-  height: 7rem;
+const ProfileDetails = styled.div`
+  background-color: ${colors.secondary};
 `;
-const Profile = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
+
 export default AgentDashboard;

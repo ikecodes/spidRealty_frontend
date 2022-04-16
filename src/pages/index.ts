@@ -17,9 +17,13 @@ import Login from "./Login";
 import AgentDashboard from "./agent/AgentDashboard";
 import AgentPost from "./agent/AgentPost";
 import AgentListings from "./agent/AgentListings";
+import AgentProfile from "./agent/AgentProfile";
 
-import UserLayout from "./profile/UserLayout";
-import InvestorLayout from "./profile/InvestorLayout";
+import UserDashboard from "./user/UserDashboard";
+import UserFavorites from "./user/UserFavorites";
+import UserProfile from "./user/UserProfile";
+
+import InvestorLayout from "./Investor/InvestorLayout";
 
 export {
   Home,
@@ -39,6 +43,9 @@ export {
   AgentDashboard,
   AgentPost,
   AgentListings,
-  UserLayout,
+  AgentProfile,
+  UserDashboard,
+  UserFavorites,
+  UserProfile,
   InvestorLayout,
 };

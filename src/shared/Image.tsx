@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 interface Props {
   src: string;
@@ -34,6 +34,6 @@ const Img = styled.img<ImgProps>`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: ${(props) => (props.rounded ? '2rem' : '0')};
+  border-radius: ${(props) => (props.rounded ? "1rem" : "0")};
 `;
 export default Image;

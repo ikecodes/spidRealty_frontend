@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../../layouts/Layout";
 import styled from "styled-components";
 import colors from "../../constants/colors";
-import { MdDashboard, MdUpload, MdHome } from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
 import { TiUser } from "react-icons/ti";
 import Section from "../../layouts/Section";
 import { NavLink } from "react-router-dom";
@@ -11,7 +11,7 @@ import ProfileImg from "../../assets/images/p4.jpg";
 interface Props {
   children: React.ReactNode;
 }
-const AgentLayout: React.FC<Props> = ({ children }) => {
+const UserLayout: React.FC<Props> = ({ children }) => {
   return (
     <Layout>
       <Container className='d-flex flex-wrap flex-md-row-reverse justify-content-between align-items-center'>
@@ -25,7 +25,7 @@ const AgentLayout: React.FC<Props> = ({ children }) => {
         <div className='d-flex gap-4'>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}
-            to='/agent/dashboard'
+            to='/user/dashboard'
           >
             <div className='d-flex flex-column align-items-center text-center px-1 py-3'>
               <MdDashboard size={20} />
@@ -34,25 +34,16 @@ const AgentLayout: React.FC<Props> = ({ children }) => {
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}
-            to='/agent/post'
+            to='/user/favorites'
           >
             <div className='d-flex flex-column align-items-center text-center px-1 py-3'>
-              <MdUpload size={20} />
-              <h6 className='m-0 ms-1'>post property</h6>
+              <MdDashboard size={20} />
+              <h6 className='m-0 ms-1'>favorites</h6>
             </div>
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}
-            to='/agent/listings'
-          >
-            <div className='d-flex flex-column align-items-center text-center px-1 py-3'>
-              <MdHome size={20} />
-              <h6 className='m-0 ms-1'>listings</h6>
-            </div>
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active" : "")}
-            to='/agent/profile'
+            to='/user/profile'
           >
             <div className='d-flex flex-column align-items-center text-center px-1 py-3'>
               <TiUser size={20} />
@@ -99,4 +90,4 @@ const Profile = styled.img`
   height: 100%;
   object-fit: cover;
 `;
-export default AgentLayout;
+export default UserLayout;

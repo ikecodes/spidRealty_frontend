@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
 import Image from "../shared/Image";
 import AdvertiseImg from "../assets/images/family.jpg";
+import styled from "styled-components";
+import colors from "../constants/colors";
+import { Link } from "react-router-dom";
 
 const Advertise = () => {
   return (
@@ -86,8 +89,28 @@ const Advertise = () => {
           </div>
         </div>
       </Section>
+      <div className='text-center my-5'>
+        <Link to='/signup'>
+          <Button>Join us today</Button>
+        </Link>
+      </div>
     </Layout>
   );
 };
 
+const Button = styled.button`
+  text-transform: capitalize;
+  font-size: 1rem;
+  padding: 0.8rem 2rem;
+  border: 1px solid ${colors.primary};
+  color: ${colors.primary};
+  background: ${colors.white};
+  border-radius: 5rem;
+  transform-origin: bottom;
+  transition: all 0.3s linear;
+  &:hover {
+    color: ${colors.tertiary};
+    border: 1px solid ${colors.tertiary};
+  }
+`;
 export default Advertise;

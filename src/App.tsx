@@ -17,7 +17,10 @@ import {
   AgentDashboard,
   AgentPost,
   AgentListings,
-  UserLayout,
+  AgentProfile,
+  UserDashboard,
+  UserFavorites,
+  UserProfile,
   InvestorLayout,
 } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -47,8 +50,12 @@ function App() {
           <Route path='/agent/dashboard' element={<AgentDashboard />} />
           <Route path='/agent/post' element={<AgentPost />} />
           <Route path='/agent/listings' element={<AgentListings />} />
+          <Route path='/agent/profile' element={<AgentProfile />} />
 
-          <Route path='/profile/user' element={<UserLayout />} />
+          <Route path='/user/dashboard' element={<UserDashboard />} />
+          <Route path='/user/favorites' element={<UserFavorites />} />
+          <Route path='/user/profile' element={<UserProfile />} />
+
           <Route path='/profile/investor' element={<InvestorLayout />} />
         </Routes>
       </ScrollToTop>
