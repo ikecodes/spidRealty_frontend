@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Layout from '../layouts/Layout';
-import Section from '../layouts/Section';
-import Image from '../shared/Image';
-import AboutImg1 from '../assets/images/family.jpg';
-import TeamCard from '../components/TeamCard';
-import Loader from '../shared/Loader';
+import React, { useState } from "react";
+import Layout from "../layouts/Layout";
+import Section from "../layouts/Section";
+import Image from "../shared/Image";
+import AboutImg1 from "../assets/images/family.jpg";
+import TeamCard from "../components/TeamCard";
+import Loader from "../shared/Loader";
 const About = () => {
   const [loading, setloading] = useState(true);
 
@@ -42,7 +42,11 @@ const About = () => {
             saepe.
           </p>
           <div className='my-2'>
-            <Image src={AboutImg1} alt='about' h={50} unit='vh' />
+            <div className='row justify-content-center'>
+              <div className='col-lg-8'>
+                <Image src={AboutImg1} alt='about' h={100} unit='%' />
+              </div>
+            </div>
           </div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
