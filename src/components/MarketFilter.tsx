@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import colors from '../constants/colors';
+import React, { useState } from "react";
+import styled from "styled-components";
+import colors from "../constants/colors";
 
 interface DataProps {
   state: string;
   city: string;
+  category: string;
   type: string;
-  max: string;
 }
 const MarketFilter = () => {
   const [data, setData] = useState<DataProps>({
-    state: '',
-    city: '',
-    type: '',
-    max: '',
+    state: "",
+    city: "",
+    category: "",
+    type: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -25,7 +25,7 @@ const MarketFilter = () => {
         <select
           name='state'
           id='state'
-          className={`form-control ${data.state ? 'active' : ''}`}
+          className={`form-control ${data.state ? "active" : ""}`}
           onChange={(e) => handleChange(e)}
         >
           <option value='lagos'>State</option>
@@ -34,28 +34,28 @@ const MarketFilter = () => {
         <select
           name='city'
           id='lga'
-          className={`form-control ${data.city ? 'active' : ''}`}
+          className={`form-control ${data.city ? "active" : ""}`}
           onChange={(e) => handleChange(e)}
         >
           <option value='lagos'>City</option>
           <option value='lagos'>Lagos</option>
         </select>
         <select
-          name='type'
+          name='max'
           id='lga'
-          className={`form-control ${data.type ? 'active' : ''}`}
+          className={`form-control ${data.category ? "active" : ""}`}
           onChange={(e) => handleChange(e)}
         >
-          <option value='lagos'>Type</option>
+          <option value='lagos'>Category</option>
           <option value='lagos'>Lagos</option>
         </select>
         <select
-          name='max'
+          name='type'
           id='lga'
-          className={`form-control ${data.max ? 'active' : ''}`}
+          className={`form-control ${data.type ? "active" : ""}`}
           onChange={(e) => handleChange(e)}
         >
-          <option value='lagos'>Max</option>
+          <option value='lagos'>Type</option>
           <option value='lagos'>Lagos</option>
         </select>
       </div>

@@ -14,14 +14,12 @@ import {
   RegisterAs,
   SignUp,
   Login,
+  ForgotPassword,
+  ResetPassword,
   AgentDashboard,
   AgentPost,
   AgentListings,
   AgentProfile,
-  UserDashboard,
-  UserFavorites,
-  UserProfile,
-  InvestorLayout,
 } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop";
@@ -37,26 +35,23 @@ function App() {
           <Route path='/marketplace/:id' element={<MarketplaceView />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/blog/:id' element={<BlogView />} />
+          <Route path='/registerAs' element={<RegisterAs />} />
+          <Route path='/purchase-form' element={<PurchaseForm />} />
+          <Route path='/signUp' element={<SignUp />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
+
           <Route path='/invest' element={<Invest />} />
           <Route path='/advertise' element={<Advertise />} />
           <Route path='/investment' element={<Investment />} />
           <Route path='/investment/:id' element={<InvestmentView />} />
-          <Route path='/purchase-form' element={<PurchaseForm />} />
-          <Route path='/registerAs' element={<RegisterAs />} />
-          <Route path='/signUp' element={<SignUp />} />
-          <Route path='/login' element={<Login />} />
 
           {/* // agent */}
           <Route path='/agent/dashboard' element={<AgentDashboard />} />
           <Route path='/agent/post' element={<AgentPost />} />
           <Route path='/agent/listings' element={<AgentListings />} />
           <Route path='/agent/profile' element={<AgentProfile />} />
-
-          <Route path='/user/dashboard' element={<UserDashboard />} />
-          <Route path='/user/favorites' element={<UserFavorites />} />
-          <Route path='/user/profile' element={<UserProfile />} />
-
-          <Route path='/profile/investor' element={<InvestorLayout />} />
         </Routes>
       </ScrollToTop>
     </Router>

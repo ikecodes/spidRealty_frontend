@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
-import colors from '../constants/colors';
-import Logo from '../assets/images/logo-placeholder.png';
-import ScrollToTop from 'react-scroll-to-top';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import colors from "../constants/colors";
+import Logo from "../assets/images/logo-placeholder.png";
+import ScrollToTop from "react-scroll-to-top";
 
 const Footer = () => {
   return (
@@ -23,12 +23,12 @@ const Footer = () => {
               <Link to='/contact-us'>
                 <li className='my-3'>contact</li>
               </Link>
-              <Link to='/invest'>
-                <li className='my-3'>invest</li>
+              <Link to='/blog'>
+                <li className='my-3'>blog</li>
               </Link>
-              <Link to='/advertise'>
+              {/* <Link to='/advertise'>
                 <li className='my-3'>advertise</li>
-              </Link>
+              </Link> */}
             </ul>
           </div>
           <div className='col-lg-3'>

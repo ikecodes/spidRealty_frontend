@@ -1,9 +1,10 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { Card } from "react-bootstrap";
+import { Card, Form } from "react-bootstrap";
 import {
   MdHome,
+  // MdVerified,
   MdShowChart,
   MdUpload,
   MdEmail,
@@ -12,6 +13,9 @@ import {
 import AgentLayout from "./AgentLayout";
 import colors from "../../constants/colors";
 import styled from "styled-components";
+import { FaTimes } from "react-icons/fa";
+import Tip from "../../shared/Tip";
+import Button from "../../shared/Button";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -98,17 +102,38 @@ const AgentDashboard = () => {
         <div className='col-lg-4'>
           <Doughnut data={data} />
         </div>
-        <ProfileDetails className='col-lg-6 p-5'>
-          <h2 className='text-capitalize text-center border-bottom pb-2 mb-3'>
+        <ProfileDetails className='col-lg-6 p-3 h-25'>
+          <h3 className='text-capitalize text-center border-bottom pb-2 mb-3'>
             mary jessica smith
-          </h2>
-          <div className='d-flex mb-2'>
-            <MdEmail size={30} />
-            <h4 className='m-0 ms-2'>mary@gmail.com</h4>
+          </h3>
+          <div className='d-flex mb-3 text-danger'>
+            <FaTimes size={25} />
+            <h5 className='m-0 ms-2 '>Unverified account</h5>
           </div>
-          <div className='d-flex'>
-            <MdLocalPhone size={30} />
-            <h4 className='m-0 ms-2'>09056779797</h4>
+          {/* <div className='d-flex mb-3'>
+            <MdVerified size={25} />
+            <h5 className='m-0 ms-2'>Verified</h5>
+          </div> */}
+          <div className='d-flex mb-3'>
+            <MdEmail size={25} />
+            <h5 className='m-0 ms-2'>mary@gmail.com</h5>
+          </div>
+          <div className='d-flex mb-3'>
+            <MdLocalPhone size={25} />
+            <h5 className='m-0 ms-2'>09056779797</h5>
+          </div>
+          <Tip
+            title='account verification'
+            description="Your account is currently unverified please upload Gov Issued ID - NIN, Int'l passport or drivers license"
+          />
+          <div className='p-2'>
+            <Form>
+              <Form.Group className='mb-3'>
+                <Form.Label>Upload ID</Form.Label>
+                <Form.Control type='file' accept='image/*' />
+              </Form.Group>
+              <Button title='submit' />
+            </Form>
           </div>
         </ProfileDetails>
       </div>

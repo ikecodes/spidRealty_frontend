@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "../../shared/Button";
 import AgentLayout from "./AgentLayout";
 const AgentPost = () => {
+  const [feature, setFeature] = useState("");
+  const [features, setFeatures] = useState([""]);
+
+  const handleFeature = () => {
+    setFeatures([...features, feature]);
+    setFeature("");
+  };
   return (
     <AgentLayout>
       <div className='row justify-content-center'>
@@ -142,6 +149,30 @@ const AgentPost = () => {
                   placeholder='Description of property'
                 ></Form.Control>
               </Form.Group>
+            </div>
+          </div>
+
+          <p className='text-secondary m-0'>
+            Add special features e.g security, parking space e.t.c
+          </p>
+          {features.length !== 0 &&
+            features.map((item) => (
+              <h6 className='my-3 me-2 d-inline-block' key={item}>
+                {item}
+              </h6>
+            ))}
+          <div className='row align-content-center'>
+            <div className='col-lg-4'>
+              <Form.Group className='mb-3'>
+                <Form.Control
+                  type='text'
+                  value={feature}
+                  onChange={(e) => setFeature(e.target.value)}
+                />
+              </Form.Group>
+            </div>
+            <div className='col-lg-4'>
+              <Button title='add' handleClick={handleFeature} />
             </div>
           </div>
 

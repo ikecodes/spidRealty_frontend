@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Button from '../shared/Button';
+import React from "react";
+import styled from "styled-components";
+import Button from "../shared/Button";
 
 const HomeFilter = () => {
   return (
@@ -15,11 +15,11 @@ const HomeFilter = () => {
           <option value='lagos'>Lagos</option>
         </select>
         <select name='lga' id='lga' className='form-select'>
-          <option value='lagos'>Type</option>
+          <option value='lagos'>Category</option>
           <option value='lagos'>Lagos</option>
         </select>
         <select name='lga' id='lga' className='form-select'>
-          <option value='lagos'>Max</option>
+          <option value='lagos'>Type</option>
           <option value='lagos'>Lagos</option>
         </select>
       </div>

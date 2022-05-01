@@ -17,7 +17,7 @@ const NavbarLg = () => {
         </div>
         <div className='col-lg-8 align-self-center'>
           <NavMenu>
-            <ul className='d-flex justify-content-evenly align-items-center'>
+            <ul className='d-flex justify-content-end gap-3 align-items-center'>
               {menus.map((menu) => (
                 <NavItemLg key={menu.id} menu={menu} />
               ))}

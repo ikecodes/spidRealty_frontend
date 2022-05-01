@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import Layout from '../layouts/Layout';
-import Section from '../layouts/Section';
-import Loader from '../shared/Loader';
-import ImageGallery from 'react-image-gallery';
-import colors from '../constants/colors';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import Layout from "../layouts/Layout";
+import Section from "../layouts/Section";
+import Loader from "../shared/Loader";
+import ImageGallery from "react-image-gallery";
+import colors from "../constants/colors";
+import styled from "styled-components";
 import {
   BsClock,
   BsFacebook,
   BsLinkedin,
   BsTwitter,
   BsBookmarkHeart,
-} from 'react-icons/bs';
-import { MdOutlineBathroom, MdOutlineBedroomParent } from 'react-icons/md';
-import { MdLocationPin } from 'react-icons/md';
-import Button from '../shared/Button';
-import PropertyCard from '../components/PropertyCard';
-import Tip from '../shared/Tip';
-import { Link } from 'react-router-dom';
+} from "react-icons/bs";
+import { MdOutlineBathroom, MdOutlineBedroomParent } from "react-icons/md";
+import { MdLocationPin } from "react-icons/md";
+import Button from "../shared/Button";
+import PropertyCard from "../components/PropertyCard";
+import Tip from "../shared/Tip";
+import { Link } from "react-router-dom";
 
 const MarketplaceView = () => {
   const [loading, setloading] = useState(true);
@@ -28,16 +28,16 @@ const MarketplaceView = () => {
 
   const images = [
     {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
+      original: "https://picsum.photos/id/1018/1000/600/",
+      thumbnail: "https://picsum.photos/id/1018/250/150/",
     },
     {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
+      original: "https://picsum.photos/id/1015/1000/600/",
+      thumbnail: "https://picsum.photos/id/1015/250/150/",
     },
     {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
+      original: "https://picsum.photos/id/1019/1000/600/",
+      thumbnail: "https://picsum.photos/id/1019/250/150/",
     },
   ];
 
@@ -47,6 +47,7 @@ const MarketplaceView = () => {
       <Section>
         <div className='mb-5 d-flex align-items-center justify-content-between border-bottom flex-wrap'>
           <div>
+            <h6 className='text-uppercase fw-bold'>for rent</h6>
             <h4 className='text-capitalize text-dark'>
               Very Clean 3 Bedroom Detached Bungalow
             </h4>
@@ -69,9 +70,9 @@ const MarketplaceView = () => {
           <div className='col-lg-8'>
             <div
               style={{
-                display: 'block',
-                minHeight: '1px',
-                overflow: 'auto',
+                display: "block",
+                minHeight: "1px",
+                overflow: "auto",
                 background: `${colors.grey}`,
               }}
             >
