@@ -14,11 +14,11 @@ const menus = [
   //   name: 'invest',
   //   path: '/invest',
   // },
-  // {
-  //   id: '4',
-  //   name: 'advertise',
-  //   path: '/advertise',
-  // },
+  {
+    id: "3",
+    name: "sell",
+    path: "/advertise",
+  },
   // {
   //   id: '5',
   //   name: 'blog',
