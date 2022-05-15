@@ -26,7 +26,7 @@ const AgentPost = () => {
           <div className='row'>
             <div className='col-lg-4'>
               <Form.Group className='mb-3' controlId='formBasicEmail'>
-                <Form.Label>Purpose</Form.Label>
+                <Form.Label>Type</Form.Label>
                 <Form.Control as='select'>
                   <option value=''>--Select--</option>
                   <option value='Rent'>Rent</option>
@@ -36,17 +36,7 @@ const AgentPost = () => {
             </div>
             <div className='col-lg-4'>
               <Form.Group className='mb-3' controlId='formBasicEmail'>
-                <Form.Label>Type of Property</Form.Label>
-                <Form.Control as='select'>
-                  <option value=''>--Select--</option>
-                  <option value='Rent'>Rent</option>
-                  <option value='Sale'>Sale</option>
-                </Form.Control>
-              </Form.Group>
-            </div>
-            <div className='col-lg-4'>
-              <Form.Group className='mb-3' controlId='formBasicEmail'>
-                <Form.Label>Sub-type of Property</Form.Label>
+                <Form.Label>Category</Form.Label>
                 <Form.Control as='select'>
                   <option value=''>--Select--</option>
                   <option value='Rent'>Rent</option>
@@ -111,7 +101,7 @@ const AgentPost = () => {
             </div>
             <div className='col-lg-4'>
               <Form.Group className='mb-3' controlId='formBasicEmail'>
-                <Form.Label>Locality</Form.Label>
+                <Form.Label>Town</Form.Label>
                 <Form.Control as='select'>
                   <option value=''>--Select--</option>
                   <option value='Rent'>Rent</option>
