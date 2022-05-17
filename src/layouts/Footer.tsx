@@ -17,15 +17,15 @@ const Footer = () => {
           <div className='col-lg-3'>
             <ul className='text-capitalize'>
               <li className='mb-3 fw-bolder'>quick links</li>
-              <Link to='/about'>
-                <li className='mb-3'>about us</li>
-              </Link>
-              <Link to='/contact-us'>
-                <li className='my-3'>contact</li>
-              </Link>
-              <Link to='/blog'>
-                <li className='my-3'>blog</li>
-              </Link>
+              <li className='mb-3'>
+                <Link to='/about'>about us</Link>
+              </li>
+              <li className='my-3'>
+                <Link to='/contact-us'>contact</Link>
+              </li>
+              <li className='my-3'>
+                <Link to='/blog'>blog</Link>
+              </li>
               {/* <Link to='/advertise'>
                 <li className='my-3'>advertise</li>
               </Link> */}
@@ -34,12 +34,12 @@ const Footer = () => {
           <div className='col-lg-3'>
             <ul className='text-capitalize'>
               <li className='mb-3 fw-bolder'>legal</li>
-              <Link to='/about'>
-                <li className='mb-3'>privacy policy</li>
-              </Link>
-              <Link to='/contact-us'>
-                <li className='my-3'>terms of use</li>
-              </Link>
+              <li className='mb-3'>
+                <Link to='/about'>privacy policy</Link>
+              </li>
+              <li className='my-3'>
+                <Link to='/contact-us'>terms of use</Link>
+              </li>
             </ul>
           </div>
           <div className='col-lg-3'>
@@ -63,7 +63,9 @@ const Footer = () => {
               Lagos
             </p>
             <Text className='text-capitalize mb-3'>+234 8800 2000 300</Text>
-            <Text className='text-capitalize mb-3'>hello@spidrealty.com</Text>
+            <Text className='mb-3'>
+              <a href='mailto:hello@spidrealty.com'>hello@spidrealty.com</a>{" "}
+            </Text>
           </div>
         </div>
         <div className='text-center my-3'>
