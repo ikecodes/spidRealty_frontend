@@ -1,22 +1,88 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
 import { Form } from "react-bootstrap";
 import Button from "../shared/Button";
+import Toast from "../utils/Toast";
+import { signup } from "../slices/authSlice";
+import { AuthState } from "../constants/interfaces";
+
+interface Props {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address: string;
+  password: string;
+  passwordConfirm: string;
+  companyInfo: string;
+  companyCac: FileList | any;
+}
 const SignUp = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const loading = useSelector((state: AuthState) => state.auth.loading);
   const [checked, setChecked] = useState(false);
+  const [formdata, setFormdata] = useState<Props | any>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    password: "",
+    passwordConfirm: "",
+    companyInfo: "",
+    companyCac: "",
+  });
   const userType = location.search.split("?")[1];
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormdata({
+      ...formdata,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement> | any) => {
+    setFormdata({ ...formdata, companyCac: e.target.files[0] });
+  };
+
+  const handlePhoneChange = (phone: any) => {
+    setFormdata({ ...formdata, phone: phone });
+  };
   const handleChecked = () => {
     setChecked((val) => !val);
   };
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    navigate(`/${userType}/dashboard`);
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      password,
+      passwordConfirm,
+    } = formdata;
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      phone === "" ||
+      address === "" ||
+      password === "" ||
+      passwordConfirm === ""
+    )
+      return Toast("Please fill all required fields", "info");
+
+    if (password !== passwordConfirm)
+      return Toast("Your passwords do not match", "info");
+
+    dispatch(signup({ formdata, navigate }));
   };
   return (
     <Layout>
@@ -26,34 +92,89 @@ const SignUp = () => {
             <h1 className='text-capitalize m-0 p-0 mb-5'>{userType} sign up</h1>
 
             <Form className='mt-3 text-dark'>
-              <Form.Group className='mb-3' controlId='formBasicEmail'>
+              <Form.Group className='mb-3'>
                 <Form.Label>First Name</Form.Label>
-                <Form.Control type='text' placeholder='Enter first name' />
+                <Form.Control
+                  type='text'
+                  name='firstName'
+                  value={formdata.firstName}
+                  placeholder='Enter first name'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChange(e)
+                  }
+                />
               </Form.Group>
 
-              <Form.Group className='mb-3' controlId='formBasicEmail'>
+              <Form.Group className='mb-3'>
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control type='text' placeholder='Enter last name' />
+                <Form.Control
+                  type='text'
+                  name='lastName'
+                  value={formdata.lastName}
+                  placeholder='Enter last name'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChange(e)
+                  }
+                />
               </Form.Group>
 
-              <Form.Group className='mb-3' controlId='formBasicEmail'>
+              <Form.Group className='mb-3'>
                 <Form.Label>Email Address</Form.Label>
-                <Form.Control type='email' placeholder='Enter email address' />
+                <Form.Control
+                  type='email'
+                  name='email'
+                  value={formdata.email}
+                  placeholder='Enter email address'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChange(e)
+                  }
+                />
               </Form.Group>
-              <Form.Group className='mb-3' controlId='formBasicEmail'>
+              <Form.Group className='mb-3'>
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type='password'
+                  name='password'
+                  value={formdata.password}
+                  placeholder='Enter a password'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChange(e)
+                  }
+                />
+              </Form.Group>
+              <Form.Group className='mb-3'>
+                <Form.Label>Password Confirm</Form.Label>
+                <Form.Control
+                  type='password'
+                  name='passwordConfirm'
+                  value={formdata.passwordConfirm}
+                  placeholder='Re-enter your password'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChange(e)
+                  }
+                />
+              </Form.Group>
+              <Form.Group className='mb-3'>
                 <Form.Label>Phone Number</Form.Label>
                 <PhoneInput
                   specialLabel=''
                   country={"ng"}
                   placeholder='Enter phone number'
-                  onChange={() => {}}
-                  // inputClass='form-control'
+                  onChange={handlePhoneChange}
                   inputStyle={{ width: "100%" }}
                 />
               </Form.Group>
-              <Form.Group className='mb-3' controlId='formBasicEmail'>
+              <Form.Group className='mb-3'>
                 <Form.Label>Full Address</Form.Label>
-                <Form.Control as='textarea' placeholder='Enter full address' />
+                <Form.Control
+                  as='textarea'
+                  name='address'
+                  value={formdata.address}
+                  placeholder='Enter full address'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChange(e)
+                  }
+                />
               </Form.Group>
               <div className='mb-3 d-flex flex-wrap gap-2'>
                 <p>Do you have a company?</p>
@@ -62,7 +183,7 @@ const SignUp = () => {
                     type='checkbox'
                     label='Yes'
                     checked={checked}
-                    onClick={handleChecked}
+                    onChange={handleChecked}
                   />
                 </Form.Group>
                 <Form.Group>
@@ -70,31 +191,45 @@ const SignUp = () => {
                     type='checkbox'
                     label='No'
                     checked={!checked}
-                    onClick={handleChecked}
+                    onChange={handleChecked}
                   />
                 </Form.Group>
               </div>
 
               {checked && (
                 <>
-                  <Form.Group className='mb-3' controlId='formBasicEmail'>
+                  <Form.Group className='mb-3'>
                     <Form.Label>Company Info</Form.Label>
                     <Form.Control
                       as='textarea'
+                      name='companyInfo'
+                      value={formdata.companyInfo}
                       placeholder='Company info (optional)'
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleChange(e)
+                      }
                     />
                   </Form.Group>
-                  <Form.Group className='mb-3' controlId='formBasicEmail'>
+                  <Form.Group className='mb-3'>
                     <Form.Label>Company CAC (If registered)</Form.Label>
                     <Form.Control
                       type='file'
+                      accept='image/*'
+                      name='companyCac'
                       placeholder='Enter full address'
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleImageChange(e)
+                      }
                     />
                   </Form.Group>
                 </>
               )}
               <div className='mb-3'>
-                <Button title='submit' handleClick={(e) => handleSubmit(e)} />
+                <Button
+                  title='submit'
+                  handleClick={(e) => handleSubmit(e)}
+                  loading={loading}
+                />
               </div>
               <div className='d-flex gap-2 flex-wrap align-items-center'>
                 <p className='m-0'>Already have an account ?</p>

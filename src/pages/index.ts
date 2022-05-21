@@ -11,6 +11,7 @@ import InvestmentView from "./InvestmentView";
 import PurchaseForm from "./PurchaseForm";
 import RegisterAs from "./RegisterAs";
 import SignUp from "./SignUp";
+import EmailConfirmation from "./EmailConfirmation";
 import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
@@ -40,6 +41,7 @@ export {
   PurchaseForm,
   RegisterAs,
   SignUp,
+  EmailConfirmation,
   Login,
   ForgotPassword,
   ResetPassword,

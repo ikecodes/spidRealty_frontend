@@ -8,9 +8,14 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import "react-phone-input-2/lib/style.css";
 import App from "./App";
 
+import { store } from "./store";
+import { Provider } from "react-redux";
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

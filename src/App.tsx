@@ -13,6 +13,7 @@ import {
   PurchaseForm,
   RegisterAs,
   SignUp,
+  EmailConfirmation,
   Login,
   ForgotPassword,
   ResetPassword,
@@ -38,6 +39,7 @@ function App() {
           <Route path='/registerAs' element={<RegisterAs />} />
           <Route path='/purchase-form' element={<PurchaseForm />} />
           <Route path='/signUp' element={<SignUp />} />
+          <Route path='/emailConfirmation' element={<EmailConfirmation />} />
           <Route path='/login' element={<Login />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/reset-password' element={<ResetPassword />} />
