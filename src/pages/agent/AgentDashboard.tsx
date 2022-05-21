@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { Card, Form } from "react-bootstrap";
@@ -9,6 +9,7 @@ import {
   MdUpload,
   MdEmail,
   MdLocalPhone,
+  MdVerified,
 } from "react-icons/md";
 import AgentLayout from "./AgentLayout";
 import colors from "../../constants/colors";
@@ -16,6 +17,9 @@ import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 import Tip from "../../shared/Tip";
 import Button from "../../shared/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthState } from "../../constants/interfaces";
+import { uploadId } from "../../slices/authSlice";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -47,6 +51,14 @@ export const data = {
 };
 
 const AgentDashboard = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state: AuthState) => state.auth.user);
+  const [identityCard, setIdentityCard] = useState("");
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    dispatch(uploadId({ identityCard }));
+  };
   return (
     <AgentLayout>
       <div className='row mb-5'>
@@ -59,8 +71,8 @@ const AgentDashboard = () => {
               </div>
               <div>
                 <ul className='text-capitalize'>
-                  <li>total listings: 1</li>
-                  <li>visible listings: 0</li>
+                  <li>total listings: {user?.totalListings}</li>
+                  <li>visible listings: {user?.visibleListings}</li>
                 </ul>
               </div>
             </div>
@@ -75,8 +87,8 @@ const AgentDashboard = () => {
               </div>
               <div>
                 <ul className='text-capitalize'>
-                  <li>posted properties: 1</li>
-                  <li>sold: 0</li>
+                  <li>posted properties: {user?.posted}</li>
+                  <li>sold: {user?.sold}</li>
                 </ul>
               </div>
             </div>
@@ -91,7 +103,7 @@ const AgentDashboard = () => {
               </div>
               <div>
                 <ul className='text-capitalize'>
-                  <li>property promotions: 1</li>
+                  <li>property promotions: {user?.propertyPromotions}</li>
                 </ul>
               </div>
             </div>
@@ -104,37 +116,50 @@ const AgentDashboard = () => {
         </div>
         <ProfileDetails className='col-lg-6 p-3 h-25'>
           <h3 className='text-capitalize text-center border-bottom pb-2 mb-3'>
-            mary jessica smith
+            {user?.firstName} {user?.lastName}
           </h3>
-          <div className='d-flex mb-3 text-danger'>
-            <FaTimes size={25} />
-            <h5 className='m-0 ms-2 '>Unverified account</h5>
-          </div>
-          {/* <div className='d-flex mb-3'>
-            <MdVerified size={25} />
-            <h5 className='m-0 ms-2'>Verified</h5>
-          </div> */}
+
+          {user?.isVerified ? (
+            <div className='d-flex mb-3'>
+              <MdVerified size={25} />
+              <h5 className='m-0 ms-2'>Verified</h5>
+            </div>
+          ) : (
+            <div className='d-flex mb-3 text-danger'>
+              <FaTimes size={25} />
+              <h5 className='m-0 ms-2 '>Unverified account</h5>
+            </div>
+          )}
+
           <div className='d-flex mb-3'>
             <MdEmail size={25} />
-            <h5 className='m-0 ms-2'>mary@gmail.com</h5>
+            <h5 className='m-0 ms-2'>{user?.email}</h5>
           </div>
           <div className='d-flex mb-3'>
             <MdLocalPhone size={25} />
-            <h5 className='m-0 ms-2'>09056779797</h5>
+            <h5 className='m-0 ms-2'>{user?.phone}</h5>
           </div>
-          <Tip
-            title='account verification'
-            description="Your account is currently unverified please upload Gov Issued ID - NIN, Int'l passport or drivers license"
-          />
-          <div className='p-2'>
-            <Form>
-              <Form.Group className='mb-3'>
-                <Form.Label>Upload ID</Form.Label>
-                <Form.Control type='file' accept='image/*' />
-              </Form.Group>
-              <Button title='submit' />
-            </Form>
-          </div>
+          {!user?.isVerified && (
+            <>
+              <Tip
+                title='account verification'
+                description="Your account is currently unverified please upload Gov Issued ID - NIN, Int'l passport or drivers license"
+              />
+              <div className='p-2'>
+                <Form>
+                  <Form.Group className='mb-3'>
+                    <Form.Label>Upload ID</Form.Label>
+                    <Form.Control
+                      type='file'
+                      accept='image/*'
+                      onChange={(e: any) => setIdentityCard(e.target.files[0])}
+                    />
+                  </Form.Group>
+                  <Button title='submit' handleClick={(e) => handleSubmit(e)} />
+                </Form>
+              </div>
+            </>
+          )}
         </ProfileDetails>
       </div>
     </AgentLayout>

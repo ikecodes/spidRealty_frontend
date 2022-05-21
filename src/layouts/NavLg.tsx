@@ -1,12 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../assets/images/logo-placeholder.png";
 import NavItemLg from "./NavItemLg";
 import menus from "../constants/menus";
 import colors from "../constants/colors";
+import { logout } from "../utils/Helpers";
+import { MdDashboard } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { AuthState } from "../constants/interfaces";
 
 const NavbarLg = () => {
+  const navigate = useNavigate();
+  // @ts-ignore
+  const token = localStorage.getItem("token");
+
+  const user = useSelector((state: AuthState) => state.auth.user);
   return (
     <NavContainer className='px-2 shadow'>
       <div className='row p-0 m-0 py-2 align-items-ceenter'>
@@ -21,12 +30,31 @@ const NavbarLg = () => {
               {menus.map((menu) => (
                 <NavItemLg key={menu.id} menu={menu} />
               ))}
-              <Link to='/login'>
-                <LoginBtn className='mx-1'>login</LoginBtn>
-              </Link>
-              <Link to='/registerAs'>
-                <SignUpBtn className='mx-1'>Sign Up</SignUpBtn>
-              </Link>
+              {token ? (
+                <>
+                  <LoginBtn className='mx-1' onClick={() => logout(navigate)}>
+                    logout
+                  </LoginBtn>
+                  <Link
+                    to={`/${user?.role}/dashboard`}
+                    className='text-decoration-none'
+                  >
+                    <HomeDashboard className='d-flex align-items-center'>
+                      <MdDashboard size={25} />
+                      <h6 className='m-0'>dashboard</h6>
+                    </HomeDashboard>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to='/login'>
+                    <LoginBtn className='mx-1'>login</LoginBtn>
+                  </Link>
+                  <Link to='/registerAs'>
+                    <SignUpBtn className='mx-1'>Sign Up</SignUpBtn>
+                  </Link>
+                </>
+              )}
             </ul>
           </NavMenu>
         </div>
@@ -48,7 +76,16 @@ const Image = styled.img`
   height: auto;
   width: 9rem;
 `;
+const HomeDashboard = styled.div`
+  color: ${colors.primary};
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
 
+  &:hover {
+    color: ${colors.tertiary};
+  }
+`;
 const LoginBtn = styled.button`
   background-color: ${colors.white};
   color: ${colors.primary};

@@ -2,30 +2,19 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../api/api";
 import Toast from "../utils/Toast";
 
-// export const getUser: any = createAsyncThunk(
-//   "auth/getUser",
-//   async (arg, { rejectWithValue }) => {
-//     try {
-//       const { data }: any = await api.getMe();
-//       return data;
-//     } catch (error) {
-//       rejectWithValue(error);
-//     }
-//   }
-// );
-
 export const signup: any = createAsyncThunk(
   "auth/signup",
   async ({ formdata, navigate }: any, { rejectWithValue }) => {
     try {
       const { data } = await api.signup(formdata);
       await api.sendEmail({ email: data.data.email });
-      Toast("Registration successful", "success");
+      Toast("Registration successful", "info");
       navigate("/emailConfirmation");
+      console.log(data.data);
       return data.data;
     } catch (error: any) {
       rejectWithValue(error);
-      Toast(error?.response?.data?.message, "error");
+      Toast(error?.response?.data?.message, "info");
     }
   }
 );
@@ -34,7 +23,7 @@ export const verify: any = createAsyncThunk(
   async ({ formdata, navigate }: any, { rejectWithValue }) => {
     try {
       await api.verifyToken(formdata);
-      Toast("Email verification successful", "success");
+      Toast("Email verification successful", "info");
       navigate("/login");
     } catch (error: any) {
       rejectWithValue(error);
@@ -45,13 +34,38 @@ export const verify: any = createAsyncThunk(
 
 export const login: any = createAsyncThunk(
   "auth/login",
-  async (formdata, { rejectWithValue }) => {
+  async ({ formdata, navigate }: any, { rejectWithValue }) => {
     try {
       const {
-        data: { access_token },
+        data: { token },
       } = await api.login(formdata);
-      Toast("Login successfull", "success");
-      return access_token;
+      Toast("Login successful", "info");
+      navigate("/agent/dashboard");
+      return token;
+    } catch (error: any) {
+      rejectWithValue(error?.response?.data);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
+export const getMe: any = createAsyncThunk(
+  "auth/getMe",
+  async (arg, { rejectWithValue }) => {
+    try {
+      const { data } = await api.getMe();
+      return data.data;
+    } catch (error: any) {
+      rejectWithValue(error?.response?.data);
+      // Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
+export const uploadId: any = createAsyncThunk(
+  "auth/uploadId",
+  async (formdata, { rejectWithValue }) => {
+    try {
+      await api.uploadId(formdata);
+      Toast("Id upload was successful", "info");
     } catch (error: any) {
       rejectWithValue(error?.response?.data);
       Toast(error?.response?.data?.message, "info");
@@ -92,6 +106,9 @@ export const authSlice: any = createSlice({
       localStorage.setItem("token", payload);
       state.token = payload;
       state.loading = false;
+    },
+    [getMe.fulfilled]: (state, { payload }) => {
+      state.user = payload;
     },
   },
 });

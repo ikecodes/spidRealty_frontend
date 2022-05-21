@@ -57,7 +57,7 @@ const SignUp = () => {
   const handleChecked = () => {
     setChecked((val) => !val);
   };
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const {
       firstName,
@@ -91,7 +91,7 @@ const SignUp = () => {
           <div className='col-lg-8'>
             <h1 className='text-capitalize m-0 p-0 mb-5'>{userType} sign up</h1>
 
-            <Form className='mt-3 text-dark'>
+            <Form className='mt-3 text-dark' onSubmit={handleSubmit}>
               <Form.Group className='mb-3'>
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
@@ -225,11 +225,7 @@ const SignUp = () => {
                 </>
               )}
               <div className='mb-3'>
-                <Button
-                  title='submit'
-                  handleClick={(e) => handleSubmit(e)}
-                  loading={loading}
-                />
+                <Button title='submit' loading={loading} />
               </div>
               <div className='d-flex gap-2 flex-wrap align-items-center'>
                 <p className='m-0'>Already have an account ?</p>

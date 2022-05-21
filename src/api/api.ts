@@ -25,3 +25,6 @@ export const sendEmail = (formdata: any) =>
 export const verifyToken = (formdata: any) =>
   API.post("/users/confirmEmail", formdata);
 export const login = (formdata: any) => API.post("/users/session", formdata);
+export const getMe = () => API.get("/users/me");
+export const uploadId = (formdata: any) =>
+  API.patch("/users/uploadId", formdata);

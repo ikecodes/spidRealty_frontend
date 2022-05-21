@@ -1,6 +1,6 @@
 export interface AuthState {
   auth: {
-    user: {};
+    user: any;
     loading: boolean;
     token: "";
     data: {};

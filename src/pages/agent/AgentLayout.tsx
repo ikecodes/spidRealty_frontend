@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layouts/Layout";
 import styled from "styled-components";
 import colors from "../../constants/colors";
@@ -6,20 +6,33 @@ import { MdDashboard, MdUpload, MdHome } from "react-icons/md";
 import { TiUser } from "react-icons/ti";
 import Section from "../../layouts/Section";
 import { NavLink } from "react-router-dom";
-import ProfileImg from "../../assets/images/p4.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../../slices/authSlice";
+import { AuthState } from "../../constants/interfaces";
 
 interface Props {
   children: React.ReactNode;
 }
+
 const AgentLayout: React.FC<Props> = ({ children }) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state: AuthState) => state.auth.user);
+  useEffect(() => {
+    // @ts-ignore
+    const token = localStorage.getItem("token");
+    if (token) dispatch(getMe());
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Layout>
       <Container className='d-flex flex-wrap flex-md-row-reverse justify-content-between align-items-center'>
         <div className='d-flex  align-items-center mb-2'>
           <ProfileBox>
-            <Profile src={ProfileImg} className='rounded-circle' />
+            <Profile src={user?.photo} className='rounded-circle' />
           </ProfileBox>
-          <h6 className='m-0 ms-1'>Hello, mary</h6>
+          <h6 className='m-0 ms-1'>Hello, {user?.firstName}</h6>
         </div>
 
         <div className='d-flex gap-4'>
