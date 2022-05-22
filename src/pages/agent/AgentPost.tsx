@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
+import states from "../../constants/states";
 import Button from "../../shared/Button";
 import AgentLayout from "./AgentLayout";
 const AgentPost = () => {
+  const [towns, setTowns] = useState<any>([]);
   const [feature, setFeature] = useState("");
+
   const [features, setFeatures] = useState([""]);
+  const [state, setState] = useState("");
+  const [town, setTown] = useState("");
 
   const handleFeature = () => {
     setFeatures([...features, feature]);
     setFeature("");
   };
+  useEffect(() => {
+    setTowns([]);
+    const arr = states.find((location) => location.state.name === state);
+    if (arr) setTowns(arr?.state.locals);
+  }, [state]);
+
+  console.log(state, town);
   return (
     <AgentLayout>
       <div className='row justify-content-center'>
@@ -92,20 +104,34 @@ const AgentPost = () => {
             <div className='col-lg-4'>
               <Form.Group className='mb-3' controlId='formBasicEmail'>
                 <Form.Label>State</Form.Label>
-                <Form.Control as='select'>
+                <Form.Control
+                  as='select'
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                >
                   <option value=''>--Select--</option>
-                  <option value='Rent'>Rent</option>
-                  <option value='Sale'>Sale</option>
+                  {states.map((location) => (
+                    <option value={location.state.name} key={location.state.id}>
+                      {location.state.name}
+                    </option>
+                  ))}
                 </Form.Control>
               </Form.Group>
             </div>
             <div className='col-lg-4'>
               <Form.Group className='mb-3' controlId='formBasicEmail'>
                 <Form.Label>Town</Form.Label>
-                <Form.Control as='select'>
+                <Form.Control
+                  as='select'
+                  value={town}
+                  onChange={(e) => setTown(e.target.value)}
+                >
                   <option value=''>--Select--</option>
-                  <option value='Rent'>Rent</option>
-                  <option value='Sale'>Sale</option>
+                  {towns.map((town: { name: string; id: number }) => (
+                    <option value={town.name} key={town.id}>
+                      {town.name}
+                    </option>
+                  ))}
                 </Form.Control>
               </Form.Group>
             </div>
