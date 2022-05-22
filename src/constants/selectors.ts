@@ -1,4 +1,43 @@
-const states = [
+//for numbers
+export const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// for categories
+export const categories = [
+  {
+    id: 1,
+    name: "Houses & Apartments",
+  },
+  {
+    id: 2,
+    name: "Lands & Plots",
+  },
+  {
+    id: 3,
+    name: "Commercial Property",
+  },
+  {
+    id: 4,
+    name: "Short Let Property",
+  },
+  {
+    id: 5,
+    name: "Event Centers, Venues & Workstations",
+  },
+];
+// for types
+export const types = [
+  {
+    id: 1,
+    name: "Rent",
+  },
+  {
+    id: 2,
+    name: "Sale",
+  },
+];
+
+// for states
+export const states = [
   {
     state: {
       name: "Abia State",
@@ -3244,4 +3283,3 @@ const states = [
     },
   },
 ];
-export default states;
