@@ -18,7 +18,7 @@ API.interceptors.request.use((req: any) => {
   return req;
 });
 
-////AUTH
+////AUTH (USERS)
 export const signup = (formdata: any) => API.post("/users", formdata);
 export const sendEmail = (formdata: any) =>
   API.post("/users/sendEmail", formdata);
@@ -28,3 +28,7 @@ export const login = (formdata: any) => API.post("/users/session", formdata);
 export const getMe = () => API.get("/users/me");
 export const uploadId = (formdata: any) =>
   API.patch("/users/uploadId", formdata);
+
+////PROPERTY
+export const postProperty = (formdata: any) =>
+  API.post("/properties", formdata);

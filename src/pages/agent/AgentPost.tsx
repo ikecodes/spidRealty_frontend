@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import CurrencyInput from "react-currency-input-field";
-import { useSelector } from "react-redux";
-import { AuthState } from "../../constants/interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
+import colors from "../../constants/colors";
+import { PropertyState } from "../../constants/interfaces";
 import { states, categories, numbers, types } from "../../constants/selectors";
 import Button from "../../shared/Button";
+import { postProperty } from "../../slices/propertySlice";
 import Toast from "../../utils/Toast";
 import AgentLayout from "./AgentLayout";
 const AgentPost = () => {
-  const { loading } = useSelector((state: AuthState) => state.auth);
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state: PropertyState) => state.property);
   const [towns, setTowns] = useState<any>([]);
-  const [features, setFeatures] = useState([""]);
+  const [feature, setFeature] = useState("");
 
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
@@ -24,12 +28,13 @@ const AgentPost = () => {
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState<string | undefined>("");
   const [description, setDescription] = useState("");
-  const [feature, setFeature] = useState("");
-  const [furnished, setFurnished] = useState(false);
-  const [newlyBuilt, setNewlyBuilt] = useState(false);
+  const [features, setFeatures] = useState<any>([]);
+  const [furnished, setFurnished] = useState<any>(false);
+  const [newlyBuilt, setNewlyBuilt] = useState<any>(false);
   const [images, setImages] = useState<any>("");
 
   const handleFeature = () => {
+    if (!feature) return;
     setFeatures([...features, feature]);
     setFeature("");
   };
@@ -53,14 +58,41 @@ const AgentPost = () => {
       !images
     )
       return Toast("Please input all required fields", "info");
-    // const formdata = new FormData();
+    const formdata = new FormData();
+    formdata.append("title", title);
+    formdata.append("type", type);
+    formdata.append("category", category);
+    formdata.append("bedrooms", bedrooms);
+    formdata.append("bathrooms", bathrooms);
+    formdata.append("toilets", toilets);
+    formdata.append("size", size);
+    formdata.append("state", state);
+    formdata.append("town", town);
+    formdata.append("location", location);
+    formdata.append("price", price);
+    formdata.append("description", description);
+    if (features.length > 0) {
+      for (let i = 0; i < features.length; i++) {
+        formdata.append("specialFeatures", features[i]);
+      }
+    }
+    formdata.append("features", features);
+    formdata.append("furnished", furnished);
+    formdata.append("newlyBuilt", newlyBuilt);
+    for (let i = 0; i < images.length; i++) {
+      formdata.append("images", images[i]);
+    }
+
+    dispatch(postProperty(formdata));
   };
   return (
     <AgentLayout>
       <div className='row justify-content-center'>
         <div className='col-lg-8'>
           <Form.Group className='mb-3'>
-            <Form.Label>Title</Form.Label>
+            <Form.Label>
+              Title <Text>required</Text>
+            </Form.Label>
             <Form.Control
               type='text'
               name='title'
@@ -73,7 +105,9 @@ const AgentPost = () => {
           <div className='row'>
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
-                <Form.Label>Type</Form.Label>
+                <Form.Label>
+                  Type <Text>required</Text>
+                </Form.Label>
                 <Form.Control
                   as='select'
                   value={type}
@@ -90,7 +124,9 @@ const AgentPost = () => {
             </div>
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
-                <Form.Label>Category</Form.Label>
+                <Form.Label>
+                  Category <Text>required</Text>
+                </Form.Label>
                 <Form.Control
                   as='select'
                   value={category}
@@ -175,7 +211,9 @@ const AgentPost = () => {
           <div className='row'>
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
-                <Form.Label>State</Form.Label>
+                <Form.Label>
+                  State <Text>required</Text>
+                </Form.Label>
                 <Form.Control
                   as='select'
                   value={state}
@@ -192,7 +230,9 @@ const AgentPost = () => {
             </div>
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
-                <Form.Label>Town</Form.Label>
+                <Form.Label>
+                  Town <Text>required</Text>
+                </Form.Label>
                 <Form.Control
                   as='select'
                   value={town}
@@ -209,7 +249,9 @@ const AgentPost = () => {
             </div>
           </div>
           <Form.Group className='mb-3'>
-            <Form.Label>Location</Form.Label>
+            <Form.Label>
+              Location <Text>required</Text>
+            </Form.Label>
             <Form.Control
               type='text'
               name='location'
@@ -222,7 +264,9 @@ const AgentPost = () => {
           <div className='row'>
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
-                <Form.Label>Price</Form.Label>
+                <Form.Label>
+                  Price <Text>required</Text>
+                </Form.Label>
                 <CurrencyInput
                   id='input-example'
                   name='price'
@@ -230,17 +274,16 @@ const AgentPost = () => {
                   placeholder='Property price'
                   defaultValue={0}
                   decimalsLimit={2}
-                  onValueChange={(value) => {
-                    setPrice(value);
-                    console.log(value);
-                  }}
+                  onValueChange={(value) => setPrice(value)}
                   className='p-2 border'
                 />
               </Form.Group>
             </div>
             <div className='col-lg-8'>
               <Form.Group className='mb-3'>
-                <Form.Label>Description</Form.Label>
+                <Form.Label>
+                  Description <Text>required</Text>
+                </Form.Label>
                 <Form.Control
                   as='textarea'
                   value={description}
@@ -251,11 +294,11 @@ const AgentPost = () => {
             </div>
           </div>
 
-          <p className='text-secondary m-0'>
+          <p className='text-secondary m-0 mb-2'>
             Add special features e.g security, parking space e.t.c
           </p>
-          {features.length &&
-            features.map((item) => (
+          {features.length > 0 &&
+            features.map((item: any) => (
               <h6 className='my-3 me-2 d-inline-block' key={item}>
                 {item}
               </h6>
@@ -266,10 +309,7 @@ const AgentPost = () => {
                 <Form.Control
                   type='text'
                   value={feature}
-                  onChange={(e) => {
-                    if (e.target.value === "") return;
-                    setFeature(e.target.value);
-                  }}
+                  onChange={(e) => setFeature(e.target.value)}
                 />
               </Form.Group>
             </div>
@@ -285,7 +325,7 @@ const AgentPost = () => {
               type='checkbox'
               label='Furnished'
               checked={furnished}
-              onChange={(e) => setFurnished((val) => !val)}
+              onChange={(e) => setFurnished((val: any) => !val)}
             />
           </Form.Group>
           <Form.Group className='mb-3'>
@@ -295,11 +335,13 @@ const AgentPost = () => {
               type='checkbox'
               label='Newly-built'
               checked={newlyBuilt}
-              onChange={(e) => setNewlyBuilt((val) => !val)}
+              onChange={(e) => setNewlyBuilt((val: any) => !val)}
             />
           </Form.Group>
           <Form.Group className='mb-3'>
-            <Form.Label>Upload images</Form.Label>
+            <Form.Label>
+              Upload images <Text>required</Text>
+            </Form.Label>
             <Form.Control
               type='file'
               name='image'
@@ -323,4 +365,7 @@ const AgentPost = () => {
   );
 };
 
+const Text = styled.span`
+  color: ${colors.tertiary};
+`;
 export default AgentPost;

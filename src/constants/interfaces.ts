@@ -6,3 +6,10 @@ export interface AuthState {
     data: {};
   };
 }
+export interface PropertyState {
+  property: {
+    properties: any;
+    loading: boolean;
+    property: any;
+  };
+}
