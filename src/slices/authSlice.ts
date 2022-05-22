@@ -107,6 +107,12 @@ export const authSlice: any = createSlice({
     [getMe.fulfilled]: (state, { payload }) => {
       state.user = payload;
     },
+    [uploadId.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [uploadId.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+    },
   },
 });
 

@@ -52,12 +52,14 @@ export const data = {
 
 const AgentDashboard = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state: AuthState) => state.auth.user);
+  const { user, loading } = useSelector((state: AuthState) => state.auth);
   const [identityCard, setIdentityCard] = useState("");
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    dispatch(uploadId({ identityCard }));
+    const formdata = new FormData();
+    formdata.append("identityCard", identityCard);
+    dispatch(uploadId(formdata));
   };
   return (
     <AgentLayout>
@@ -155,7 +157,11 @@ const AgentDashboard = () => {
                       onChange={(e: any) => setIdentityCard(e.target.files[0])}
                     />
                   </Form.Group>
-                  <Button title='submit' handleClick={(e) => handleSubmit(e)} />
+                  <Button
+                    title='submit'
+                    handleClick={(e) => handleSubmit(e)}
+                    loading={loading}
+                  />
                 </Form>
               </div>
             </>
