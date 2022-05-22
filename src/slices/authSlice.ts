@@ -10,8 +10,7 @@ export const signup: any = createAsyncThunk(
       await api.sendEmail({ email: data.data.email });
       Toast("Registration successful", "info");
       navigate("/emailConfirmation");
-      console.log(data.data);
-      return data.data;
+      return data.data.email;
     } catch (error: any) {
       rejectWithValue(error);
       Toast(error?.response?.data?.message, "info");
@@ -76,7 +75,6 @@ const initialState = {
   user: null,
   loading: false,
   token: null,
-  data: null,
 };
 
 export const authSlice: any = createSlice({
@@ -88,8 +86,7 @@ export const authSlice: any = createSlice({
       state.loading = true;
     },
     [signup.fulfilled]: (state, { payload }) => {
-      localStorage.setItem("data", JSON.stringify(payload));
-      state.data = payload;
+      localStorage.setItem("email", payload);
       state.loading = false;
     },
     [verify.pending]: (state, { payload }) => {

@@ -10,7 +10,7 @@ import { verify } from "../slices/authSlice";
 
 const EmailConfirmation = () => {
   // @ts-ignore
-  const data = JSON.parse(localStorage.getItem("data"));
+  const email = localStorage.getItem("email");
   const [token, setToken] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const EmailConfirmation = () => {
     e.preventDefault();
     const formdata: any = {
       token: token,
-      email: data.email,
+      email: email,
     };
     dispatch(verify({ formdata, navigate }));
   };

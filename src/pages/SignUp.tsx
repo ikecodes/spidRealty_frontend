@@ -27,7 +27,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state: AuthState) => state.auth.loading);
   const [checked, setChecked] = useState(false);
-  const [formdata, setFormdata] = useState<Props | any>({
+  const [data, setData] = useState<Props | any>({
     firstName: "",
     lastName: "",
     email: "",
@@ -41,23 +41,23 @@ const SignUp = () => {
   const userType = location.search.split("?")[1];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormdata({
-      ...formdata,
+    setData({
+      ...data,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement> | any) => {
-    setFormdata({ ...formdata, companyCac: e.target.files[0] });
+    setData({ ...data, companyCac: e.target.files[0] });
   };
 
   const handlePhoneChange = (phone: any) => {
-    setFormdata({ ...formdata, phone: phone });
+    setData({ ...data, phone: phone });
   };
   const handleChecked = () => {
     setChecked((val) => !val);
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const {
       firstName,
@@ -67,7 +67,9 @@ const SignUp = () => {
       address,
       password,
       passwordConfirm,
-    } = formdata;
+      companyInfo,
+      companyCac,
+    } = data;
     if (
       firstName === "" ||
       lastName === "" ||
@@ -82,6 +84,17 @@ const SignUp = () => {
     if (password !== passwordConfirm)
       return Toast("Your passwords do not match", "info");
 
+    let formdata = new FormData();
+    formdata.append("firstName", firstName);
+    formdata.append("lastName", lastName);
+    formdata.append("email", email);
+    formdata.append("phone", phone);
+    formdata.append("address", address);
+    formdata.append("password", password);
+    formdata.append("companyInfo", companyInfo);
+    formdata.append("companyCac", companyCac);
+
+    // return;
     dispatch(signup({ formdata, navigate }));
   };
   return (
@@ -97,7 +110,7 @@ const SignUp = () => {
                 <Form.Control
                   type='text'
                   name='firstName'
-                  value={formdata.firstName}
+                  value={data.firstName}
                   placeholder='Enter first name'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleChange(e)
@@ -110,7 +123,7 @@ const SignUp = () => {
                 <Form.Control
                   type='text'
                   name='lastName'
-                  value={formdata.lastName}
+                  value={data.lastName}
                   placeholder='Enter last name'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleChange(e)
@@ -123,7 +136,7 @@ const SignUp = () => {
                 <Form.Control
                   type='email'
                   name='email'
-                  value={formdata.email}
+                  value={data.email}
                   placeholder='Enter email address'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleChange(e)
@@ -135,7 +148,7 @@ const SignUp = () => {
                 <Form.Control
                   type='password'
                   name='password'
-                  value={formdata.password}
+                  value={data.password}
                   placeholder='Enter a password'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleChange(e)
@@ -147,7 +160,7 @@ const SignUp = () => {
                 <Form.Control
                   type='password'
                   name='passwordConfirm'
-                  value={formdata.passwordConfirm}
+                  value={data.passwordConfirm}
                   placeholder='Re-enter your password'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleChange(e)
@@ -169,7 +182,7 @@ const SignUp = () => {
                 <Form.Control
                   as='textarea'
                   name='address'
-                  value={formdata.address}
+                  value={data.address}
                   placeholder='Enter full address'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleChange(e)
@@ -203,7 +216,7 @@ const SignUp = () => {
                     <Form.Control
                       as='textarea'
                       name='companyInfo'
-                      value={formdata.companyInfo}
+                      value={data.companyInfo}
                       placeholder='Company info (optional)'
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         handleChange(e)
