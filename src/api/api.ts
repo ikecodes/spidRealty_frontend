@@ -4,8 +4,11 @@ let url;
 if (window.location.protocol === "http:") {
   url = "http://localhost:3001/api/v1";
 } else {
-  url = "https://stockearners.herokuapp.com/api/v1";
+  url = "https://enthusiastic-seal-long-underwear.cyclic.app/api/v1";
 }
+
+// https://spidrealty.herokuapp.com
+// https://enthusiastic-seal-long-underwear.cyclic.app
 
 const API = axios.create({
   baseURL: url,
