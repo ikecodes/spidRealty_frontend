@@ -1,62 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { states, categories } from "../constants/selectors";
 import styled from "styled-components";
 import colors from "../constants/colors";
 
-interface DataProps {
-  state: string;
-  city: string;
-  category: string;
-  type: string;
-}
 const MarketFilter = () => {
-  const [data, setData] = useState<DataProps>({
-    state: "",
-    city: "",
-    category: "",
-    type: "",
-  });
+  const [regions, setRegions] = useState<any>([]);
+  const [state, setState] = useState("");
+  const [region, setRegion] = useState("");
+  const [category, setCategory] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    setRegions([]);
+    const arr = states.find((location) => location.state.name === state);
+    if (arr) setRegions(arr?.state.locals);
+  }, [state]);
+
   return (
     <FilterContainer className='mb-3 shadow'>
       <div className='d-flex justify-content-between gap-2'>
         <select
           name='state'
           id='state'
-          className={`form-control ${data.state ? "active" : ""}`}
-          onChange={(e) => handleChange(e)}
+          className={`form-control ${state ? "active" : ""}`}
+          value={state}
+          onChange={(e) => setState(e.target.value)}
         >
-          <option value='lagos'>State</option>
-          <option value='lagos'>Lagos</option>
+          <option value=''>State</option>
+          {states.map((location) => (
+            <option value={location.state.name} key={location.state.id}>
+              {location.state.name}
+            </option>
+          ))}
         </select>
         <select
           name='city'
           id='lga'
-          className={`form-control ${data.city ? "active" : ""}`}
-          onChange={(e) => handleChange(e)}
+          className={`form-control ${region ? "active" : ""}`}
+          value={region}
+          onChange={(e) => setRegion(e.target.value)}
         >
-          <option value='lagos'>City</option>
-          <option value='lagos'>Lagos</option>
+          <option value=''>Region</option>
+          {regions.map((region: { name: string; id: number }) => (
+            <option value={region.name} key={region.id}>
+              {region.name}
+            </option>
+          ))}
         </select>
         <select
           name='max'
           id='lga'
-          className={`form-control ${data.category ? "active" : ""}`}
-          onChange={(e) => handleChange(e)}
+          className={`form-control ${category ? "active" : ""}`}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         >
-          <option value='lagos'>Category</option>
-          <option value='lagos'>Lagos</option>
-        </select>
-        <select
-          name='type'
-          id='lga'
-          className={`form-control ${data.type ? "active" : ""}`}
-          onChange={(e) => handleChange(e)}
-        >
-          <option value='lagos'>Type</option>
-          <option value='lagos'>Lagos</option>
+          <option value=''>Category</option>
+          {categories.map((category) => (
+            <option value={category.name} key={category.id}>
+              {category.name}
+            </option>
+          ))}
         </select>
       </div>
     </FilterContainer>
@@ -71,9 +73,6 @@ const FilterContainer = styled.div`
   text-align: center;
   width: 100%;
   background-color: ${colors.white};
-  /* @media (max-width: 576px) {
-    width: 100%;
-  } */
   & select {
     border-radius: 2;
     background-color: ${colors.grey};
