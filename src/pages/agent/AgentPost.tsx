@@ -13,7 +13,7 @@ import AgentLayout from "./AgentLayout";
 const AgentPost = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state: PropertyState) => state.property);
-  const [towns, setTowns] = useState<any>([]);
+  const [regions, setRegions] = useState<any>([]);
   const [feature, setFeature] = useState("");
 
   const [title, setTitle] = useState("");
@@ -24,7 +24,7 @@ const AgentPost = () => {
   const [toilets, setToilets] = useState("");
   const [size, setSize] = useState("");
   const [state, setState] = useState("");
-  const [town, setTown] = useState("");
+  const [region, setRegion] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState<string | undefined>("");
   const [description, setDescription] = useState("");
@@ -39,9 +39,9 @@ const AgentPost = () => {
     setFeature("");
   };
   useEffect(() => {
-    setTowns([]);
+    setRegions([]);
     const arr = states.find((location) => location.state.name === state);
-    if (arr) setTowns(arr?.state.locals);
+    if (arr) setRegions(arr?.state.locals);
   }, [state]);
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -51,7 +51,7 @@ const AgentPost = () => {
       !type ||
       !category ||
       !state ||
-      !town ||
+      !region ||
       !location ||
       !price ||
       !description ||
@@ -67,7 +67,7 @@ const AgentPost = () => {
     formdata.append("toilets", toilets);
     formdata.append("size", size);
     formdata.append("state", state);
-    formdata.append("town", town);
+    formdata.append("region", region);
     formdata.append("location", location);
     formdata.append("price", price);
     formdata.append("description", description);
@@ -231,17 +231,17 @@ const AgentPost = () => {
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
                 <Form.Label>
-                  Town <Text>required</Text>
+                  Region <Text>required</Text>
                 </Form.Label>
                 <Form.Control
                   as='select'
-                  value={town}
-                  onChange={(e) => setTown(e.target.value)}
+                  value={region}
+                  onChange={(e) => setRegion(e.target.value)}
                 >
                   <option value=''>--Select--</option>
-                  {towns.map((town: { name: string; id: number }) => (
-                    <option value={town.name} key={town.id}>
-                      {town.name}
+                  {regions.map((region: { name: string; id: number }) => (
+                    <option value={region.name} key={region.id}>
+                      {region.name}
                     </option>
                   ))}
                 </Form.Control>

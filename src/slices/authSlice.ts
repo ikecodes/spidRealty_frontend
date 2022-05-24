@@ -40,9 +40,10 @@ export const login: any = createAsyncThunk(
       } = await api.login(formdata);
       Toast("Login successful", "info");
       navigate("/agent/dashboard");
+      localStorage.setItem("token", token);
       return token;
     } catch (error: any) {
-      rejectWithValue(error?.response?.data);
+      rejectWithValue(error?.response?.data?.message);
       Toast(error?.response?.data?.message, "info");
     }
   }
@@ -65,6 +66,30 @@ export const uploadId: any = createAsyncThunk(
     try {
       await api.uploadId(formdata);
       Toast("Id upload was successful", "info");
+    } catch (error: any) {
+      rejectWithValue(error?.response?.data);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
+export const updatePhoto: any = createAsyncThunk(
+  "auth/updatePhoto",
+  async (formdata, { rejectWithValue }) => {
+    try {
+      await api.updatePhoto(formdata);
+      Toast("Profile photo update successful successful", "info");
+    } catch (error: any) {
+      rejectWithValue(error?.response?.data);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
+export const updatePassword: any = createAsyncThunk(
+  "auth/updatePassword",
+  async (formdata, { rejectWithValue }) => {
+    try {
+      await api.updatePassword(formdata);
+      Toast("Password has been successfully updated", "info");
     } catch (error: any) {
       rejectWithValue(error?.response?.data);
       Toast(error?.response?.data?.message, "info");
@@ -100,7 +125,6 @@ export const authSlice: any = createSlice({
       state.loading = true;
     },
     [login.fulfilled]: (state, { payload }) => {
-      localStorage.setItem("token", payload);
       state.token = payload;
       state.loading = false;
     },
@@ -111,6 +135,12 @@ export const authSlice: any = createSlice({
       state.loading = true;
     },
     [uploadId.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+    },
+    [updatePassword.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [updatePassword.fulfilled]: (state, { payload }) => {
       state.loading = false;
     },
   },

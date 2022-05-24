@@ -9,6 +9,7 @@ export interface AuthState {
 export interface PropertyState {
   property: {
     properties: any;
+    userProperties: any;
     loading: boolean;
     property: any;
   };

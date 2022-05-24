@@ -14,9 +14,34 @@ export const postProperty: any = createAsyncThunk(
     }
   }
 );
+export const getAllPropertyByUser: any = createAsyncThunk(
+  "property/getAllPropertyByUser",
+  async (arg, { rejectWithValue }) => {
+    try {
+      const { data } = await api.getAllPropertyByUser();
+      return data.data;
+    } catch (error: any) {
+      rejectWithValue(error);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
+export const getAllProperty: any = createAsyncThunk(
+  "property/getAllProperty",
+  async (arg, { rejectWithValue }) => {
+    try {
+      const { data } = await api.getAllProperty();
+      return data.data;
+    } catch (error: any) {
+      rejectWithValue(error);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
 
 const initialState = {
-  properties: null,
+  properties: [],
+  userProperties: [],
   loading: false,
   property: null,
 };
@@ -30,6 +55,20 @@ export const propertySlice: any = createSlice({
       state.loading = true;
     },
     [postProperty.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+    },
+    [getAllPropertyByUser.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [getAllPropertyByUser.fulfilled]: (state, { payload }) => {
+      state.userProperties = payload;
+      state.loading = false;
+    },
+    [getAllProperty.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [getAllProperty.fulfilled]: (state, { payload }) => {
+      state.properties = payload;
       state.loading = false;
     },
   },

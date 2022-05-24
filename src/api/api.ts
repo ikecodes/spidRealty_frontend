@@ -31,7 +31,14 @@ export const login = (formdata: any) => API.post("/users/session", formdata);
 export const getMe = () => API.get("/users/me");
 export const uploadId = (formdata: any) =>
   API.patch("/users/uploadId", formdata);
+export const updatePhoto = (formdata: any) =>
+  API.patch("/users/updatePhoto", formdata);
+export const updatePassword = (formdata: any) =>
+  API.patch("/users/updatePassword", formdata);
 
-////PROPERTY
+////PROPERTYgetAllProperty
 export const postProperty = (formdata: any) =>
   API.post("/properties", formdata);
+export const getAllPropertyByUser = () =>
+  API.get("/properties/getAllPropertyByUser");
+export const getAllProperty = () => API.get("/properties");
