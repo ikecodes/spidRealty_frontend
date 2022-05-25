@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AuthState } from "../constants/interfaces";
 import { updatePhoto } from "../slices/authSlice";
 import { FaUserEdit } from "react-icons/fa";
-import colors from "../constants/colors";
 
 const ProfileBox = () => {
   const dispatch = useDispatch();
