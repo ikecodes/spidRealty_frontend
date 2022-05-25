@@ -44,7 +44,9 @@ const AgentPost = () => {
     if (arr) setRegions(arr?.state.locals);
   }, [state]);
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
     if (
       !title ||
@@ -83,7 +85,23 @@ const AgentPost = () => {
       formdata.append("images", images[i]);
     }
 
-    dispatch(postProperty(formdata));
+    await dispatch(postProperty(formdata));
+
+    setTitle("");
+    setType("");
+    setCategory("");
+    setBedrooms("");
+    setBathrooms("");
+    setToilets("");
+    setSize("");
+    setState("");
+    setRegion("");
+    setLocation("");
+    setPrice("");
+    setDescription("");
+    setFeatures([]);
+    setFurnished("");
+    setNewlyBuilt("");
   };
   return (
     <AgentLayout>

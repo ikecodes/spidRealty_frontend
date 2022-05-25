@@ -42,3 +42,4 @@ export const postProperty = (formdata: any) =>
 export const getAllPropertyByUser = () =>
   API.get("/properties/getAllPropertyByUser");
 export const getAllProperty = () => API.get("/properties");
+export const getProperty = (id: any) => API.get(`/properties/${id}`);

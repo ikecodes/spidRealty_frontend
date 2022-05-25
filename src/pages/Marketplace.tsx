@@ -32,6 +32,7 @@ const Marketplace = () => {
             {properties.map((property: any) => (
               <PropertyCard
                 key={property._id}
+                id={property._id}
                 title={property.title}
                 region={property.region}
                 state={property.state}

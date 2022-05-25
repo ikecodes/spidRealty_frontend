@@ -7,15 +7,15 @@ import menus from "../constants/menus";
 import colors from "../constants/colors";
 import { logout } from "../utils/Helpers";
 import { MdDashboard } from "react-icons/md";
-import { useSelector } from "react-redux";
-import { AuthState } from "../constants/interfaces";
+// import { useSelector } from "react-redux";
+// import { AuthState } from "../constants/interfaces";
 
 const NavbarLg = () => {
   const navigate = useNavigate();
   // @ts-ignore
   const token = localStorage.getItem("token");
 
-  const user = useSelector((state: AuthState) => state.auth.user);
+  // const user = useSelector((state: AuthState) => state.auth.user);
   return (
     <NavContainer className='px-2 shadow'>
       <div className='row p-0 m-0 py-2 align-items-ceenter'>
@@ -36,7 +36,7 @@ const NavbarLg = () => {
                     logout
                   </LoginBtn>
                   <Link
-                    to={`/${user?.role}/dashboard`}
+                    to={`/agent/dashboard`}
                     className='text-decoration-none'
                   >
                     <HomeDashboard className='d-flex align-items-center'>

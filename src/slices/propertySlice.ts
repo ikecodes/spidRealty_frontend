@@ -26,6 +26,7 @@ export const getAllPropertyByUser: any = createAsyncThunk(
     }
   }
 );
+
 export const getAllProperty: any = createAsyncThunk(
   "property/getAllProperty",
   async (arg, { rejectWithValue }) => {
@@ -34,11 +35,22 @@ export const getAllProperty: any = createAsyncThunk(
       return data.data;
     } catch (error: any) {
       rejectWithValue(error);
-      Toast(error?.response?.data?.message, "info");
+      // Toast(error?.response?.data?.message, "info");
     }
   }
 );
-
+export const getProperty: any = createAsyncThunk(
+  "property/getProperty",
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await api.getProperty(id);
+      return data.data;
+    } catch (error: any) {
+      rejectWithValue(error);
+      // Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
 const initialState = {
   properties: [],
   userProperties: [],
@@ -69,6 +81,13 @@ export const propertySlice: any = createSlice({
     },
     [getAllProperty.fulfilled]: (state, { payload }) => {
       state.properties = payload;
+      state.loading = false;
+    },
+    [getProperty.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [getProperty.fulfilled]: (state, { payload }) => {
+      state.property = payload;
       state.loading = false;
     },
   },
