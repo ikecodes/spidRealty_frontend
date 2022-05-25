@@ -32,7 +32,7 @@ const ProfileBox = () => {
         <Box>
           <Profile src={user?.photo} alt='profile' className='rounded-circle' />
           <FaUserEdit
-            color={colors.tertiary}
+            className='text-secondary'
             size={30}
             style={{
               position: "absolute",
@@ -76,7 +76,7 @@ const ProfileBox = () => {
               type='text'
               placeholder='Enter last name'
               className='rounded-0'
-              // value={user?.lastName}
+              value={user?.lastName}
               disabled
             />
           </Form.Group>
@@ -87,7 +87,7 @@ const ProfileBox = () => {
               type='email'
               placeholder='Enter email'
               className='rounded-0'
-              // value={user?.email}
+              value={user?.email}
               disabled
             />
           </Form.Group>
@@ -97,7 +97,7 @@ const ProfileBox = () => {
               type='phone'
               placeholder='Enter phone number'
               className='rounded-0'
-              // value={user?.phone}
+              value={`+${user?.phone}`}
               disabled
             />
           </Form.Group>

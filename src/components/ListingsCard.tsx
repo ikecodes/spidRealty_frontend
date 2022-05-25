@@ -3,6 +3,7 @@ import Image from "../shared/Image";
 import Button from "../shared/Button";
 import styled from "styled-components";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 var formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -18,6 +19,7 @@ interface Props {
   state: string;
   price: any;
   image: any;
+  slug: string;
   createdAt: any;
   remove?: boolean;
 }
@@ -28,6 +30,7 @@ const ListingsCard: React.FC<Props> = ({
   region,
   price,
   image,
+  slug,
   createdAt,
 }) => {
   return (
@@ -49,7 +52,9 @@ const ListingsCard: React.FC<Props> = ({
         {remove ? (
           <Button title='remove' primary />
         ) : (
-          <Button title='view' primary />
+          <Link to={`/marketplace/${slug}`}>
+            <Button title='view' primary />
+          </Link>
         )}
       </div>
     </Container>

@@ -15,7 +15,7 @@ import {
 import { MdOutlineBathroom, MdOutlineBedroomParent } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import Button from "../shared/Button";
-import PropertyCard from "../components/PropertyCard";
+// import PropertyCard from "../components/PropertyCard";
 import Tip from "../shared/Tip";
 import { Link } from "react-router-dom";
 
@@ -161,9 +161,9 @@ const MarketplaceView = () => {
         {/* // similar posts */}
         <div className='row mt-3'>
           <h4 className='text-capitalize text dark mb-3'>similar posts</h4>
+          {/* <PropertyCard />
           <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
+          <PropertyCard /> */}
         </div>
       </Section>
     </Layout>

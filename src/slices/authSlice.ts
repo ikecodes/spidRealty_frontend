@@ -76,8 +76,9 @@ export const updatePhoto: any = createAsyncThunk(
   "auth/updatePhoto",
   async (formdata, { rejectWithValue }) => {
     try {
-      await api.updatePhoto(formdata);
+      const { data } = await api.updatePhoto(formdata);
       Toast("Profile photo update successful successful", "info");
+      return data.data;
     } catch (error: any) {
       rejectWithValue(error?.response?.data);
       Toast(error?.response?.data?.message, "info");
@@ -129,6 +130,9 @@ export const authSlice: any = createSlice({
       state.loading = false;
     },
     [getMe.fulfilled]: (state, { payload }) => {
+      state.user = payload;
+    },
+    [updatePhoto.fulfilled]: (state, { payload }) => {
       state.user = payload;
     },
     [uploadId.pending]: (state, { payload }) => {

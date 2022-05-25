@@ -26,6 +26,7 @@ const AgentListings = () => {
                 title={property.title}
                 region={property.region}
                 state={property.state}
+                slug={property.slug}
                 createdAt={property.createdAt}
                 price={property.price}
                 image={property.images[0].original}
