@@ -19,6 +19,7 @@ const Marketplace = () => {
     dispatch(getAllProperty());
   }, []);
 
+  if (loading) return <Loader />;
   return (
     <Layout>
       <Section>
@@ -27,7 +28,6 @@ const Marketplace = () => {
         </h1>
         <div className='position-relative'>
           <MarketFilter />
-          {loading && <Loader />}
           <div className='row'>
             {properties.map((property: any) => (
               <PropertyCard
