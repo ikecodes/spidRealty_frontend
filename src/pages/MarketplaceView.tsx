@@ -128,7 +128,7 @@ const MarketplaceView = () => {
               ))}
             </ul>
             <div className='d-flex justify-content-between mt-3'>
-              <Link to='/purchase-form'>
+              <Link to='/purchase-form' state={property?.images[1].original}>
                 <Button title='purchase property' />
               </Link>
               {/* <BsBookmarkHeart size={25} role='button' color={colors.primary} /> */}

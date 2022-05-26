@@ -1,19 +1,20 @@
-import React from 'react';
-import Layout from '../layouts/Layout';
-import Section from '../layouts/Section';
-import FormImg from '../assets/images/family.jpg';
-import Image from '../shared/Image';
-import Tip from '../shared/Tip';
-import { Form } from 'react-bootstrap';
-import Button from '../shared/Button';
+import React from "react";
+import Layout from "../layouts/Layout";
+import Section from "../layouts/Section";
+import Image from "../shared/Image";
+import Tip from "../shared/Tip";
+import { Form } from "react-bootstrap";
+import Button from "../shared/Button";
+import { useLocation } from "react-router-dom";
 
 const PurchaseForm = () => {
+  const location = useLocation();
   return (
     <Layout>
       <Section>
         <div className='row align-items-center flex-md-row-reverse'>
           <div className='col-lg-6'>
-            <Image src={FormImg} h={20} unit='rem' alt='property' />
+            <Image src={location.state} h={20} unit='rem' alt='property' />
           </div>
           <div className='col-lg-6'>
             <h4 className='text-capitalize m-0 p-0 my-3  text-dark'>

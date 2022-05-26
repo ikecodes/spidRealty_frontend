@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
-  src: string;
+  src: any;
   h: number;
   unit: string;
   alt: string;
@@ -14,7 +14,7 @@ interface ImageContainerProps {
   unit: string;
 }
 interface ImgProps {
-  src: string;
+  src: any;
   alt: string;
   rounded?: boolean;
 }
