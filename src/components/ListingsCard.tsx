@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { currencyFormat } from "../utils/Helpers";
 
 interface Props {
+  id: string;
   title: string;
   region: string;
   state: string;
@@ -18,6 +19,7 @@ interface Props {
 }
 const ListingsCard: React.FC<Props> = ({
   remove,
+  id,
   title,
   state,
   region,
@@ -45,7 +47,7 @@ const ListingsCard: React.FC<Props> = ({
         {remove ? (
           <Button title='remove' primary />
         ) : (
-          <Link to={`/marketplace/${slug}`}>
+          <Link to={`/marketplace/${slug}`} state={id}>
             <Button title='view' primary />
           </Link>
         )}

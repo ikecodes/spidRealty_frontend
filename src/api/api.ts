@@ -28,6 +28,10 @@ export const sendEmail = (formdata: any) =>
 export const verifyToken = (formdata: any) =>
   API.post("/users/confirmEmail", formdata);
 export const login = (formdata: any) => API.post("/users/session", formdata);
+export const forgotPassword = (formdata: any) =>
+  API.post("/users/forgotPassword", formdata);
+export const resetPassword = (formdata: any, resetToken: any) =>
+  API.patch(`/users/resetPassword/${resetToken}`, formdata);
 export const getMe = () => API.get("/users/me");
 export const uploadId = (formdata: any) =>
   API.patch("/users/uploadId", formdata);

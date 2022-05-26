@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
-// import Loader from "../shared/Loader";
+import Loader from "../shared/Loader";
 import ImageGallery from "react-image-gallery";
 import colors from "../constants/colors";
 import styled from "styled-components";
@@ -11,7 +11,6 @@ import { BsClock, BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { MdOutlineBathroom, MdOutlineBedroomParent } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import Button from "../shared/Button";
-// import PropertyCard from "../components/PropertyCard";
 import Tip from "../shared/Tip";
 import { getProperty } from "../slices/propertySlice";
 import { PropertyState } from "../constants/interfaces";
@@ -21,16 +20,17 @@ import { currencyFormat } from "../utils/Helpers";
 
 const MarketplaceView = () => {
   const location = useLocation();
-  // const [loading, setloading] = useState(true);
 
   const dispatch = useDispatch();
 
-  const { property } = useSelector((state: PropertyState) => state.property);
+  const { property, loading } = useSelector(
+    (state: PropertyState) => state.property
+  );
   useEffect(() => {
     dispatch(getProperty(location.state));
   }, []);
 
-  // if (loading) return <Loader />;
+  if (loading) return <Loader />;
   return (
     <Layout>
       <Section>

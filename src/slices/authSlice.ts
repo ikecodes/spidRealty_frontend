@@ -48,6 +48,31 @@ export const login: any = createAsyncThunk(
     }
   }
 );
+export const forgotPassword: any = createAsyncThunk(
+  "auth/forgotPassword",
+  async (formdata, { rejectWithValue }) => {
+    try {
+      await api.forgotPassword(formdata);
+      Toast("Password reset link successfully sent to mail", "info");
+    } catch (error: any) {
+      rejectWithValue(error?.response?.data?.message);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
+export const resetPassword: any = createAsyncThunk(
+  "auth/resetPassword",
+  async ({ formdata, resetToken, navigate }: any, { rejectWithValue }) => {
+    try {
+      await api.resetPassword(formdata, resetToken);
+      Toast("Your password has been reset, you can now login", "info");
+      navigate("/login");
+    } catch (error: any) {
+      rejectWithValue(error?.response?.data?.message);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
 export const getMe: any = createAsyncThunk(
   "auth/getMe",
   async (arg, { rejectWithValue }) => {
@@ -145,6 +170,18 @@ export const authSlice: any = createSlice({
       state.loading = true;
     },
     [updatePassword.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+    },
+    [forgotPassword.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [forgotPassword.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+    },
+    [resetPassword.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [resetPassword.fulfilled]: (state, { payload }) => {
       state.loading = false;
     },
   },

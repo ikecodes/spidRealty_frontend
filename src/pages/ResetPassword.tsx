@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthState } from "../constants/interfaces";
 import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
 import Button from "../shared/Button";
+import { resetPassword } from "../slices/authSlice";
+import Toast from "../utils/Toast";
 
 const ResetPassword = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const resetToken = location.search.split("?")[1];
+  const loading = useSelector((state: AuthState) => state.auth.loading);
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    if (password === "" || passwordConfirm === "")
+      return Toast("Please enter all fields", "info");
+    const formdata = { password: password };
+    dispatch(resetPassword({ formdata, resetToken, navigate }));
+  };
   return (
     <Layout>
       <Section>
@@ -18,6 +38,8 @@ const ResetPassword = () => {
                   type='password'
                   placeholder='•••••••••••'
                   className='bg-light rounded-0'
+                  value={password}
+                  onChange={(e: any) => setPassword(e.target.value)}
                 />
               </Form.Group>
               <Form.Group className='mb-3' controlId='formBasicEmail'>
@@ -26,10 +48,16 @@ const ResetPassword = () => {
                   type='password'
                   placeholder='•••••••••••'
                   className='bg-light rounded-0'
+                  value={passwordConfirm}
+                  onChange={(e: any) => setPasswordConfirm(e.target.value)}
                 />
               </Form.Group>
               <div className='mb-3'>
-                <Button title='submit' />
+                <Button
+                  title='submit'
+                  loading={loading}
+                  handleClick={(e) => handleSubmit(e)}
+                />
               </div>
             </Form>
           </div>

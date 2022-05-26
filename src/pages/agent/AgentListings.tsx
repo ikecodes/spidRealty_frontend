@@ -12,6 +12,7 @@ const AgentListings = () => {
   const { userProperties } = useSelector(
     (state: PropertyState) => state.property
   );
+
   useEffect(() => {
     dispatch(getAllPropertyByUser());
   }, []);
@@ -23,6 +24,7 @@ const AgentListings = () => {
             userProperties.map((property: any) => (
               <ListingsCard
                 key={property._id}
+                id={property._id}
                 title={property.title}
                 region={property.region}
                 state={property.state}
