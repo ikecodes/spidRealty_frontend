@@ -1,25 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import MarketFilter from "../components/MarketFilter";
-import PropertyCard from "../components/PropertyCard";
-import { PropertyState } from "../constants/interfaces";
+import PropertyRenderer from "../components/PropertyRenderer";
 import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
-import Loader from "../shared/Loader";
-import { getAllProperty } from "../slices/propertySlice";
 
 const Marketplace = () => {
-  const dispatch = useDispatch();
-
-  const { properties, loading } = useSelector(
-    (state: PropertyState) => state.property
-  );
-  useEffect(() => {
-    dispatch(getAllProperty());
-  }, []);
-
-  if (loading) return <Loader />;
   return (
     <Layout>
       <Section>
@@ -28,20 +14,7 @@ const Marketplace = () => {
         </h1>
         <div className='position-relative'>
           <MarketFilter />
-          <div className='row'>
-            {properties.map((property: any) => (
-              <PropertyCard
-                key={property._id}
-                id={property._id}
-                title={property.title}
-                region={property.region}
-                state={property.state}
-                slug={property.slug}
-                price={property.price}
-                image={property.images[0].original}
-              />
-            ))}
-          </div>
+          <PropertyRenderer />
         </div>
       </Section>
     </Layout>

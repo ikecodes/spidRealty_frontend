@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import HomeAbout from "../components/Home/HomeAbout";
 import HomeArticles from "../components/Home/HomeArticles";
 import HomeChoose from "../components/Home/HomeChoose";
@@ -6,14 +8,20 @@ import HomeFeatured from "../components/Home/HomeFeatured";
 import HomeSubscription from "../components/Home/HomeSubscription";
 import HomeTestimonials from "../components/Home/HomeTestimonials";
 import Slider from "../components/Slider";
+import { PropertyState } from "../constants/interfaces";
 import Footer from "../layouts/Footer";
 import Loader from "../shared/Loader";
+import { getAllProperty } from "../slices/propertySlice";
 const Home = () => {
-  const [loading, setloading] = useState(true);
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state: PropertyState) => state.property);
+  const stateSlug = "";
+  const regionSlug = "";
+  const categorySlug = "";
+  useEffect(() => {
+    dispatch(getAllProperty({ stateSlug, regionSlug, categorySlug }));
+  }, []);
 
-  setTimeout(() => {
-    setloading(false);
-  }, 2000);
   if (loading) return <Loader />;
   return (
     <div>

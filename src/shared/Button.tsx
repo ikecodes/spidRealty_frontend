@@ -56,7 +56,7 @@ const B = styled.button<BProps>`
       : colors.tertiary};
   text-transform: capitalize;
   color: ${colors.white};
-  padding: 5px 20px;
+  padding: 7px 20px;
   border-radius: ${(props) => (props.rounded ? "5px" : "0")};
   border: ${(props) => (props.inverse ? "1px solid #fff" : 0)};
   transition: all 0.2s linear;

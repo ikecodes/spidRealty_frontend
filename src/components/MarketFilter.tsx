@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import colors from "../constants/colors";
 import Filter from "./Filter";
 
 const MarketFilter = () => {
@@ -18,6 +17,5 @@ const FilterContainer = styled.div`
   z-index: 100;
   text-align: center;
   width: 100%;
-  /* background-color: ${colors.white}; */
 `;
 export default MarketFilter;

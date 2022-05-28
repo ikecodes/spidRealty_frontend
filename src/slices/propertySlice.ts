@@ -29,9 +29,13 @@ export const getAllPropertyByUser: any = createAsyncThunk(
 
 export const getAllProperty: any = createAsyncThunk(
   "property/getAllProperty",
-  async (arg, { rejectWithValue }) => {
+  async ({ stateSlug, regionSlug, categorySlug }: any, { rejectWithValue }) => {
     try {
-      const { data } = await api.getAllProperty();
+      const { data } = await api.getAllProperty(
+        stateSlug,
+        regionSlug,
+        categorySlug
+      );
       return data.data;
     } catch (error: any) {
       rejectWithValue(error);

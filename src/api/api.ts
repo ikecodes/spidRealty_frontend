@@ -45,5 +45,22 @@ export const postProperty = (formdata: any) =>
   API.post("/properties", formdata);
 export const getAllPropertyByUser = () =>
   API.get("/properties/getAllPropertyByUser");
-export const getAllProperty = () => API.get("/properties");
+export const getAllProperty = (
+  stateSlug: any,
+  regionSlug: any,
+  categorySlug: any
+) =>
+  API.get("/properties", {
+    params: {
+      ...(stateSlug && {
+        stateSlug,
+      }),
+      ...(regionSlug && {
+        regionSlug,
+      }),
+      ...(categorySlug && {
+        categorySlug,
+      }),
+    },
+  });
 export const getProperty = (id: any) => API.get(`/properties/${id}`);
