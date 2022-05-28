@@ -83,7 +83,6 @@ const Filter = () => {
         <Button
           title='search'
           loading={false}
-          rounded
           handleClick={(e) => handleSubmit(e)}
         />
       </div>
@@ -93,6 +92,7 @@ const Filter = () => {
 
 const Container = styled.div`
   & select {
+    border-radius: 0;
     &.active {
       background-color: ${colors.secondary};
     }
