@@ -21,7 +21,6 @@ const Filter = () => {
   let regionSlug = "";
   let categorySlug = "";
 
-  console.log(location);
   useEffect(() => {
     setRegions([]);
     const arr = states.find((location) => location.state.name === state);
