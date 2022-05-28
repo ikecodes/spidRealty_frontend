@@ -6,9 +6,12 @@ import { states, categories } from "../constants/selectors";
 import colors from "../constants/colors";
 import { useDispatch } from "react-redux";
 import { getAllProperty } from "../slices/propertySlice";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Filter = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [regions, setRegions] = useState<any>([]);
   const [state, setState] = useState("");
   const [region, setRegion] = useState("");
@@ -18,23 +21,20 @@ const Filter = () => {
   let regionSlug = "";
   let categorySlug = "";
 
+  console.log(location);
   useEffect(() => {
     setRegions([]);
     const arr = states.find((location) => location.state.name === state);
     if (arr) setRegions(arr?.state.locals);
   }, [state]);
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    console.log("hitt");
     if (state) stateSlug = slugify(state, { lower: true });
     if (region) regionSlug = slugify(region, { lower: true });
     if (category) categorySlug = slugify(category, { lower: true });
     dispatch(getAllProperty({ stateSlug, regionSlug, categorySlug }));
+    if (location.pathname === "/") return navigate("/marketplace");
   };
   return (
     <Container className='d-flex justify-content-center align-items-center'>
