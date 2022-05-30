@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import colors from "../constants/colors";
-import Logo from "../assets/images/logo-placeholder.png";
+import Logo from "../assets/images/logos/logo-1.png";
 import ScrollToTop from "react-scroll-to-top";
 
 const Footer = () => {
@@ -95,7 +95,7 @@ const Container = styled.div`
 `;
 
 const ImageBox = styled.img`
-  width: 12rem;
+  width: 15rem;
   height: auto;
   background-size: cover;
 `;
