@@ -16,16 +16,18 @@ import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 
-// Profile layouts
+// Agent
 import AgentDashboard from "./agent/AgentDashboard";
 import AgentPost from "./agent/AgentPost";
 import AgentListings from "./agent/AgentListings";
 import AgentProfile from "./agent/AgentProfile";
 
-// import UserDashboard from "./user/UserDashboard";
-// import UserFavorites from "./user/UserFavorites";
-// import UserProfile from "./user/UserProfile";
-// import InvestorLayout from "./Investor/InvestorLayout";
+// Admin
+import AdminLogin from "./admin/AdminLogin";
+import AdminDashboard from "./admin/AdminDashboard";
+import AdminAgents from "./admin/AdminAgents";
+import AdminProperties from "./admin/AdminProperties";
+import AdminArticles from "./admin/AdminArticles";
 
 export {
   Home,
@@ -49,4 +51,9 @@ export {
   AgentPost,
   AgentListings,
   AgentProfile,
+  AdminLogin,
+  AdminDashboard,
+  AdminAgents,
+  AdminProperties,
+  AdminArticles,
 };

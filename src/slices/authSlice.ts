@@ -33,13 +33,13 @@ export const verify: any = createAsyncThunk(
 
 export const login: any = createAsyncThunk(
   "auth/login",
-  async ({ formdata, navigate }: any, { rejectWithValue }) => {
+  async ({ formdata, navigate, nextPage }: any, { rejectWithValue }) => {
     try {
       const {
         data: { token },
       } = await api.login(formdata);
       Toast("Login successful", "info");
-      navigate("/agent/dashboard");
+      navigate(nextPage);
       localStorage.setItem("token", token);
       return token;
     } catch (error: any) {

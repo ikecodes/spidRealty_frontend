@@ -31,7 +31,8 @@ const Login = () => {
     if (email === "" || password === "")
       return Toast("Please fill all required fields", "info");
 
-    dispatch(login({ formdata, navigate }));
+    const nextPage = "/agent/dashboard";
+    dispatch(login({ formdata, navigate, nextPage }));
   };
 
   return (

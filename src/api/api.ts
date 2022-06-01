@@ -48,7 +48,9 @@ export const getAllPropertyByUser = () =>
 export const getAllProperty = (
   stateSlug: any,
   regionSlug: any,
-  categorySlug: any
+  categorySlug: any,
+  page: number,
+  limit: number
 ) =>
   API.get("/properties", {
     params: {
@@ -61,6 +63,8 @@ export const getAllProperty = (
       ...(categorySlug && {
         categorySlug,
       }),
+      page,
+      limit,
     },
   });
 export const getProperty = (id: any) => API.get(`/properties/${id}`);

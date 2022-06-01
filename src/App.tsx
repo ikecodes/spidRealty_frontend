@@ -21,6 +21,11 @@ import {
   AgentPost,
   AgentListings,
   AgentProfile,
+  AdminLogin,
+  AdminDashboard,
+  AdminAgents,
+  AdminProperties,
+  AdminArticles,
 } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop";
@@ -54,6 +59,13 @@ function App() {
           <Route path='/agent/post' element={<AgentPost />} />
           <Route path='/agent/listings' element={<AgentListings />} />
           <Route path='/agent/profile' element={<AgentProfile />} />
+
+          {/* // admin */}
+          <Route path='/admin/login' element={<AdminLogin />} />
+          <Route path='/admin/dashboard' element={<AdminDashboard />} />
+          <Route path='/admin/agents' element={<AdminAgents />} />
+          <Route path='/admin/properties' element={<AdminProperties />} />
+          <Route path='/admin/articles' element={<AdminArticles />} />
         </Routes>
       </ScrollToTop>
     </Router>

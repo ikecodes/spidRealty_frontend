@@ -9,6 +9,7 @@ export interface AuthState {
 export interface PropertyState {
   property: {
     properties: any;
+    pagination: any;
     userProperties: any;
     loading: boolean;
     property: any;

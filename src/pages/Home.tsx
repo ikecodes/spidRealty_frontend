@@ -18,8 +18,12 @@ const Home = () => {
   const stateSlug = "";
   const regionSlug = "";
   const categorySlug = "";
+  const page = 1;
+  const limit = 10;
   useEffect(() => {
-    dispatch(getAllProperty({ stateSlug, regionSlug, categorySlug }));
+    dispatch(
+      getAllProperty({ stateSlug, regionSlug, categorySlug, page, limit })
+    );
   }, []);
 
   if (loading) return <Loader />;

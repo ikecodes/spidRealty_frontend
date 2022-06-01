@@ -6,9 +6,9 @@ const formatter = new Intl.NumberFormat("en-US", {
   currency: "NGN",
 });
 
-export const logout = (navigate: NavigateFunction) => {
+export const logout = (navigate: NavigateFunction, to: string) => {
   localStorage.clear();
-  navigate("/");
+  navigate(to);
   Toast("Successful logout", "info");
 };
 

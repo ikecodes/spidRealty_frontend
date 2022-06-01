@@ -29,43 +29,23 @@ const menus = [
 export const adminMenu = [
   {
     id: "1",
-    name: "grants",
-    path: "/admin-grants",
+    name: "dashboard",
+    path: "/admin/dashboard",
   },
   {
     id: "2",
-    name: "portfolio",
-    path: "/admin-portfolio",
+    name: "agents",
+    path: "/admin/agents",
   },
   {
     id: "3",
-    name: "blog",
-    path: "/admin-blog",
+    name: "properties",
+    path: "/admin/properties",
   },
   {
     id: "4",
-    name: "press",
-    path: "/admin-press",
-  },
-  {
-    id: "5",
-    name: "messages",
-    path: "/admin-messages",
-  },
-  {
-    id: "6",
-    name: "applications",
-    path: "/admin-applications",
-  },
-  {
-    id: "7",
-    name: "gallery",
-    path: "/admin-gallery",
-  },
-  {
-    id: "8",
-    name: "staft/trustees",
-    path: "/admin-staff-trustees",
+    name: "articles",
+    path: "/admin/articles",
   },
 ];
 

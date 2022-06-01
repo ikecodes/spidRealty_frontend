@@ -14,7 +14,7 @@ const NavbarLg = () => {
   const navigate = useNavigate();
   // @ts-ignore
   const token = localStorage.getItem("token");
-
+  const to = "/";
   // const user = useSelector((state: AuthState) => state.auth.user);
   return (
     <NavContainer className='px-2 shadow'>
@@ -32,7 +32,10 @@ const NavbarLg = () => {
               ))}
               {token ? (
                 <>
-                  <LoginBtn className='mx-1' onClick={() => logout(navigate)}>
+                  <LoginBtn
+                    className='mx-1'
+                    onClick={() => logout(navigate, to)}
+                  >
                     logout
                   </LoginBtn>
                   <Link
