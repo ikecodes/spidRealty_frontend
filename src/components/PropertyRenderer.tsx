@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { PropertyState } from "../constants/interfaces";
@@ -6,31 +7,21 @@ import Loader from "../shared/Loader";
 import PropertyCard from "./PropertyCard";
 
 const PropertyRenderer = () => {
-  const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(0);
-  const { properties, pagination, loading } = useSelector(
+  // const [page, setPage] = useState(1);
+  // const [pageCount, setPageCount] = useState(10);
+  const { properties, loading } = useSelector(
     (state: PropertyState) => state.property
   );
 
-  const handlePrevious = () => {
-    setPage((p) => {
-      if (p === 1) return p;
-      return p - 1;
-    });
+  const handlePageClick = (data: { selected: number }) => {
+    console.log(data.selected);
   };
 
-  const handleNext = () => {
-    setPage((p) => {
-      if (p === pageCount) return p;
-      return p + 1;
-    });
-  };
-
-  useEffect(() => {
-    if (pagination) {
-      setPageCount(pagination.pageCount);
-    }
-  }, [pagination]);
+  // useEffect(() => {
+  //   if (pagination) {
+  //     setPageCount(pagination.pageCount);
+  //   }
+  // }, [pagination]);
   return (
     <Container>
       {loading && <Loader />}
@@ -49,30 +40,25 @@ const PropertyRenderer = () => {
             />
           ))}
       </div>
-      <footer>
-        Page: {page}
-        <br />
-        Page count: {pageCount}
-        <br />
-        <button disabled={page === 1} onClick={handlePrevious}>
-          Previous
-        </button>
-        <button disabled={page === pageCount} onClick={handleNext}>
-          Next
-        </button>
-        <select
-          value={page}
-          onChange={(e: any) => {
-            setPage(e.target.value);
-          }}
-        >
-          {Array(pageCount)
-            .fill(null)
-            .map((_, index) => {
-              return <option key={index}>{index + 1}</option>;
-            })}
-        </select>
-      </footer>
+      <ReactPaginate
+        breakLabel='...'
+        nextLabel='next >>'
+        onPageChange={handlePageClick}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        pageCount={10}
+        previousLabel='<< previous'
+        containerClassName={"pagination justify-content-center"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+        previousClassName={"page-item"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        breakClassName={"page-item"}
+        breakLinkClassName={"page-link"}
+        activeClassName={"active"}
+      />
     </Container>
   );
 };

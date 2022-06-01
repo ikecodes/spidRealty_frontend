@@ -22,8 +22,8 @@ section {
 }
 body {
   line-height: 1;
-  font-family: 'Lato', sans-serif;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Lato", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 ol,
 ul {
@@ -39,7 +39,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 table {
@@ -92,22 +92,22 @@ body::-webkit-scrollbar-thumb {
 
 textarea:focus,
 select:focus,
-input[type='text']:focus,
-input[type='file']:focus,
-input[type='password']:focus,
-input[type='datetime']:focus,
-input[type='datetime-local']:focus,
-input[type='date']:focus,
-input[type='month']:focus,
-input[type='time']:focus,
-input[type='week']:focus,
-input[type='number']:focus,
-input[type='email']:focus,
-input[type='phone']:focus,
-input[type='url']:focus,
-input[type='search']:focus,
-input[type='tel']:focus,
-input[type='color']:focus,
+input[type="text"]:focus,
+input[type="file"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="phone"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
 .uneditable-input:focus {
   border-color: #2280b9 !important;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01) inset, 0 0 8px #2280b9 !important;
@@ -215,4 +215,14 @@ input[type='color']:focus,
     transform: scale(1);
     -webkit-transform: scale(1);
   }
+}
+
+/* pagination */
+a.page-link {
+  color: #2280b9 !important;
+}
+.page-item.active .page-link {
+  color: #ffffff !important;
+  background-color: #2280b9 !important;
+  border-color: #2280b9 !important;
 }
