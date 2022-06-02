@@ -1,15 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Carousel } from 'react-bootstrap';
-import NavLg from '../layouts/NavLg';
-import NavSm from '../layouts/NavSm';
-import HomeFilter from './HomeFilter';
+import React from "react";
+import styled from "styled-components";
+import { Carousel } from "react-bootstrap";
+import NavLg from "../layouts/NavLg";
+import NavSm from "../layouts/NavSm";
+import Filter from "./Filter";
 const Slider = () => {
   return (
     <div className='position-relative'>
       <NavSm />
       <NavLg />
-      <HomeFilter />
+      <FilterContainer>
+        <Filter />
+      </FilterContainer>
       <Carousel fade>
         <Carousel.Item className='position-relative' interval={1500}>
           <div className='slider_image_box'>
@@ -78,5 +80,15 @@ const Caption = styled.div`
     text-transform: capitalize;
   }
 `;
-
+const FilterContainer = styled.div`
+  width: 70%;
+  position: absolute;
+  z-index: 150;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+`;
 export default Slider;

@@ -1,33 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useSelector } from "react-redux";
+// import ReactPaginate from "react-paginate";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { PropertyState } from "../constants/interfaces";
+import { ParamState, PropertyState } from "../constants/interfaces";
 import Loader from "../shared/Loader";
+import { getAllProperty } from "../slices/propertySlice";
 import PropertyCard from "./PropertyCard";
 
 const PropertyRenderer = () => {
-  // const [page, setPage] = useState(1);
-  // const [pageCount, setPageCount] = useState(10);
+  const dispatch = useDispatch();
+  const [pageCount, setPageCount] = useState(0);
   const { properties, loading } = useSelector(
     (state: PropertyState) => state.property
   );
+  const { stateSlug, regionSlug, categorySlug, limit } = useSelector(
+    (state: ParamState) => state.param
+  );
 
+  useEffect(() => {
+    if (properties) {
+      setPageCount(properties.pagination.pageCount);
+    }
+  }, [properties]);
   const handlePageClick = (data: { selected: number }) => {
-    console.log(data.selected);
+    const page = data.selected + 1;
+    dispatch(
+      getAllProperty({ stateSlug, regionSlug, categorySlug, page, limit })
+    );
   };
-
-  // useEffect(() => {
-  //   if (pagination) {
-  //     setPageCount(pagination.pageCount);
-  //   }
-  // }, [pagination]);
   return (
     <Container>
       {loading && <Loader />}
       <div className='row'>
-        {properties &&
-          properties.map((property: any) => (
+        {properties?.data &&
+          properties?.data.map((property: any) => (
             <PropertyCard
               key={property._id}
               id={property._id}
@@ -46,7 +53,7 @@ const PropertyRenderer = () => {
         onPageChange={handlePageClick}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
-        pageCount={10}
+        pageCount={pageCount}
         previousLabel='<< previous'
         containerClassName={"pagination justify-content-center"}
         pageClassName={"page-item"}

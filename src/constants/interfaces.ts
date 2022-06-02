@@ -15,3 +15,13 @@ export interface PropertyState {
     property: any;
   };
 }
+
+export interface ParamState {
+  param: {
+    stateSlug: string;
+    regionSlug: string;
+    categorySlug: string;
+    page: number;
+    limit: number;
+  };
+}

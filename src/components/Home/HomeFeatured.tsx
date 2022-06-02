@@ -19,8 +19,8 @@ const HomeFeatured = () => {
         <h1 className='text-capitalize  my-5'>featured properties</h1>
         {loading && <Loader />}
         <div className='row'>
-          {properties &&
-            properties
+          {properties?.data &&
+            properties?.data
               .slice(1, 3)
               .map((property: any) => (
                 <PropertyCard

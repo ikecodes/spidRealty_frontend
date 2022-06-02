@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
 import {
   Home,
   About,
@@ -29,8 +30,26 @@ import {
 } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop";
+// import Loader from "./shared/Loader";
+import { useDispatch } from "react-redux";
+// import { PropertyState } from "./constants/interfaces";
+import { getAllProperty } from "../src/slices/propertySlice";
 
 function App() {
+  const dispatch = useDispatch();
+  // const { loading } = useSelector((state: PropertyState) => state.property);
+  const stateSlug = "";
+  const regionSlug = "";
+  const categorySlug = "";
+  const page = 1;
+  const limit = 10;
+  useEffect(() => {
+    dispatch(
+      getAllProperty({ stateSlug, regionSlug, categorySlug, page, limit })
+    );
+  }, []);
+
+  // if (loading) return <Loader />;
   return (
     <Router>
       <ScrollToTop>

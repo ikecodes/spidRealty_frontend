@@ -44,7 +44,7 @@ export const getAllProperty: any = createAsyncThunk(
       return data;
     } catch (error: any) {
       rejectWithValue(error);
-      // Toast(error?.response?.data?.message, "info");
+      Toast(error?.response?.data?.message, "info");
     }
   }
 );
@@ -61,7 +61,7 @@ export const getProperty: any = createAsyncThunk(
   }
 );
 const initialState = {
-  properties: [],
+  properties: null,
   pagination: null,
   userProperties: [],
   loading: false,
@@ -90,8 +90,7 @@ export const propertySlice: any = createSlice({
       state.loading = true;
     },
     [getAllProperty.fulfilled]: (state, { payload }) => {
-      state.properties = payload.data;
-      state.pagination = payload.pagination;
+      state.properties = payload;
       state.loading = false;
     },
     [getProperty.pending]: (state, { payload }) => {
@@ -105,6 +104,6 @@ export const propertySlice: any = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-// export const { resetAuth } = authSlice.actions;
+// export const { setFilter } = propertySlice.actions;
 
 export default propertySlice.reducer;
