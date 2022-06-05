@@ -40,7 +40,7 @@ export const updatePhoto = (formdata: any) =>
 export const updatePassword = (formdata: any) =>
   API.patch("/users/updatePassword", formdata);
 
-////PROPERTYgetAllProperty
+////PROPERTY
 export const postProperty = (formdata: any) =>
   API.post("/properties", formdata);
 export const getAllPropertyByUser = () =>
@@ -68,3 +68,15 @@ export const getAllProperty = (
     },
   });
 export const getProperty = (id: any) => API.get(`/properties/${id}`);
+
+//ADMIN
+export const getAgents = () => API.get("/users");
+export const getAgent = (id: any) => API.get(`/users/${id}`);
+export const activeStatus = (id: any) => API.patch(`/users/activeStatus/${id}`);
+export const verifyUser = (id: any) => API.patch(`/users/verifyUser/${id}`);
+export const getPropertiesByAdmin = () =>
+  API.get("/properties/admin/getAllPropertyByAdmin");
+export const verifyProperty = (id: any) =>
+  API.patch(`/properties/verifyProperty/${id}`);
+export const markAsSold = (id: any) =>
+  API.patch(`/properties/markAsSold/${id}`);

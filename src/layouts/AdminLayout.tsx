@@ -13,12 +13,12 @@ const AdminLayout: React.FC<Props> = ({ children }) => {
   const navigate = useNavigate();
   const to = "/admin/login";
   return (
-    <div className='container-fluid'>
+    <div className='overflow-hidden'>
       <div className='row'>
         <div className='col-lg-2'>
           <AdminNav />
         </div>
-        <ActionContainer className='col-lg-10 px-5 pt-5'>
+        <ActionContainer className='col-lg-10 mt-5 p-0'>
           <Logout
             className='p-2 shadow rounded text-capitalize'
             onClick={() => logout(navigate, to)}
@@ -36,11 +36,11 @@ const AdminLayout: React.FC<Props> = ({ children }) => {
 
 const ActionContainer = styled.div`
   overflow: hidden;
-  position: relative;
 `;
 const Container = styled.div`
   height: 90vh;
   overflow-y: scroll;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -58,7 +58,7 @@ const Logout = styled.span`
   position: absolute;
   color: ${colors.tertiary};
   cursor: pointer;
-  top: 1rem;
-  right: 5rem;
+  top: 0.5rem;
+  right: 0.5rem;
 `;
 export default AdminLayout;

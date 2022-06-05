@@ -25,3 +25,12 @@ export interface ParamState {
     limit: number;
   };
 }
+
+export interface AdminState {
+  admin: {
+    agents: [];
+    properties: [];
+    articles: [];
+    loading: boolean;
+  };
+}

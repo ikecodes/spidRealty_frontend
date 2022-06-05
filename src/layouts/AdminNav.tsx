@@ -5,7 +5,7 @@ import colors from "../constants/colors";
 import Logo from "../assets/images/logos/logo-3.png";
 import { MdArticle, MdSpaceDashboard } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
-import { BsFillHouseFill } from "react-icons/bs";
+import { BsFillHouseFill, BsUpload } from "react-icons/bs";
 
 export const adminMenu = [
   {
@@ -31,6 +31,12 @@ export const adminMenu = [
     name: "articles",
     path: "/admin/articles",
     icon: <MdArticle size={25} />,
+  },
+  {
+    id: "5",
+    name: "post article",
+    path: "/admin/post-article",
+    icon: <BsUpload size={25} />,
   },
 ];
 const AdminNav = () => {
@@ -72,13 +78,13 @@ const Container = styled.div`
 const Menu = styled.ul`
   color: ${colors.white};
   text-transform: capitalize;
+  width: 100%;
   & li {
     display: flex;
     justify-content: space-between;
     font-size: 1.2rem;
     font-weight: 600;
     text-transform: uppercase;
-    width: 100%;
     & span {
       margin-left: 0.5rem;
     }
@@ -86,7 +92,8 @@ const Menu = styled.ul`
     a:link {
       text-decoration: none;
       color: ${colors.white};
-      padding: 0.8rem 2.5rem;
+      padding: 0.8rem;
+      width: 100%;
     }
     & a:hover {
       background-color: ${colors.white};
@@ -98,7 +105,7 @@ const Menu = styled.ul`
     }
   }
   & li:not(:last-child) {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 `;
 const Image = styled.img`

@@ -28,6 +28,7 @@ import AdminDashboard from "./admin/AdminDashboard";
 import AdminAgents from "./admin/AdminAgents";
 import AdminProperties from "./admin/AdminProperties";
 import AdminArticles from "./admin/AdminArticles";
+import AdminPostArticle from "./admin/AdminPostArticle";
 
 export {
   Home,
@@ -56,4 +57,5 @@ export {
   AdminAgents,
   AdminProperties,
   AdminArticles,
+  AdminPostArticle,
 };
