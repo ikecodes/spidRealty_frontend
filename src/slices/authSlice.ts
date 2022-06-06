@@ -36,11 +36,12 @@ export const login: any = createAsyncThunk(
   async ({ formdata, navigate, nextPage }: any, { rejectWithValue }) => {
     try {
       const {
-        data: { token },
+        data: { token, user },
       } = await api.login(formdata);
       Toast("Login successful", "info");
-      navigate(nextPage);
+      localStorage.setItem("role", user.role);
       localStorage.setItem("token", token);
+      navigate(nextPage);
       return token;
     } catch (error: any) {
       rejectWithValue(error?.response?.data?.message);

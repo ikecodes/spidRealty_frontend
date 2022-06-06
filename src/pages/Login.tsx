@@ -25,14 +25,16 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
     const { email, password } = formdata;
     if (email === "" || password === "")
       return Toast("Please fill all required fields", "info");
 
     const nextPage = "/agent/dashboard";
-    dispatch(login({ formdata, navigate, nextPage }));
+    await dispatch(login({ formdata, navigate, nextPage }));
   };
 
   return (

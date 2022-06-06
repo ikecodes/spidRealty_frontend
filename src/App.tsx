@@ -35,6 +35,8 @@ import ScrollToTop from "./utils/ScrollToTop";
 import { useDispatch } from "react-redux";
 // import { PropertyState } from "./constants/interfaces";
 import { getAllProperty } from "../src/slices/propertySlice";
+import AdminProtected from "./utils/AdminPropected";
+import UserProtected from "./utils/UserProtected";
 
 function App() {
   const dispatch = useDispatch();
@@ -75,18 +77,81 @@ function App() {
           <Route path='/investment/:id' element={<InvestmentView />} />
 
           {/* // agent */}
-          <Route path='/agent/dashboard' element={<AgentDashboard />} />
-          <Route path='/agent/post' element={<AgentPost />} />
-          <Route path='/agent/listings' element={<AgentListings />} />
-          <Route path='/agent/profile' element={<AgentProfile />} />
+          <Route
+            path='/agent/dashboard'
+            element={
+              <UserProtected>
+                <AgentDashboard />
+              </UserProtected>
+            }
+          />
+          <Route
+            path='/agent/post'
+            element={
+              <UserProtected>
+                <AgentPost />
+              </UserProtected>
+            }
+          />
+          <Route
+            path='/agent/listings'
+            element={
+              <UserProtected>
+                <AgentListings />
+              </UserProtected>
+            }
+          />
+          <Route
+            path='/agent/profile'
+            element={
+              <UserProtected>
+                <AgentProfile />
+              </UserProtected>
+            }
+          />
 
           {/* // admin */}
           <Route path='/admin/login' element={<AdminLogin />} />
-          <Route path='/admin/dashboard' element={<AdminDashboard />} />
-          <Route path='/admin/agents' element={<AdminAgents />} />
-          <Route path='/admin/properties' element={<AdminProperties />} />
-          <Route path='/admin/articles' element={<AdminArticles />} />
-          <Route path='/admin/post-article' element={<AdminPostArticle />} />
+          <Route
+            path='/admin/dashboard'
+            element={
+              <AdminProtected>
+                <AdminDashboard />
+              </AdminProtected>
+            }
+          />
+          <Route
+            path='/admin/agents'
+            element={
+              <AdminProtected>
+                <AdminAgents />
+              </AdminProtected>
+            }
+          />
+          <Route
+            path='/admin/properties'
+            element={
+              <AdminProtected>
+                <AdminProperties />
+              </AdminProtected>
+            }
+          />
+          <Route
+            path='/admin/articles'
+            element={
+              <AdminProtected>
+                <AdminArticles />
+              </AdminProtected>
+            }
+          />
+          <Route
+            path='/admin/post-article'
+            element={
+              <AdminProtected>
+                <AdminPostArticle />
+              </AdminProtected>
+            }
+          />
         </Routes>
       </ScrollToTop>
     </Router>
