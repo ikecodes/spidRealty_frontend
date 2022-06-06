@@ -9,17 +9,20 @@ import ToolkitProvider, {
   Search,
 } from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
 import BootstrapTable from "react-bootstrap-table-next";
-import ImageModal from "./ImageModal";
+import DeleteModal from "./DeleteModal";
 
 import { Row, Col } from "react-bootstrap";
-import { verifyUser } from "../slices/adminSlice";
+import { updateArticle } from "../slices/adminSlice";
+import ImageModal from "./ImageModal";
 
 interface IData {
   data: any;
 }
-const AgentsTable: React.FC<IData> = ({ data }) => {
+const ArticlesTable: React.FC<IData> = ({ data }) => {
   const [imageModalShow, setImageModalShow] = useState(false);
   const [userdata, setUserData] = useState(null);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [deleteid, setDeleteid] = useState(null);
   const dispatch = useDispatch();
   const { SearchBar } = Search;
   const sizePerPage = 10;
@@ -43,66 +46,55 @@ const AgentsTable: React.FC<IData> = ({ data }) => {
       formatter: (data: any) => <>{data._id}</>,
     },
     {
-      dataField: "isVerify",
-      text: "Verified",
+      dataField: "isFeatured",
+      text: "Featured",
       formatter: (cellContent: any, data: any) => (
-        <div onClick={() => dispatch(verifyUser(data._id))}>
-          {data.isVerified ? (
+        <div
+          onClick={() => {
+            const formdata = { isFeatured: !data.isFeatured };
+            const id = data._id;
+            dispatch(updateArticle({ formdata, id }));
+          }}
+        >
+          {data.isFeatured ? (
             <span className='badge bg-success' role='button'>
-              Verified
+              Featured
             </span>
           ) : (
-            <span className='badge bg-danger' role='button'>
-              Not verified
+            <span className='badge bg-primary' role='button'>
+              Not featured
             </span>
           )}
         </div>
       ),
     },
     {
-      dataField: "firstName",
-      text: "First Name",
+      dataField: "title",
+      text: "Title",
       formatter: (cellContent: any, data: any) => (
         <>
-          <span>{data.firstName}</span>
+          <span>{data.title}</span>
         </>
       ),
     },
     {
-      dataField: "lastName",
-      text: "Last Name",
+      dataField: "description",
+      text: "Description",
       formatter: (cellContent: any, data: any) => (
-        <>
-          <span>{data.lastName}</span>
-        </>
+        <p>{data?.description.slice(1, 50)}...</p>
       ),
     },
     {
-      dataField: "email",
-      text: "Email",
-      sort: true,
-    },
-    {
-      dataField: "phone",
-      text: "Phone number",
-      sort: true,
-      formatter: (cellContent: any, data: any) => (
-        <>
-          <span className='text-secondary'>{data.phone}</span>
-        </>
-      ),
-    },
-    {
-      dataField: "companyCac",
-      text: "CAC",
+      dataField: "photo",
+      text: "Image",
       sort: true,
       formatter: (cellContent: any, data: any) => (
         <span
-          className='badge bg-primary'
+          className='badge bg-secondary'
           role='button'
           onClick={() => {
             setImageModalShow(true);
-            setUserData(data?.companyCac);
+            setUserData(data?.photo);
           }}
         >
           View
@@ -110,19 +102,19 @@ const AgentsTable: React.FC<IData> = ({ data }) => {
       ),
     },
     {
-      dataField: "identityCard",
-      text: "Identity Card",
+      dataField: "delete",
+      text: "Delete",
       sort: true,
       formatter: (cellContent: any, data: any) => (
         <span
-          className='badge bg-primary'
+          className='badge bg-danger'
           role='button'
           onClick={() => {
-            setImageModalShow(true);
-            setUserData(data?.identityCard);
+            setDeleteModalShow(true);
+            setDeleteid(data._id);
           }}
         >
-          View
+          Delete Article
         </span>
       ),
     },
@@ -132,7 +124,7 @@ const AgentsTable: React.FC<IData> = ({ data }) => {
   return (
     <div style={{ fontSize: "0.8rem" }}>
       <div>
-        <h2 className='text-capitalize text-center text-secondary'>Agents</h2>
+        <h2 className='text-capitalize text-center text-secondary'>Articles</h2>
         <div>
           <PaginationProvider
             pagination={paginationFactory(pageOptions)}
@@ -174,8 +166,13 @@ const AgentsTable: React.FC<IData> = ({ data }) => {
                           // responsive
                         />
                         {!data.length ? (
-                          <p>You currently do not have any agent</p>
+                          <p>You currently do not have any user</p>
                         ) : null}
+                        <DeleteModal
+                          data={deleteid}
+                          show={deleteModalShow}
+                          onHide={() => setDeleteModalShow(false)}
+                        />
                         <ImageModal
                           data={userdata}
                           show={imageModalShow}
@@ -199,4 +196,4 @@ const AgentsTable: React.FC<IData> = ({ data }) => {
   );
 };
 
-export default AgentsTable;
+export default ArticlesTable;

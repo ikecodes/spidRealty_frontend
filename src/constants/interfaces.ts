@@ -31,6 +31,7 @@ export interface AdminState {
     agents: [];
     properties: [];
     articles: [];
+    article: null | {};
     loading: boolean;
   };
 }

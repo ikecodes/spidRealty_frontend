@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "react-bootstrap";
+import { deleteArticle } from "../slices/adminSlice";
 
 const DeleteModal = (props: any) => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const DeleteModal = (props: any) => {
               <button
                 className='btn btn-danger'
                 onClick={() => {
-                  console.log("action");
+                  dispatch(deleteArticle(props?.data));
                   props.onHide();
                 }}
               >

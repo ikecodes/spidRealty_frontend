@@ -51,11 +51,11 @@ const PropertiesTable: React.FC<IData> = ({ data }) => {
         <div onClick={() => dispatch(verifyProperty(data._id))}>
           {data.isVerified ? (
             <span className='badge bg-success' role='button'>
-              verified
+              Verified
             </span>
           ) : (
             <span className='badge bg-danger' role='button'>
-              not verified
+              Not verified
             </span>
           )}
         </div>
@@ -77,11 +77,11 @@ const PropertiesTable: React.FC<IData> = ({ data }) => {
         <div onClick={() => dispatch(markAsSold(data._id))}>
           {data.isSold ? (
             <span className='badge bg-success' role='button'>
-              sold
+              Sold
             </span>
           ) : (
             <span className='badge bg-danger' role='button'>
-              not sold
+              Not sold
             </span>
           )}
         </div>
@@ -100,7 +100,7 @@ const PropertiesTable: React.FC<IData> = ({ data }) => {
             setUserData(data);
           }}
         >
-          view
+          View
         </span>
       ),
     },
@@ -154,7 +154,7 @@ const PropertiesTable: React.FC<IData> = ({ data }) => {
                           // responsive
                         />
                         {!data.length ? (
-                          <p>You currently do not have any user</p>
+                          <p>You currently do not have any property</p>
                         ) : null}
                         <PropertyModal
                           data={userdata}

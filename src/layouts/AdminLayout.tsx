@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiLogOutCircle } from "react-icons/bi";
 import styled from "styled-components";
 import colors from "../constants/colors";
 import AdminNav from "./AdminNav";
 import { logout } from "../utils/Helpers";
+import { useDispatch } from "react-redux";
+import { getMe } from "../slices/authSlice";
 
 interface Props {
   children: React.ReactNode;
 }
 const AdminLayout: React.FC<Props> = ({ children }) => {
+  const dispatch = useDispatch();
+  //  const user = useSelector((state: AuthState) => state.auth.user);
+  useEffect(() => {
+    // @ts-ignore
+    const token = localStorage.getItem("token");
+    if (token) dispatch(getMe());
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const navigate = useNavigate();
   const to = "/admin/login";
   return (

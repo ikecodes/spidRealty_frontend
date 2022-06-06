@@ -1,3 +1,4 @@
+// @ts-nocheck
 import axios from "axios";
 
 let url;
@@ -80,3 +81,10 @@ export const verifyProperty = (id: any) =>
   API.patch(`/properties/verifyProperty/${id}`);
 export const markAsSold = (id: any) =>
   API.patch(`/properties/markAsSold/${id}`);
+
+export const createArticle = (formdata) => API.post("/articles", formdata);
+export const getAllArticles = () => API.get("/articles");
+export const getArticle = (id) => API.get(`/articles/${id}`);
+export const deleteArticle = (id) => API.delete(`/articles/${id}`);
+export const updateArticle = (formdata, id) =>
+  API.patch(`/articles/${id}`, formdata);

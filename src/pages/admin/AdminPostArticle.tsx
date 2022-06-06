@@ -3,16 +3,17 @@ import { Editor } from "@tinymce/tinymce-react";
 import AdminLayout from "../../layouts/AdminLayout";
 import Toast from "../../utils/Toast";
 import Button from "../../shared/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AdminState } from "../../constants/interfaces";
+import { createArticle } from "../../slices/adminSlice";
 
 const AdminPostArticle = () => {
+  const dispatch = useDispatch();
   const { loading } = useSelector((state: AdminState) => state.admin);
   const [formData, setFormData] = useState({
     title: "",
     author: "",
     photo: "",
-    slug: "",
     description: "",
     body: "",
   });
@@ -32,7 +33,7 @@ const AdminPostArticle = () => {
     setFormData({ ...formData, body: text });
   };
 
-  const handlePublish = (e: React.FormEvent<HTMLFormElement>) => {
+  const handlePublish = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !formData.title ||
@@ -44,6 +45,22 @@ const AdminPostArticle = () => {
       Toast("Please fill all the fields", "info");
       return;
     }
+
+    let formdata = new FormData();
+    formdata.append("title", formData.title);
+    formdata.append("author", formData.author);
+    formdata.append("photo", formData.photo);
+    formdata.append("description", formData.description);
+    formdata.append("body", formData.body);
+
+    await dispatch(createArticle(formdata));
+    setFormData({
+      title: "",
+      author: "",
+      photo: "",
+      description: "",
+      body: "",
+    });
   };
   return (
     <AdminLayout>
