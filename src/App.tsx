@@ -37,6 +37,7 @@ import { useDispatch } from "react-redux";
 import { getAllProperty } from "../src/slices/propertySlice";
 import AdminProtected from "./utils/AdminPropected";
 import UserProtected from "./utils/UserProtected";
+import { getAllArticles } from "./slices/adminSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function App() {
     dispatch(
       getAllProperty({ stateSlug, regionSlug, categorySlug, page, limit })
     );
+    dispatch(getAllArticles());
   }, []);
 
   // if (loading) return <Loader />;

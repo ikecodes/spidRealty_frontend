@@ -1,18 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import colors from '../../constants/colors';
-import Section from '../../layouts/Section';
-import ArticleCard from '../ArticleCard';
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import colors from "../../constants/colors";
+import { AdminState } from "../../constants/interfaces";
+import Section from "../../layouts/Section";
+import ArticleCard from "../ArticleCard";
 const HomeArticles = () => {
+  const { articles } = useSelector((state: AdminState) => state.admin);
+
+  const featuredArticles = articles
+    .filter((article: any) => article.isFeatured === true)
+    .slice(0, 3);
+  useEffect(() => {}, []);
   return (
     <Section>
       <div className='container'>
-        <h1 className='text-capitalize my-5'>recent article & updates</h1>
+        {featuredArticles.length > 0 && (
+          <h1 className='text-capitalize my-5'>featured articles & updates</h1>
+        )}
+
         <div className='row'>
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
+          {featuredArticles.length > 0 &&
+            featuredArticles.map((article: any) => (
+              <ArticleCard
+                key={article._id}
+                id={article._id}
+                slug={article.slug}
+                title={article.title}
+                date={article.createdAt}
+                photo={article.photo}
+                description={article.description}
+              />
+            ))}
         </div>
         <div className='text-center my-3'>
           <Link to='/blog'>

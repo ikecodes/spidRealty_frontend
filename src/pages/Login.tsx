@@ -41,7 +41,7 @@ const Login = () => {
     <Layout>
       <Section>
         <div className='row justify-content-center'>
-          <div className='col-lg-8'>
+          <div className='col-lg-6'>
             <h1 className='text-capitalize m-0 p-0 mb-5'>Login</h1>
 
             <Form className='mt-3 text-dark'>
@@ -52,7 +52,6 @@ const Login = () => {
                   name='email'
                   value={formdata.email}
                   placeholder='Enter email'
-                  className='bg-light rounded-0'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleChange(e)
                   }
@@ -65,7 +64,6 @@ const Login = () => {
                   name='password'
                   value={formdata.password}
                   placeholder='•••••••••••'
-                  className='bg-light rounded-0'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleChange(e)
                   }

@@ -101,7 +101,7 @@ const SignUp = () => {
     <Layout>
       <Section>
         <div className='row justify-content-center'>
-          <div className='col-lg-8'>
+          <div className='col-lg-6'>
             <h1 className='text-capitalize m-0 p-0 mb-5'>{userType} sign up</h1>
 
             <Form className='mt-3 text-dark' onSubmit={handleSubmit}>

@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import ArticleCard from '../components/ArticleCard';
-import Layout from '../layouts/Layout';
-import Section from '../layouts/Section';
-import Loader from '../shared/Loader';
+import React from "react";
+import { useSelector } from "react-redux";
+import ArticleCard from "../components/ArticleCard";
+import { AdminState } from "../constants/interfaces";
+import Layout from "../layouts/Layout";
+import Section from "../layouts/Section";
 
 const Blog = () => {
-  const [loading, setloading] = useState<boolean>(true);
+  const { articles } = useSelector((state: AdminState) => state.admin);
 
-  setTimeout(() => {
-    setloading(false);
-  }, 2000);
-  if (loading) return <Loader />;
   return (
     <Layout>
       <Section>
@@ -18,12 +15,18 @@ const Blog = () => {
           latest news and articles
         </h1>
         <div className='row'>
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
+          {articles.length > 0 &&
+            articles.map((article: any) => (
+              <ArticleCard
+                key={article._id}
+                id={article._id}
+                slug={article.slug}
+                title={article.title}
+                date={article.createdAt}
+                photo={article.photo}
+                description={article.description}
+              />
+            ))}
         </div>
       </Section>
     </Layout>

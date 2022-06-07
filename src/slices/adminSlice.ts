@@ -194,7 +194,7 @@ export const adminSlice: any = createSlice({
       state.loading = true;
     },
     [createArticle.fulfilled]: (state, { payload }) => {
-      state.articles = state.articles.push(payload);
+      state.articles = [...state.articles, payload];
       state.loading = false;
     },
     [deleteArticle.fulfilled]: (state, { payload }) => {
