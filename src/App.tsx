@@ -31,17 +31,19 @@ import {
 } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop";
-// import Loader from "./shared/Loader";
-import { useDispatch } from "react-redux";
-// import { PropertyState } from "./constants/interfaces";
-import { getAllProperty } from "../src/slices/propertySlice";
+import Loader from "./shared/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { PropertyState } from "./constants/interfaces";
+import { onLoadProperty } from "../src/slices/propertySlice";
 import AdminProtected from "./utils/AdminPropected";
 import UserProtected from "./utils/UserProtected";
 import { getAllArticles } from "./slices/adminSlice";
 
 function App() {
   const dispatch = useDispatch();
-  // const { loading } = useSelector((state: PropertyState) => state.property);
+  const { firstLoading } = useSelector(
+    (state: PropertyState) => state.property
+  );
   const stateSlug = "";
   const regionSlug = "";
   const categorySlug = "";
@@ -49,12 +51,12 @@ function App() {
   const limit = 10;
   useEffect(() => {
     dispatch(
-      getAllProperty({ stateSlug, regionSlug, categorySlug, page, limit })
+      onLoadProperty({ stateSlug, regionSlug, categorySlug, page, limit })
     );
     dispatch(getAllArticles());
   }, []);
 
-  // if (loading) return <Loader />;
+  if (firstLoading) return <Loader />;
   return (
     <Router>
       <ScrollToTop>

@@ -2,8 +2,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../api/api";
 import Toast from "../utils/Toast";
-// import Toast from "../utils/Toast";
 
+export const getStats: any = createAsyncThunk(
+  "admin/getStats",
+  async (arg, { rejectWithValue }) => {
+    try {
+      const { data } = await api.getStats();
+      return data.data;
+    } catch (error: any) {
+      rejectWithValue(error);
+      console.log(error?.response?.data?.message);
+      //   Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
 export const getAllAgents: any = createAsyncThunk(
   "admin/getAllAgents",
   async (arg, { rejectWithValue }) => {
@@ -136,6 +148,7 @@ export const updateArticle: any = createAsyncThunk(
   }
 );
 const initialState = {
+  stats: null,
   agents: [],
   properties: [],
   articles: [],
@@ -147,6 +160,13 @@ export const adminSlice: any = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [getStats.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [getStats.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.stats = payload;
+    },
     [getAllAgents.pending]: (state, { payload }) => {
       state.loading = true;
     },

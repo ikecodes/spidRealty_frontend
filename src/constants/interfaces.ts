@@ -12,6 +12,7 @@ export interface PropertyState {
     pagination: any;
     userProperties: any;
     loading: boolean;
+    firstLoading: boolean;
     property: any;
   };
 }
@@ -28,6 +29,7 @@ export interface ParamState {
 
 export interface AdminState {
   admin: {
+    stats: any;
     agents: [];
     properties: [];
     articles: [];

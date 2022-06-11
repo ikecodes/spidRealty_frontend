@@ -71,6 +71,7 @@ export const getAllProperty = (
 export const getProperty = (id: any) => API.get(`/properties/${id}`);
 
 //ADMIN
+export const getStats = () => API.get("/users/getStats");
 export const getAgents = () => API.get("/users");
 export const getAgent = (id: any) => API.get(`/users/${id}`);
 export const activeStatus = (id: any) => API.patch(`/users/activeStatus/${id}`);
