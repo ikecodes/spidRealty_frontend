@@ -6,7 +6,7 @@ interface IProps {
 }
 const UserProtected: React.FC<IProps> = ({ children }) => {
   const role = localStorage.getItem("role");
-  return role === "user" || role === "admin" ? children : <Navigate to='/' />;
+  return role === "agent" || role === "admin" ? children : <Navigate to='/' />;
 };
 
 export default UserProtected;
