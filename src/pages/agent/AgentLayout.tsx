@@ -3,7 +3,6 @@ import Layout from "../../layouts/Layout";
 import styled from "styled-components";
 import colors from "../../constants/colors";
 import { MdDashboard, MdUpload, MdHome } from "react-icons/md";
-import { TiUser } from "react-icons/ti";
 import Section from "../../layouts/Section";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,50 +27,55 @@ const AgentLayout: React.FC<Props> = ({ children }) => {
   return (
     <Layout>
       <Container className='d-flex flex-wrap flex-md-row-reverse justify-content-between align-items-center'>
-        <div className='d-flex  align-items-center mb-2'>
-          <ProfileBox>
-            <Profile src={user?.photo} className='rounded-circle' />
-          </ProfileBox>
-          <h6 className='m-0 ms-1'>Hello, {user?.firstName}</h6>
-        </div>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : "")}
+          to='/agent/profile'
+        >
+          <NavBox className='d-flex  align-items-center'>
+            <ProfileBox>
+              <Profile src={user?.photo} className='rounded-circle' />
+            </ProfileBox>
+            <h6 className='m-0 ms-1'>Hello, {user?.firstName}</h6>
+          </NavBox>
+        </NavLink>
 
         <div className='d-flex gap-4'>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}
             to='/agent/dashboard'
           >
-            <div className='d-flex flex-column align-items-center text-center px-1 py-3'>
+            <NavBox className='d-flex  align-items-center text-center'>
               <MdDashboard size={20} />
               <h6 className='m-0 ms-1'>dashboard</h6>
-            </div>
+            </NavBox>
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}
             to='/agent/post'
           >
-            <div className='d-flex flex-column align-items-center text-center px-1 py-3'>
+            <NavBox className='d-flex  align-items-center text-center '>
               <MdUpload size={20} />
-              <h6 className='m-0 ms-1'>post property</h6>
-            </div>
+              <h6 className='m-0 ms-1'>post</h6>
+            </NavBox>
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}
             to='/agent/listings'
           >
-            <div className='d-flex flex-column align-items-center text-center px-1 py-3'>
+            <NavBox className='d-flex  align-items-center text-center '>
               <MdHome size={20} />
               <h6 className='m-0 ms-1'>listings</h6>
-            </div>
+            </NavBox>
           </NavLink>
-          <NavLink
+          {/* <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}
             to='/agent/profile'
           >
-            <div className='d-flex flex-column align-items-center text-center px-1 py-3'>
+            <div className='d-flex  align-items-center text-center px-1 py-3'>
               <TiUser size={20} />
               <h6 className='m-0 ms-1'>profile</h6>
             </div>
-          </NavLink>
+          </NavLink> */}
         </div>
       </Container>
       <Section>
@@ -94,7 +98,7 @@ const Container = styled.div`
   }
   & a.active {
     background-color: ${colors.white};
-    /* border-radius: 0.5rem; */
+    border-radius: 0.5rem;
     color: ${colors.primary};
   }
 
@@ -102,7 +106,9 @@ const Container = styled.div`
     padding: 0.5rem 0.5rem;
   }
 `;
-
+const NavBox = styled.div`
+  padding: 0.5rem;
+`;
 const ProfileBox = styled.div`
   width: 2.5rem;
   height: 2.5rem;
