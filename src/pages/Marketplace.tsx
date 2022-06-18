@@ -1,12 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import Filter from "../components/Filter";
 import PropertyRenderer from "../components/PropertyRenderer";
+// import { PropertyState } from "../constants/interfaces";
 import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
+import { getAllProperty } from "../slices/propertySlice";
 
 const Marketplace = () => {
+  const dispatch = useDispatch();
+  // const { loading } = useSelector((state: PropertyState) => state.property);
+  const stateSlug = "";
+  const regionSlug = "";
+  const categorySlug = "";
+  const page = 1;
+  const limit = 10;
+  useEffect(() => {
+    dispatch(
+      getAllProperty({ stateSlug, regionSlug, categorySlug, page, limit })
+    );
+  }, []);
   return (
     <Layout>
       <Section>

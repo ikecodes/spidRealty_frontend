@@ -218,9 +218,9 @@ input[type="color"]:focus,
 }
 
 /* pagination */
-a.page-link {
+/* a.page-link {
   color: #2280b9 !important;
-}
+} */
 .page-item.active .page-link {
   color: #ffffff !important;
   background-color: #2280b9 !important;

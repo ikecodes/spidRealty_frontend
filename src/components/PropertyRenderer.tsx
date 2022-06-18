@@ -10,6 +10,7 @@ import PropertyCard from "./PropertyCard";
 
 const PropertyRenderer = () => {
   const dispatch = useDispatch();
+  const [page, setPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
   const { properties, loading } = useSelector(
     (state: PropertyState) => state.property
@@ -20,11 +21,12 @@ const PropertyRenderer = () => {
 
   useEffect(() => {
     if (properties) {
-      setPageCount(properties.pagination.pageCount);
+      setPageCount(properties?.pagination.pageCount);
     }
   }, [properties]);
   const handlePageClick = (data: { selected: number }) => {
     const page = data.selected + 1;
+    setPage(page);
     dispatch(
       getAllProperty({ stateSlug, regionSlug, categorySlug, page, limit })
     );
@@ -47,25 +49,29 @@ const PropertyRenderer = () => {
             />
           ))}
       </div>
-      <ReactPaginate
-        breakLabel='...'
-        nextLabel='next >>'
-        onPageChange={handlePageClick}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={3}
-        pageCount={pageCount}
-        previousLabel='<< previous'
-        containerClassName={"pagination justify-content-center"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        previousClassName={"page-item"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        breakClassName={"page-item"}
-        breakLinkClassName={"page-link"}
-        activeClassName={"active"}
-      />
+      {properties?.data.length > 0 && (
+        <ReactPaginate
+          breakLabel='...'
+          nextLabel='next >>'
+          onPageChange={handlePageClick}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          previousLabel='<< previous'
+          containerClassName={"pagination justify-content-center"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={`page-link ${
+            page === pageCount ? "text-secondary" : ""
+          }`}
+          breakClassName={"page-item"}
+          breakLinkClassName={"page-link"}
+          activeClassName={"active"}
+        />
+      )}
     </Container>
   );
 };
