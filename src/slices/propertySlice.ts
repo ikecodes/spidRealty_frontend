@@ -15,6 +15,21 @@ export const postProperty: any = createAsyncThunk(
     }
   }
 );
+
+export const deleteProperty: any = createAsyncThunk(
+  "property/deleteProperty",
+  async (id, { rejectWithValue }) => {
+    try {
+      await api.deleteProperty(id);
+      return id;
+    } catch (error: any) {
+      rejectWithValue(error);
+      console.log(error?.response?.data?.message);
+      //   Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
+
 export const getAllPropertyByUser: any = createAsyncThunk(
   "property/getAllPropertyByUser",
   async (arg, { rejectWithValue }) => {
@@ -107,6 +122,15 @@ export const propertySlice: any = createSlice({
     },
     [getAllPropertyByUser.fulfilled]: (state, { payload }) => {
       state.userProperties = payload;
+      state.loading = false;
+    },
+    [deleteProperty.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [deleteProperty.fulfilled]: (state, { payload }) => {
+      state.userProperties = state.userProperties.filter(
+        (property) => property._id !== payload
+      );
       state.loading = false;
     },
     [getAllProperty.pending]: (state, { payload }) => {

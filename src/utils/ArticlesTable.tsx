@@ -170,6 +170,7 @@ const ArticlesTable: React.FC<IData> = ({ data }) => {
                         ) : null}
                         <DeleteModal
                           data={deleteid}
+                          type='article'
                           show={deleteModalShow}
                           onHide={() => setDeleteModalShow(false)}
                         />

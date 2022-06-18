@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "react-bootstrap";
 import { deleteArticle } from "../slices/adminSlice";
+import { deleteProperty } from "../slices/propertySlice";
 
 const DeleteModal = (props: any) => {
   const dispatch = useDispatch();
@@ -21,7 +22,11 @@ const DeleteModal = (props: any) => {
               <button
                 className='btn btn-danger'
                 onClick={() => {
-                  dispatch(deleteArticle(props?.data));
+                  if (props?.type === "property") {
+                    dispatch(deleteProperty(props?.data));
+                  } else {
+                    dispatch(deleteArticle(props?.data));
+                  }
                   props.onHide();
                 }}
               >
