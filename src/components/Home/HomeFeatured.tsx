@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -9,31 +9,37 @@ import Loader from "../../shared/Loader";
 import PropertyCard from "../PropertyCard";
 
 const HomeFeatured = () => {
+  const [featured, setFeatured] = useState([]);
   const { properties, loading } = useSelector(
     (state: PropertyState) => state.property
   );
 
+  useEffect(() => {
+    const data = properties?.data.filter(
+      (property: any) => property.isFeatured === true
+    );
+    setFeatured(data);
+  }, [properties]);
+
+  if (!featured.length) return null;
   return (
     <Section>
       <div className='container'>
         <h1 className='text-capitalize  my-5'>featured properties</h1>
         {loading && <Loader />}
         <div className='row'>
-          {properties?.data &&
-            properties?.data
-              .slice(1, 3)
-              .map((property: any) => (
-                <PropertyCard
-                  key={property._id}
-                  id={property._id}
-                  title={property.title}
-                  region={property.region}
-                  state={property.state}
-                  slug={property.slug}
-                  price={property.price}
-                  image={property.images[0].original}
-                />
-              ))}
+          {featured.slice(1, 3).map((property: any) => (
+            <PropertyCard
+              key={property._id}
+              id={property._id}
+              title={property.title}
+              region={property.region}
+              state={property.state}
+              slug={property.slug}
+              price={property.price}
+              image={property.images[0].original}
+            />
+          ))}
         </div>
         <div className='text-center my-3'>
           <Link to='/marketplace'>
