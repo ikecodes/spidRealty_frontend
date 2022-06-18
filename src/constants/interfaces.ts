@@ -2,6 +2,7 @@ export interface AuthState {
   auth: {
     user: any;
     loading: boolean;
+    photoUpdateLoading: boolean;
     token: "";
     data: {};
   };

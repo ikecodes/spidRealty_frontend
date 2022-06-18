@@ -74,6 +74,7 @@ export const getProperty = (id: any) => API.get(`/properties/${id}`);
 export const getStats = () => API.get("/users/getStats");
 export const getAgents = () => API.get("/users");
 export const getAgent = (id: any) => API.get(`/users/${id}`);
+export const updateMe = (formdata) => API.patch("/users/updateMe/", formdata);
 export const activeStatus = (id: any) => API.patch(`/users/activeStatus/${id}`);
 export const verifyUser = (id: any) => API.patch(`/users/verifyUser/${id}`);
 

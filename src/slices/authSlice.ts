@@ -98,6 +98,19 @@ export const uploadId: any = createAsyncThunk(
     }
   }
 );
+export const updateMe: any = createAsyncThunk(
+  "auth/updateMe",
+  async (formdata, { rejectWithValue }) => {
+    try {
+      const { data } = await api.updateMe(formdata);
+      Toast("Profile update successful", "info");
+      return data.data;
+    } catch (error: any) {
+      rejectWithValue(error?.response?.data);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
 export const updatePhoto: any = createAsyncThunk(
   "auth/updatePhoto",
   async (formdata, { rejectWithValue }) => {
@@ -126,6 +139,7 @@ export const updatePassword: any = createAsyncThunk(
 const initialState = {
   user: null,
   loading: false,
+  photoUpdateLoading: false,
   token: null,
 };
 
@@ -158,8 +172,19 @@ export const authSlice: any = createSlice({
     [getMe.fulfilled]: (state, { payload }) => {
       state.user = payload;
     },
+    [updateMe.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [updateMe.fulfilled]: (state, { payload }) => {
+      state.user = payload;
+      state.loading = false;
+    },
+    [updatePhoto.pending]: (state, { payload }) => {
+      state.photoUpdateLoading = true;
+    },
     [updatePhoto.fulfilled]: (state, { payload }) => {
       state.user = payload;
+      state.photoUpdateLoading = false;
     },
     [uploadId.pending]: (state, { payload }) => {
       state.loading = true;
