@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  BsCalendarDate,
-  BsFacebook,
-  BsTwitter,
-  BsLinkedin,
-  BsClock,
-} from "react-icons/bs";
+import { BsCalendarDate, BsClock } from "react-icons/bs";
 import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
 import Loader from "../shared/Loader";
@@ -31,14 +25,12 @@ const BlogView = () => {
     <Layout>
       <Section>
         <h1 className='text-capitalize mb-3 text-center'>{article?.title}</h1>
-        <div className='text-dark  d-flex justify-content-around mb-3  flex-wrap bg-light gap-3 py-2'>
-          <div className='d-flex align-items-center '>
-            {/* <BsShare size={15} className='me-1' />
-            <span className='me-3 mt-1'>Share</span> */}
+        <div className='text-dark  d-flex justify-content-around mb-3  flex-wrap bg-light border-bottom gap-3 py-2'>
+          {/* <div className='d-flex align-items-center '>
             <BsFacebook color='#3b5998' size={20} className='me-3' />
             <BsTwitter color='#00acee' size={20} className='me-3' />
             <BsLinkedin color='#0e76a8' size={20} className='me-3' />
-          </div>
+          </div> */}
           <div className='d-flex align-items-center'>
             <BsCalendarDate size={17} className='me-1' />
             <span className='mt-1 m-0 m-0'>
@@ -47,7 +39,7 @@ const BlogView = () => {
           </div>
           <div className='d-flex align-items-center'>
             <BsClock size={15} className='me-1' />
-            <span className='m-0 p-0'>{article?.readingTime?.text}</span>
+            <span className='m-0 p-0'>{article?.readingTime?.text} time</span>
           </div>
         </div>
 

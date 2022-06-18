@@ -134,6 +134,19 @@ export const deleteArticle: any = createAsyncThunk(
     }
   }
 );
+export const updateProperty: any = createAsyncThunk(
+  "admin/updateProperty",
+  async ({ formdata, id }, { rejectWithValue }) => {
+    try {
+      const { data } = await api.updateProperty(formdata, id);
+      return data.data;
+    } catch (error: any) {
+      rejectWithValue(error);
+      console.log(error?.response?.data?.message);
+      //   Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
 export const updateArticle: any = createAsyncThunk(
   "admin/updateArticle",
   async ({ formdata, id }, { rejectWithValue }) => {
@@ -184,6 +197,11 @@ export const adminSlice: any = createSlice({
     [verifyUser.fulfilled]: (state, { payload }) => {
       state.agents = state.agents.map((agent) =>
         agent._id === payload._id ? payload : agent
+      );
+    },
+    [updateProperty.fulfilled]: (state, { payload }) => {
+      state.properties = state.properties.map((property) =>
+        property._id === payload._id ? payload : property
       );
     },
     [verifyProperty.fulfilled]: (state, { payload }) => {

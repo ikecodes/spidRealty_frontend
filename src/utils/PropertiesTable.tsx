@@ -12,7 +12,11 @@ import BootstrapTable from "react-bootstrap-table-next";
 import PropertyModal from "./PropertyModal";
 
 import { Row, Col } from "react-bootstrap";
-import { markAsSold, verifyProperty } from "../slices/adminSlice";
+import {
+  markAsSold,
+  updateProperty,
+  verifyProperty,
+} from "../slices/adminSlice";
 
 interface IData {
   data: any;
@@ -43,6 +47,29 @@ const PropertiesTable: React.FC<IData> = ({ data }) => {
       sort: true,
       hidden: true,
       formatter: (data: any) => <>{data._id}</>,
+    },
+    {
+      dataField: "isFeatured",
+      text: "Featured",
+      formatter: (cellContent: any, data: any) => (
+        <div
+          onClick={() => {
+            const formdata = { isFeatured: !data.isFeatured };
+            const id = data._id;
+            dispatch(updateProperty({ formdata, id }));
+          }}
+        >
+          {data.isFeatured ? (
+            <span className='badge bg-success' role='button'>
+              Featured
+            </span>
+          ) : (
+            <span className='badge bg-primary' role='button'>
+              Not featured
+            </span>
+          )}
+        </div>
+      ),
     },
     {
       dataField: "isVerify",

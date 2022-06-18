@@ -7,7 +7,7 @@ import Loader from "../shared/Loader";
 import ImageGallery from "react-image-gallery";
 import colors from "../constants/colors";
 import styled from "styled-components";
-import { BsClock, BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
+import { BsClock } from "react-icons/bs";
 import { MdOutlineBathroom, MdOutlineBedroomParent } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import Button from "../shared/Button";
@@ -17,6 +17,7 @@ import { PropertyState } from "../constants/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { currencyFormat } from "../utils/Helpers";
+// import ShareButton from "../shared/ShareButton";
 
 const MarketplaceView = () => {
   const location = useLocation();
@@ -39,7 +40,10 @@ const MarketplaceView = () => {
             <h6 className='text-uppercase fw-bold'>for {property?.type}</h6>
             <h4 className='text-capitalize text-dark'>{property?.title}</h4>
             <Container className='d-flex gap-3 text-secondary mb-2'>
-              <span className='border p-1 text-capitalize'>promoted</span>
+              {property?.isPromoted && (
+                <span className='border p-1 text-capitalize'>promoted</span>
+              )}
+
               <div className='d-flex align-items-center'>
                 <BsClock size={15} className='me-1' />
                 <span>
@@ -133,8 +137,9 @@ const MarketplaceView = () => {
               </Link>
               {/* <BsBookmarkHeart size={25} role='button' color={colors.primary} /> */}
             </div>
-            <div className='d-flex align-items-center justify-content-center gap-2 border-top border-bottom py-2 my-3 '>
-              <a
+            <div className='d-flex align-items-center border-bottom py-2 my-3 '>
+              {/* <ShareButton url={property?.shareUrl} /> */}
+              {/* <a
                 href={property?.socialShare[0]}
                 target='_blank'
                 rel='noreferrer'
@@ -154,7 +159,7 @@ const MarketplaceView = () => {
                 rel='noreferrer'
               >
                 <BsFacebook color='#3b5998' size={20} className='me-3' />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

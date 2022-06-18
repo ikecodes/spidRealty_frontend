@@ -21,6 +21,7 @@ const HomeFeatured = () => {
     setFeatured(data);
   }, [properties]);
 
+  console.log(featured);
   if (!featured.length) return null;
   return (
     <Section>
@@ -28,7 +29,7 @@ const HomeFeatured = () => {
         <h1 className='text-capitalize  my-5'>featured properties</h1>
         {loading && <Loader />}
         <div className='row'>
-          {featured.slice(1, 3).map((property: any) => (
+          {featured.slice(0, 3).map((property: any) => (
             <PropertyCard
               key={property._id}
               id={property._id}

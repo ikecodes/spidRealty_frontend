@@ -85,6 +85,8 @@ export const verifyProperty = (id: any) =>
   API.patch(`/properties/verifyProperty/${id}`);
 export const markAsSold = (id: any) =>
   API.patch(`/properties/markAsSold/${id}`);
+export const updateProperty = (formdata, id) =>
+  API.patch(`/properties/${id}`, formdata);
 
 export const createArticle = (formdata) => API.post("/articles", formdata);
 export const getAllArticles = () => API.get("/articles");
