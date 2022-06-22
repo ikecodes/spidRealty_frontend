@@ -15,7 +15,7 @@ const Footer = () => {
             <ImageBox src={Logo} />
           </div>
           <div className='col-lg-3'>
-            <ul className='text-capitalize'>
+            <ul className='text-capitalize m-0 p-0'>
               <li className='mb-3 fw-bolder'>quick links</li>
               <li className='mb-3'>
                 <Link to='/about'>about us</Link>
@@ -32,7 +32,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className='col-lg-3'>
-            <ul className='text-capitalize'>
+            <ul className='text-capitalize m-0 p-0'>
               <li className='mb-3 fw-bolder'>legal</li>
               <li className='mb-3'>
                 <Link to='/about'>privacy policy</Link>
@@ -44,7 +44,7 @@ const Footer = () => {
           </div>
           <div className='col-lg-3'>
             <h6 className='text-capitalize fw-bolder mb-3'>contact us</h6>
-            <ul className='my-4 d-flex justify-content-between'>
+            <ul className='my-4 d-flex justify-content-between m-0 p-0'>
               <a href='/facebook' target='_blank'>
                 <FaFacebook size={25} />
               </a>
