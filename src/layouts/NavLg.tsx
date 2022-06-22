@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Logo from "../assets/images/logos/logo-1.png";
+import Logo from "../assets/images/logos/spid-logo.jpg";
 import NavItemLg from "./NavItemLg";
 import menus from "../constants/menus";
 import colors from "../constants/colors";
@@ -77,7 +77,7 @@ const NavMenu = styled.div`
 `;
 const Image = styled.img`
   height: auto;
-  width: 9rem;
+  width: 15rem;
 `;
 const HomeDashboard = styled.div`
   color: ${colors.primary};
