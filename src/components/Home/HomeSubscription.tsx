@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import colors from '../../constants/colors';
-import Button from '../../shared/Button';
+import React, { useState } from "react";
+import styled from "styled-components";
+import colors from "../../constants/colors";
+import Button from "../../shared/Button";
 
 const HomeSubscription = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -16,7 +16,7 @@ const HomeSubscription = () => {
           <div className='col-lg-6 text-center'>
             <h1 className='text-capitalize'>stay connected</h1>
             <p>
-              Get real-time updates on all our financial offerings and news by
+              Get real-time updates on all our latest listings and news by
               signing up here
             </p>
           </div>

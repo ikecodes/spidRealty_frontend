@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import colors from '../../constants/colors';
-import { MdOutlineContactPhone } from 'react-icons/md';
-import { BsFillLockFill, BsFillBarChartLineFill } from 'react-icons/bs';
-import { BiDollarCircle } from 'react-icons/bi';
+import React from "react";
+import styled from "styled-components";
+import colors from "../../constants/colors";
+import { MdOutlineSecurity } from "react-icons/md";
+import { BiBadgeCheck, BiSupport } from "react-icons/bi";
+import { RiTeamFill } from "react-icons/ri";
 
 const HomeChoose = () => {
   return (
@@ -14,20 +14,20 @@ const HomeChoose = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-lg-3 mb-3 text-center'>
-            <MdOutlineContactPhone size={80} className='my-3' />
-            <h6 className='text-capitalize'>help center</h6>
+            <BiBadgeCheck size={80} className='my-3' />
+            <h6 className='text-capitalize'>Clients First</h6>
           </div>
           <div className='col-lg-3 mb-3 text-center'>
-            <BiDollarCircle size={80} className='my-3' />
-            <h6 className='text-capitalize'>property assurance</h6>
+            <BiSupport size={80} className='my-3' />
+            <h6 className='text-capitalize'>Agents Support </h6>
           </div>
           <div className='col-lg-3 mb-3 text-center'>
-            <BsFillBarChartLineFill size={80} className='my-3' />
-            <h6 className='text-capitalize'>future investment</h6>
+            <MdOutlineSecurity size={80} className='my-3' />
+            <h6 className='text-capitalize'>Business Security</h6>
           </div>
           <div className='col-lg-3 mb-3 text-center'>
-            <BsFillLockFill size={80} className='my-3' />
-            <h6 className='text-capitalize'>secure payment</h6>
+            <RiTeamFill size={80} className='my-3' />
+            <h6 className='text-capitalize'>Dynamic Team</h6>
           </div>
         </div>
       </div>

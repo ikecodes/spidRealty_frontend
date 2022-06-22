@@ -12,24 +12,36 @@ const Advertise = () => {
     <Layout>
       <Section>
         <h1 className='text-capitalize m-0 mb-5 text-center'>
-          advertise with us
+          Sell your property with confidence
         </h1>
         <div>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto
-            consequatur est, laudantium, minima nobis explicabo alias modi,
-            reiciendis sit ipsum deleniti facilis provident corrupti numquam
-            deserunt necessitatibus sint fuga eius? Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Repellat exercitationem unde
-            reiciendis inventore, illum eius mollitia nulla voluptate saepe
-            eligendi eveniet nobis facere, quam, voluptatem illo cumque
-            dignissimos. Dolorem, temporibus? Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Vitae consequuntur excepturi fugiat
-            numquam quas explicabo ullam. Quod et quo consequuntur saepe fugiat
-            expedita accusantium quidem dolorem, earum reiciendis quasi
-            voluptatibus.
+            Spidrealty.com is making it simpler to sell your real estate
+            property and achieve your dreams.
           </p>
-          <p>
+          <Bg>
+            <h3 className='my-3 text-capitalize text-center'>
+              Why post on Spidrealty.com?
+            </h3>
+            <List>
+              <li>
+                <span>Free listings</span> - Post a listing for free, including
+                video and unlimited photos.
+              </li>
+              <li>
+                <span>Market your property to buyers</span> - Your property will
+                be listed on Spidrealty.com, our partner platforms and all our
+                media channels, reaching the largest audience of home shoppers
+                on the internet.
+              </li>
+              <li>
+                <span>Sell successfully</span> - Property shoppers receive
+                instant emails about new listings.
+              </li>
+            </List>
+          </Bg>
+
+          {/* <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
             consectetur aliquam, nesciunt excepturi architecto suscipit labore
             officia atque repellat impedit sit facilis corrupti a voluptas
@@ -38,7 +50,7 @@ const Advertise = () => {
             itaque minima aperiam, assumenda commodi voluptate nostrum
             repellendus earum eaque alias temporibus hic sequi, iure expedita
             mollitia laudantium!
-          </p>
+          </p> */}
         </div>
         <div className='row mt-5'>
           <div className='col-lg-6'>
@@ -91,13 +103,27 @@ const Advertise = () => {
       </Section>
       <div className='text-center my-5'>
         <Link to='/signup'>
-          <Button>Join us today</Button>
+          <Button>Advertise Now</Button>
         </Link>
       </div>
     </Layout>
   );
 };
 
+const Bg = styled.div`
+  background-color: ${colors.secondary};
+  padding: 2rem 1rem;
+`;
+
+const List = styled.ul`
+  list-style: upper-alpha;
+  & li {
+    margin-bottom: 0.8rem;
+    & span {
+      font-weight: 700;
+    }
+  }
+`;
 const Button = styled.button`
   text-transform: capitalize;
   font-size: 1rem;

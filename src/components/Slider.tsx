@@ -24,10 +24,8 @@ const Slider = () => {
           </div>
           <Caption>
             <Carousel.Caption>
-              <h1>find your dream home</h1>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
+              <h1>Find it. Explore it. Own it.</h1>
+              <p>Seamlessly search for your dream real estate property</p>
             </Carousel.Caption>
           </Caption>
         </Carousel.Item>
@@ -43,10 +41,8 @@ const Slider = () => {
 
           <Caption>
             <Carousel.Caption>
-              <h1>join investment plan</h1>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
+              <h1>Find Your Dream Home</h1>
+              <p>Explore our home listings and make informed decisions</p>
             </Carousel.Caption>
           </Caption>
         </Carousel.Item>
@@ -61,9 +57,27 @@ const Slider = () => {
           </div>
           <Caption>
             <Carousel.Caption>
-              <h1>scale solutions</h1>
+              <h1>Become The Latest Landlord</h1>
               <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                The best investment to make on earth is EARTH - Louis Glickman
+              </p>
+            </Carousel.Caption>
+          </Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <div className='slider_image_box'>
+            <div className='slider_overlay'></div>
+            <img
+              className='slider_image'
+              src='https://picsum.photos/id/678/1200/600'
+              alt='Fouth slide'
+            />
+          </div>
+          <Caption>
+            <Carousel.Caption>
+              <h1>Find Your Perfect Rental</h1>
+              <p>
+                Explore the perfect rental properties in your state and city
               </p>
             </Carousel.Caption>
           </Caption>

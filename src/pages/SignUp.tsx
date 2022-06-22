@@ -9,6 +9,8 @@ import Button from "../shared/Button";
 import Toast from "../utils/Toast";
 import { signup } from "../slices/authSlice";
 import { AuthState } from "../constants/interfaces";
+import styled from "styled-components";
+import colors from "../constants/colors";
 
 interface Props {
   firstName: string;
@@ -246,6 +248,12 @@ const SignUp = () => {
                   <span className='m-0'>Login</span>
                 </Link>
               </div>
+              <AgreeText className='mt-2'>
+                By clicking Submit above, I agree that I will provide accurate
+                and non-discriminatory information and I will comply with the
+                Spidrealty.com Terms and Conditions and the Advertise a Property
+                Terms of Service.
+              </AgreeText>
             </Form>
           </div>
         </div>
@@ -253,4 +261,9 @@ const SignUp = () => {
     </Layout>
   );
 };
+
+const AgreeText = styled.p`
+  font-size: 0.8rem;
+  color: ${colors.tertiary};
+`;
 export default SignUp;

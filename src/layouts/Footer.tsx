@@ -58,11 +58,8 @@ const Footer = () => {
                 <FaYoutube size={25} />
               </a>
             </ul>
-            <p className='mb-3'>
-              No. 10, Oke Crescent, Off Adeyemo Alakija Street, Victoria Island,
-              Lagos
-            </p>
-            <Text className='text-capitalize mb-3'>+234 8800 2000 300</Text>
+            <p className='mb-3'>16 Banjul Street, Wuse 2, Abuja</p>
+            <Text className='text-capitalize mb-3'>+2348163736036</Text>
             <Text className='mb-3'>
               <a href='mailto:hello@spidrealty.com'>hello@spidrealty.com</a>{" "}
             </Text>
