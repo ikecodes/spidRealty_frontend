@@ -17,14 +17,14 @@ const NavbarLg = () => {
   const to = "/";
   // const user = useSelector((state: AuthState) => state.auth.user);
   return (
-    <NavContainer className='px-2 shadow'>
-      <div className='row p-0 m-0 py-2 align-items-ceenter'>
+    <NavContainer className='px-2 shadow '>
+      <div className='row p-0 m-0 py-2 align-items-center'>
         <div className='col-lg-4'>
           <Link to='/'>
             <Image src={Logo} />
           </Link>
         </div>
-        <div className='col-lg-8 align-self-center'>
+        <div className='col-lg-8 align-self-center mt-2'>
           <NavMenu>
             <ul className='d-flex justify-content-end gap-3 align-items-center'>
               {menus.map((menu) => (
@@ -77,7 +77,7 @@ const NavMenu = styled.div`
 `;
 const Image = styled.img`
   height: auto;
-  width: 15rem;
+  width: 12rem;
 `;
 const HomeDashboard = styled.div`
   color: ${colors.primary};

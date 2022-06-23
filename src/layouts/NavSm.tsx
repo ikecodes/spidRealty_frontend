@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { FiMenu } from 'react-icons/fi';
-import colors from '../constants/colors';
-import menus from '../constants/menus';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { FiMenu } from "react-icons/fi";
+import colors from "../constants/colors";
+import menus from "../constants/menus";
 const NavSm = () => {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -13,7 +13,7 @@ const NavSm = () => {
         <FiMenu role='button' size={40} color={colors.black} />
       </OpenIcon>
       <AnimatingContainer
-        className={isAnimating ? 'clicked' : ''}
+        className={isAnimating ? "clicked" : ""}
         onClick={(e) => setIsAnimating(false)}
       >
         <NavContainer onClick={(e) => e.stopPropagation()}>
@@ -38,7 +38,7 @@ const NavSm = () => {
 
 const OpenIcon = styled.span`
   position: absolute;
-  top: 1rem;
+  top: 0.5rem;
   z-index: 100;
   font-weight: 700;
   right: 1.5rem;
