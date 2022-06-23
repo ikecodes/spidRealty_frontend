@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import colors from "../constants/colors";
-import Logo from "../assets/images/logos/logo-1.png";
+import Logo from "../assets/images/logos/spid-logo.png";
 import ScrollToTop from "react-scroll-to-top";
 
 const Footer = () => {
@@ -59,7 +59,9 @@ const Footer = () => {
               </a>
             </ul>
             <p className='mb-3'>16 Banjul Street, Wuse 2, Abuja</p>
-            <Text className='text-capitalize mb-3'>+2348163736036</Text>
+            <Text className='text-capitalize mb-3'>
+              +2348163736036{","} +2348165101689
+            </Text>
             <Text className='mb-3'>
               <a href='mailto:hello@spidrealty.com'>hello@spidrealty.com</a>{" "}
             </Text>
@@ -92,7 +94,7 @@ const Container = styled.div`
 `;
 
 const ImageBox = styled.img`
-  width: 15rem;
+  width: 17rem;
   height: auto;
   background-size: cover;
 `;
