@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
 import Image from "../shared/Image";
 import AboutImg1 from "../assets/images/family.jpg";
+import Dan from "../assets/images/dan.png";
+import Justice from "../assets/images/justice.png";
 import TeamCard from "../components/TeamCard";
 import styled from "styled-components";
 const About = () => {
@@ -92,11 +94,19 @@ const About = () => {
         <h1 className='text-capitalize m-0 p-0 mb-5 text-center'>
           meet the team
         </h1>
-        <div className='row'>
-          <TeamCard />
-          <TeamCard />
-          <TeamCard />
-          <TeamCard />
+        <div className='row justify-content-center'>
+          <TeamCard
+            name='Justice Kay'
+            title='Co-Founder'
+            writeup=' Voluptatibus ex tempora eligendi vel iure distinctio veritatis rerum! Consectetur tempore cupiditate cumque repudiandae vitae. Ducimus alias ipsa asperiores aperiam, velit enim?'
+            img={Justice}
+          />
+          <TeamCard
+            name='Daniel Okpe'
+            title='Co-Founder'
+            writeup=' Voluptatibus ex tempora eligendi vel iure distinctio veritatis rerum! Consectetur tempore cupiditate cumque repudiandae vitae. Ducimus alias ipsa asperiores aperiam, velit enim?'
+            img={Dan}
+          />
         </div>
       </Section>
     </Layout>
