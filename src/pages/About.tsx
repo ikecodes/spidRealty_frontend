@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
 import Image from "../shared/Image";
-import AboutImg1 from "../assets/images/family.jpg";
+import AboutImg1 from "../assets/images/spid2.jpeg";
 import Dan from "../assets/images/dan.png";
 import Justice from "../assets/images/justice.png";
 import TeamCard from "../components/TeamCard";
@@ -27,10 +27,10 @@ const About = () => {
           </p>
           <div className='my-2'>
             <div className='row justify-content-start'>
-              <div className='col-lg-8'>
+              <div className='col-lg-6'>
                 <Image src={AboutImg1} alt='about' h={50} unit='vh' />
               </div>
-              <div className='col-lg-4'>
+              <div className='col-lg-6'>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Maxime accusamus, corrupti praesentium, culpa quo magnam eum,

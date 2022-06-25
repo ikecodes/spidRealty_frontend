@@ -1,6 +1,6 @@
 import React from "react";
 import Section from "../../layouts/Section";
-import BgImage from "../../assets/images/family.jpg";
+import BgImage from "../../assets/images/spid1.jpeg";
 import Image from "../../shared/Image";
 import Button from "../../shared/Button";
 import { Link } from "react-router-dom";

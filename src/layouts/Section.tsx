@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import colors from '../constants/colors';
+import React from "react";
+import styled from "styled-components";
+import colors from "../constants/colors";
 
 interface Props {
   children: React.ReactNode;
 }
 const Section: React.FC<Props> = ({ children }) => {
   return (
-    <Container>
+    <Container className='bg-light'>
       <div className='container'>{children}</div>
     </Container>
   );

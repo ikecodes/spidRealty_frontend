@@ -2,7 +2,8 @@ import React from "react";
 import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
 import Image from "../shared/Image";
-import AdvertiseImg from "../assets/images/family.jpg";
+import AdvertiseImg from "../assets/images/spid4.jpeg";
+import AdvertiseImg2 from "../assets/images/spid5.jpeg";
 import styled from "styled-components";
 import colors from "../constants/colors";
 import { Link } from "react-router-dom";
@@ -79,7 +80,7 @@ const Advertise = () => {
       <Section>
         <div className='row flex-md-row-reverse'>
           <div className='col-lg-6'>
-            <Image src={AdvertiseImg} alt='about' h={100} unit='%' rounded />
+            <Image src={AdvertiseImg2} alt='about' h={100} unit='%' rounded />
           </div>
           <div className='col-lg-6'>
             <h2 className='my-3 text-capitalize'>fulfilling a legacy</h2>
@@ -100,12 +101,12 @@ const Advertise = () => {
             </p>
           </div>
         </div>
+        <div className='text-center py-5'>
+          <Link to='/signup'>
+            <Button>Advertise Now</Button>
+          </Link>
+        </div>
       </Section>
-      <div className='text-center my-5'>
-        <Link to='/signup'>
-          <Button>Advertise Now</Button>
-        </Link>
-      </div>
     </Layout>
   );
 };

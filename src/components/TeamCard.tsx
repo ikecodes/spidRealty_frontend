@@ -24,7 +24,7 @@ const TeamCard: React.FC<IProps> = ({ name, title, writeup, img }) => {
         about={writeup}
       />
       <Card className='border-0 text-center shadow '>
-        <Image src={img} h={15} unit='rem' alt='staff' />
+        <Image src={img} h={18} unit='rem' alt='staff' />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{title}</Card.Text>
