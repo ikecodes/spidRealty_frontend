@@ -7,7 +7,7 @@ interface Props {
 }
 const Section: React.FC<Props> = ({ children }) => {
   return (
-    <Container className='bg-light'>
+    <Container>
       <div className='container'>{children}</div>
     </Container>
   );
