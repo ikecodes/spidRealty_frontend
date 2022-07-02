@@ -10,11 +10,18 @@ export interface AuthState {
 export interface PropertyState {
   property: {
     properties: any;
+    similarProperties: any;
     pagination: any;
     userProperties: any;
     loading: boolean;
     firstLoading: boolean;
     property: any;
+  };
+}
+export interface EnquiryState {
+  enquiry: {
+    enquiries: any;
+    loading: boolean;
   };
 }
 

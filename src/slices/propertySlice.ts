@@ -64,6 +64,18 @@ export const getAllProperty: any = createAsyncThunk(
     }
   }
 );
+export const getSimilarProperty: any = createAsyncThunk(
+  "property/getSimilarProperty",
+  async ({ stateSlug, categorySlug }: any, { rejectWithValue }) => {
+    try {
+      const { data } = await api.getSimilarProperty(stateSlug, categorySlug);
+      return data.data;
+    } catch (error: any) {
+      rejectWithValue(error);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
 export const onLoadProperty: any = createAsyncThunk(
   "property/onLoadProperty",
   async (
@@ -99,6 +111,7 @@ export const getProperty: any = createAsyncThunk(
 );
 const initialState = {
   properties: null,
+  similarProperties: [],
   pagination: null,
   userProperties: [],
   loading: false,
@@ -138,6 +151,10 @@ export const propertySlice: any = createSlice({
     },
     [getAllProperty.fulfilled]: (state, { payload }) => {
       state.properties = payload;
+      state.loading = false;
+    },
+    [getSimilarProperty.fulfilled]: (state, { payload }) => {
+      state.similarProperties = payload;
       state.loading = false;
     },
     [onLoadProperty.pending]: (state, { payload }) => {

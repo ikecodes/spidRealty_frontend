@@ -68,7 +68,21 @@ export const getAllProperty = (
       limit,
     },
   });
+export const getSimilarProperty = (stateSlug: any, categorySlug: any) =>
+  API.get("/properties/getSimilarProperty", {
+    params: {
+      ...(stateSlug && {
+        stateSlug,
+      }),
+      ...(categorySlug && {
+        categorySlug,
+      }),
+    },
+  });
 export const getProperty = (id: any) => API.get(`/properties/${id}`);
+
+//ENQUIRY
+export const createEnquiry = (formdata) => API.post("/enquiries", formdata);
 
 //ADMIN
 export const getStats = () => API.get("/users/getStats");
@@ -94,3 +108,6 @@ export const getArticle = (id) => API.get(`/articles/${id}`);
 export const deleteArticle = (id) => API.delete(`/articles/${id}`);
 export const updateArticle = (formdata, id) =>
   API.patch(`/articles/${id}`, formdata);
+
+export const getAllEnquiries = () => API.get("/enquiries");
+export const deleteEnquiry = (id) => API.delete(`/enquiries/${id}`);

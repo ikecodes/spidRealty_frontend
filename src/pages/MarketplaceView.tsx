@@ -12,24 +12,29 @@ import { MdOutlineBathroom, MdOutlineBedroomParent } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import Button from "../shared/Button";
 import Tip from "../shared/Tip";
-import { getProperty } from "../slices/propertySlice";
+import { getProperty, getSimilarProperty } from "../slices/propertySlice";
 import { PropertyState } from "../constants/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { currencyFormat } from "../utils/Helpers";
+import PropertyCard from "../components/PropertyCard";
 // import ShareButton from "../shared/ShareButton";
 
 const MarketplaceView = () => {
   const location = useLocation();
-
   const dispatch = useDispatch();
 
-  const { property, loading } = useSelector(
+  const { property, similarProperties, loading } = useSelector(
     (state: PropertyState) => state.property
   );
   useEffect(() => {
     dispatch(getProperty(location.state));
   }, []);
+  useEffect(() => {
+    let stateSlug = property?.stateSlug || "x";
+    let categorySlug = property?.categorySlug || "x";
+    dispatch(getSimilarProperty({ stateSlug, categorySlug }));
+  }, [property]);
 
   if (loading) return <Loader />;
   return (
@@ -132,7 +137,7 @@ const MarketplaceView = () => {
               ))}
             </ul>
             <div className='d-flex justify-content-between mt-3'>
-              <Link to='/purchase-form' state={property?.images[1].original}>
+              <Link to='/purchase-form' state={property}>
                 <Button title='purchase property' />
               </Link>
               {/* <BsBookmarkHeart size={25} role='button' color={colors.primary} /> */}
@@ -164,11 +169,26 @@ const MarketplaceView = () => {
           </div>
         </div>
         {/* // similar posts */}
-        <div className='row mt-3'>
-          <h4 className='text-capitalize text dark mb-3'>similar posts</h4>
-          {/* <PropertyCard />
-          <PropertyCard />
-          <PropertyCard /> */}
+        <div className='row mt-5'>
+          {similarProperties.length > 0 && (
+            <h4 className='text-capitalize text dark mb-3'>similar posts</h4>
+          )}
+
+          {similarProperties.length > 0 &&
+            similarProperties
+              .slice(0, 3)
+              .map((property: any) => (
+                <PropertyCard
+                  key={property._id}
+                  id={property._id}
+                  title={property.title}
+                  state={property.state}
+                  region={property.region}
+                  price={property.price}
+                  image={property.images[0].original}
+                  slug={property.slug}
+                />
+              ))}
         </div>
       </Section>
     </Layout>

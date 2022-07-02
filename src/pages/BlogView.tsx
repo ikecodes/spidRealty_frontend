@@ -14,7 +14,9 @@ import moment from "moment";
 const BlogView = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const { loading, article } = useSelector((state: AdminState) => state.admin);
+  const { loading, article, articles } = useSelector(
+    (state: AdminState) => state.admin
+  );
 
   useEffect(() => {
     dispatch(getArticle(location.state));
@@ -52,12 +54,24 @@ const BlogView = () => {
             />
           </div>
           <div className='col-lg-4'>
-            <h4 className='text-capitalize text dark'>similar posts</h4>
-            <div>
-              <SimilarPostCard />
-              <SimilarPostCard />
-              <SimilarPostCard />
-            </div>
+            {articles.length > 0 && (
+              <h4 className='text-capitalize text dark'>other posts</h4>
+            )}
+
+            {articles.length > 0 &&
+              articles
+                .slice(0, 3)
+                .map((article: any) => (
+                  <SimilarPostCard
+                    key={article._id}
+                    id={article._id}
+                    slug={article.slug}
+                    photo={article.photo}
+                    title={article.title}
+                    date={article.createdA}
+                  />
+                ))}
+            <div></div>
           </div>
         </div>
       </Section>

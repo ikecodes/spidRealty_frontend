@@ -18,48 +18,50 @@ const NavbarLg = () => {
   // const user = useSelector((state: AuthState) => state.auth.user);
   return (
     <NavContainer className='px-2 shadow '>
-      <div className='row p-0 m-0 py-2 align-items-center'>
-        <div className='col-lg-4'>
-          <Link to='/'>
-            <Image src={Logo} />
-          </Link>
-        </div>
-        <div className='col-lg-8 align-self-center mt-2'>
-          <NavMenu>
-            <ul className='d-flex justify-content-end gap-3 align-items-center'>
-              {menus.map((menu) => (
-                <NavItemLg key={menu.id} menu={menu} />
-              ))}
-              {token ? (
-                <>
-                  <LoginBtn
-                    className='mx-1'
-                    onClick={() => logout(navigate, to)}
-                  >
-                    logout
-                  </LoginBtn>
-                  <Link
-                    to={`/agent/dashboard`}
-                    className='text-decoration-none'
-                  >
-                    <HomeDashboard className='d-flex align-items-center'>
-                      <MdDashboard size={25} />
-                      <h6 className='m-0'>dashboard</h6>
-                    </HomeDashboard>
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link to='/login'>
-                    <LoginBtn className='mx-1'>login</LoginBtn>
-                  </Link>
-                  <Link to='/registerAs'>
-                    <SignUpBtn className='mx-1'>Sign Up</SignUpBtn>
-                  </Link>
-                </>
-              )}
-            </ul>
-          </NavMenu>
+      <div className='container'>
+        <div className='row p-0 m-0 py-2 align-items-center'>
+          <div className='col-lg-4'>
+            <Link to='/'>
+              <Image src={Logo} />
+            </Link>
+          </div>
+          <div className='col-lg-8 align-self-center mt-2'>
+            <NavMenu>
+              <ul className='d-flex justify-content-end gap-3 align-items-center'>
+                {menus.map((menu) => (
+                  <NavItemLg key={menu.id} menu={menu} />
+                ))}
+                {token ? (
+                  <>
+                    <LoginBtn
+                      className='mx-1'
+                      onClick={() => logout(navigate, to)}
+                    >
+                      logout
+                    </LoginBtn>
+                    <Link
+                      to={`/agent/dashboard`}
+                      className='text-decoration-none'
+                    >
+                      <HomeDashboard className='d-flex align-items-center'>
+                        <MdDashboard size={25} />
+                        <h6 className='m-0'>dashboard</h6>
+                      </HomeDashboard>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to='/login'>
+                      <LoginBtn className='mx-1'>login</LoginBtn>
+                    </Link>
+                    <Link to='/registerAs'>
+                      <SignUpBtn className='mx-1'>Sign Up</SignUpBtn>
+                    </Link>
+                  </>
+                )}
+              </ul>
+            </NavMenu>
+          </div>
         </div>
       </div>
     </NavContainer>
