@@ -47,6 +47,11 @@ export const adminMenu = [
     name: "articles",
     path: "/admin/articles",
   },
+  {
+    id: "5",
+    name: "enquiries",
+    path: "/admin/enquiries",
+  },
 ];
 
 export default menus;

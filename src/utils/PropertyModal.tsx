@@ -5,7 +5,6 @@ import colors from "../constants/colors";
 import ImageGallery from "react-image-gallery";
 import { currencyFormat } from "./Helpers";
 const PropertyModal = (props: any) => {
-  console.log(props.data);
   return (
     <Modal
       {...props}

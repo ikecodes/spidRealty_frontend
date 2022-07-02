@@ -3,7 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import colors from "../constants/colors";
 import Logo from "../assets/images/logos/logo-3.png";
-import { MdArticle, MdSpaceDashboard } from "react-icons/md";
+import {
+  MdArticle,
+  MdOutlineQuestionAnswer,
+  MdSpaceDashboard,
+} from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import { BsFillHouseFill, BsUpload } from "react-icons/bs";
 
@@ -37,6 +41,12 @@ export const adminMenu = [
     name: "post article",
     path: "/admin/post-article",
     icon: <BsUpload size={25} />,
+  },
+  {
+    id: "6",
+    name: "enquiries",
+    path: "/admin/enquiries",
+    icon: <MdOutlineQuestionAnswer size={25} />,
   },
 ];
 const AdminNav = () => {

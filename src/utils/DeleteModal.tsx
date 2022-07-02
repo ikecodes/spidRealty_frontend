@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Modal } from "react-bootstrap";
 import { deleteArticle } from "../slices/adminSlice";
 import { deleteProperty } from "../slices/propertySlice";
+import { deleteEnquiry } from "../slices/enquirySlice";
 
 const DeleteModal = (props: any) => {
   const dispatch = useDispatch();
@@ -24,8 +25,10 @@ const DeleteModal = (props: any) => {
                 onClick={() => {
                   if (props?.type === "property") {
                     dispatch(deleteProperty(props?.data));
-                  } else {
+                  } else if (props?.type === "article") {
                     dispatch(deleteArticle(props?.data));
+                  } else {
+                    dispatch(deleteEnquiry(props?.data));
                   }
                   props.onHide();
                 }}

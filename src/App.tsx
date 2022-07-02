@@ -28,6 +28,7 @@ import {
   AdminProperties,
   AdminArticles,
   AdminPostArticle,
+  AdminEnquiries,
 } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop";
@@ -153,6 +154,14 @@ function App() {
             element={
               <AdminProtected>
                 <AdminPostArticle />
+              </AdminProtected>
+            }
+          />
+          <Route
+            path='/admin/enquiries'
+            element={
+              <AdminProtected>
+                <AdminEnquiries />
               </AdminProtected>
             }
           />

@@ -20,7 +20,7 @@ export const getAllEnquiry: any = createAsyncThunk(
   async (args, { rejectWithValue }) => {
     try {
       const { data } = await api.getAllEnquiries();
-      return data;
+      return data.data;
     } catch (error: any) {
       rejectWithValue(error);
       console.log(error?.response?.data?.message);

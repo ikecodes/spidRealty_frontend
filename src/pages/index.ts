@@ -29,6 +29,7 @@ import AdminAgents from "./admin/AdminAgents";
 import AdminProperties from "./admin/AdminProperties";
 import AdminArticles from "./admin/AdminArticles";
 import AdminPostArticle from "./admin/AdminPostArticle";
+import AdminEnquiries from "./admin/AdminEnquiries";
 
 export {
   Home,
@@ -58,4 +59,5 @@ export {
   AdminProperties,
   AdminArticles,
   AdminPostArticle,
+  AdminEnquiries,
 };
