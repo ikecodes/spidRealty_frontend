@@ -28,8 +28,10 @@ const ArticleCard: React.FC<IProps> = ({
       <CardContainer className='shadow'>
         <Image src={photo} h={15} unit='rem' alt='property' />
         <TextContainer>
-          <h5 className='text-capitalize m-0 mt-1'>{title}</h5>
-          <p className='m-0'>{description.slice(1, 50)}...</p>
+          <h5 className='text-capitalize m-0 mt-1'>
+            {title.substring(1, 50)}...
+          </h5>
+          <p className='m-0'>{description.substring(1, 50)}...</p>
           <div className='d-flex justify-content-between mt-2 mb-1'>
             <div className='p-0 d-flex justify-content-end align-items-center'>
               <BsFillCalendarDateFill size={15} />

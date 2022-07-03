@@ -184,12 +184,16 @@ const MarketplaceView = () => {
         </div>
         {/* // similar posts */}
         <div className='row mt-5'>
-          {similarProperties.length > 0 && (
-            <h4 className='text-capitalize text dark mb-3'>similar posts</h4>
-          )}
+          {similarProperties.length > 0 &&
+            similarProperties.filter(
+              (property: any) => property._id !== location.state
+            ).length > 0 && (
+              <h4 className='text-capitalize text dark mb-3'>similar posts</h4>
+            )}
 
           {similarProperties.length > 0 &&
             similarProperties
+              .filter((property: any) => property._id !== location.state)
               .slice(0, 3)
               .map((property: any) => (
                 <PropertyCard

@@ -54,12 +54,15 @@ const BlogView = () => {
             />
           </div>
           <div className='col-lg-4'>
-            {articles.length > 0 && (
-              <h4 className='text-capitalize text dark'>other posts</h4>
-            )}
+            {articles.length > 0 &&
+              articles.filter((article: any) => article._id !== location.state)
+                .length > 0 && (
+                <h4 className='text-capitalize text dark'>other posts</h4>
+              )}
 
             {articles.length > 0 &&
               articles
+                .filter((article: any) => article._id !== location.state)
                 .slice(0, 3)
                 .map((article: any) => (
                   <SimilarPostCard
