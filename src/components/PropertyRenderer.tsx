@@ -36,7 +36,9 @@ const PropertyRenderer = () => {
       {loading && <Loader />}
       <div className='row'>
         {properties?.data.length === 0 && (
-          <h3 className='mt-3 text-center'>No properties found</h3>
+          <h3 className='mt-3 text-center text-secondary'>
+            No properties available
+          </h3>
         )}
         {properties?.data &&
           properties?.data.map((property: any) => (

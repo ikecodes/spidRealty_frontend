@@ -35,7 +35,9 @@ const AgentListings = () => {
               />
             ))
           ) : (
-            <h4>You have not listed any property</h4>
+            <h4 className='text-secondary my-5'>
+              You have not listed any property
+            </h4>
           )}
         </div>
       </div>

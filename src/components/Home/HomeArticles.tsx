@@ -13,13 +13,12 @@ const HomeArticles = () => {
     .filter((article: any) => article.isFeatured === true)
     .slice(0, 3);
   useEffect(() => {}, []);
+
+  if (featuredArticles.length === 0) return null;
   return (
     <Section>
       <div className='container'>
-        {featuredArticles.length > 0 && (
-          <h1 className='text-capitalize my-5'>featured articles & updates</h1>
-        )}
-
+        <h1 className='text-capitalize my-5'>featured articles & updates</h1>
         <div className='row'>
           {featuredArticles.length > 0 &&
             featuredArticles.map((article: any) => (

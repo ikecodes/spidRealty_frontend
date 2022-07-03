@@ -15,6 +15,11 @@ const Blog = () => {
           latest news and articles
         </h1>
         <div className='row'>
+          {articles?.length === 0 && (
+            <h3 className='mt-3 text-center text-secondary'>
+              No properties available
+            </h3>
+          )}
           {articles.length > 0 &&
             articles.map((article: any) => (
               <ArticleCard
