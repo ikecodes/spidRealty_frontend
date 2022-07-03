@@ -10,6 +10,7 @@ import ToolkitProvider, {
 } from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
 import BootstrapTable from "react-bootstrap-table-next";
 import PropertyModal from "./PropertyModal";
+import DeleteModal from "./DeleteModal";
 
 import { Row, Col } from "react-bootstrap";
 import {
@@ -22,10 +23,10 @@ interface IData {
   data: any;
 }
 const PropertiesTable: React.FC<IData> = ({ data }) => {
-  // const [deleteModalShow, setDeleteModalShow] = useState(false);
   const [propertyModalShow, setPropertyModalShow] = useState(false);
-  // const [deleteid, setDeleteid] = useState(null);
   const [userdata, setUserData] = useState(null);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [deleteid, setDeleteid] = useState(null);
   const dispatch = useDispatch();
   const { SearchBar } = Search;
   const sizePerPage = 10;
@@ -116,7 +117,7 @@ const PropertiesTable: React.FC<IData> = ({ data }) => {
     },
     {
       dataField: "data",
-      text: "Full data",
+      text: "Full Property Info",
       sort: true,
       formatter: (cellContent: any, data: any) => (
         <span
@@ -128,6 +129,23 @@ const PropertiesTable: React.FC<IData> = ({ data }) => {
           }}
         >
           View
+        </span>
+      ),
+    },
+    {
+      dataField: "delete",
+      text: "Delete",
+      sort: true,
+      formatter: (cellContent: any, data: any) => (
+        <span
+          className='badge bg-danger'
+          role='button'
+          onClick={() => {
+            setDeleteModalShow(true);
+            setDeleteid(data._id);
+          }}
+        >
+          Delete
         </span>
       ),
     },
@@ -181,8 +199,14 @@ const PropertiesTable: React.FC<IData> = ({ data }) => {
                           // responsive
                         />
                         {!data.length ? (
-                          <p>You currently do not have any property</p>
+                          <p>You currently do not have any property uploaded</p>
                         ) : null}
+                        <DeleteModal
+                          data={deleteid}
+                          type='admin-property'
+                          show={deleteModalShow}
+                          onHide={() => setDeleteModalShow(false)}
+                        />
                         <PropertyModal
                           data={userdata}
                           show={propertyModalShow}

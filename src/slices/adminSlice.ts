@@ -55,6 +55,19 @@ export const getPropertiesByAdmin: any = createAsyncThunk(
     }
   }
 );
+export const adminDeleteProperty: any = createAsyncThunk(
+  "property/adminDeleteProperty",
+  async (id, { rejectWithValue }) => {
+    try {
+      await api.deleteProperty(id);
+      return id;
+    } catch (error: any) {
+      rejectWithValue(error);
+      console.log(error?.response?.data?.message);
+      //   Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
 export const verifyProperty: any = createAsyncThunk(
   "admin/verifyProperty",
   async (id, { rejectWithValue }) => {
@@ -198,6 +211,15 @@ export const adminSlice: any = createSlice({
       state.agents = state.agents.map((agent) =>
         agent._id === payload._id ? payload : agent
       );
+    },
+    [adminDeleteProperty.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [adminDeleteProperty.fulfilled]: (state, { payload }) => {
+      state.properties = state.properties.filter(
+        (property) => property._id !== payload
+      );
+      state.loading = false;
     },
     [updateProperty.fulfilled]: (state, { payload }) => {
       state.properties = state.properties.map((property) =>

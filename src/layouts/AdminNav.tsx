@@ -121,6 +121,6 @@ const Menu = styled.ul`
 const Image = styled.img`
   width: 15rem;
   height: auto;
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
 `;
 export default AdminNav;

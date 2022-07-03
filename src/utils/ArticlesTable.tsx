@@ -166,7 +166,7 @@ const ArticlesTable: React.FC<IData> = ({ data }) => {
                           // responsive
                         />
                         {!data.length ? (
-                          <p>You currently do not have any user</p>
+                          <p>You currently do not have any article posted</p>
                         ) : null}
                         <DeleteModal
                           data={deleteid}

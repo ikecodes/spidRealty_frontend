@@ -59,12 +59,12 @@ const EnquiriesTable: React.FC<IData> = ({ data }) => {
     },
     {
       dataField: "phone",
-      text: "Phone Nmuber",
+      text: "Phone Number",
       formatter: (cellContent: any, data: any) => <p>{data.phone}</p>,
     },
     {
       dataField: "data",
-      text: "Property info",
+      text: "Property Info",
       sort: true,
       formatter: (cellContent: any, data: any) => (
         <span
@@ -103,7 +103,7 @@ const EnquiriesTable: React.FC<IData> = ({ data }) => {
     <div style={{ fontSize: "0.8rem" }}>
       <div>
         <h2 className='text-capitalize text-center text-secondary'>
-          Properties
+          Enquiries
         </h2>
         <div>
           <PaginationProvider
