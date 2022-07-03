@@ -32,6 +32,7 @@ const AgentPost = () => {
   const [furnished, setFurnished] = useState<any>(false);
   const [newlyBuilt, setNewlyBuilt] = useState<any>(false);
   const [images, setImages] = useState<any>("");
+  const [error, setError] = useState<any>(null);
 
   const handleFeature = () => {
     if (!feature) return;
@@ -58,8 +59,21 @@ const AgentPost = () => {
       !price ||
       !description ||
       !images
-    )
+    ) {
+      setError({
+        title,
+        type,
+        category,
+        state,
+        region,
+        location,
+        price,
+        description,
+        images,
+      });
       return Toast("Please input all required fields", "info");
+    }
+
     const formdata = new FormData();
     formdata.append("title", title);
     formdata.append("type", type);
@@ -109,7 +123,7 @@ const AgentPost = () => {
         <div className='col-lg-8'>
           <Form.Group className='mb-3'>
             <Form.Label>
-              Title <Text>required</Text>
+              Title {error?.title === "" && <Text>required</Text>}
             </Form.Label>
             <Form.Control
               type='text'
@@ -124,7 +138,7 @@ const AgentPost = () => {
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
                 <Form.Label>
-                  Type <Text>required</Text>
+                  Type {error?.type === "" && <Text>required</Text>}
                 </Form.Label>
                 <Form.Control
                   as='select'
@@ -143,7 +157,7 @@ const AgentPost = () => {
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
                 <Form.Label>
-                  Category <Text>required</Text>
+                  Category {error?.title === "" && <Text>required</Text>}
                 </Form.Label>
                 <Form.Control
                   as='select'
@@ -230,7 +244,7 @@ const AgentPost = () => {
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
                 <Form.Label>
-                  State <Text>required</Text>
+                  State {error?.state === "" && <Text>required</Text>}
                 </Form.Label>
                 <Form.Control
                   as='select'
@@ -249,7 +263,7 @@ const AgentPost = () => {
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
                 <Form.Label>
-                  Region <Text>required</Text>
+                  Region {error?.region === "" && <Text>required</Text>}
                 </Form.Label>
                 <Form.Control
                   as='select'
@@ -268,7 +282,7 @@ const AgentPost = () => {
           </div>
           <Form.Group className='mb-3'>
             <Form.Label>
-              Location <Text>required</Text>
+              Location {error?.location === "" && <Text>required</Text>}
             </Form.Label>
             <Form.Control
               type='text'
@@ -283,7 +297,7 @@ const AgentPost = () => {
             <div className='col-lg-4'>
               <Form.Group className='mb-3'>
                 <Form.Label>
-                  Price <Text>required</Text>
+                  Price {error?.title === "" && <Text>required</Text>}
                 </Form.Label>
                 <CurrencyInput
                   id='input-example'
@@ -300,7 +314,8 @@ const AgentPost = () => {
             <div className='col-lg-8'>
               <Form.Group className='mb-3'>
                 <Form.Label>
-                  Description <Text>required</Text>
+                  Description{" "}
+                  {error?.description === "" && <Text>required</Text>}
                 </Form.Label>
                 <Form.Control
                   as='textarea'
@@ -358,7 +373,7 @@ const AgentPost = () => {
           </Form.Group>
           <Form.Group className='mb-3'>
             <Form.Label>
-              Upload images <Text>required</Text>
+              Upload images {error?.images === "" && <Text>required</Text>}
             </Form.Label>
             <Form.Control
               type='file'
