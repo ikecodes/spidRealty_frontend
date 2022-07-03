@@ -29,13 +29,12 @@ const MarketplaceView = () => {
   );
   useEffect(() => {
     dispatch(getProperty(location.state));
-  }, []);
+  }, [location.state]);
   useEffect(() => {
     let stateSlug = property?.stateSlug || "x";
     let categorySlug = property?.categorySlug || "x";
     dispatch(getSimilarProperty({ stateSlug, categorySlug }));
   }, [property]);
-
   if (loading) return <Loader />;
   return (
     <Layout>

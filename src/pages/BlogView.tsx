@@ -21,7 +21,7 @@ const BlogView = () => {
   useEffect(() => {
     dispatch(getArticle(location.state));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [location.state]);
   if (loading) return <Loader />;
   return (
     <Layout>

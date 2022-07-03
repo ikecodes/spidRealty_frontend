@@ -21,7 +21,6 @@ const HomeFeatured = () => {
     setFeatured(data);
   }, [properties]);
 
-  console.log(featured);
   if (!featured.length) return null;
   return (
     <Section>

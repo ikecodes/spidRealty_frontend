@@ -11,6 +11,7 @@ interface Props {
   title: string;
   date: string;
 }
+
 const SimilarPostCard: React.FC<Props> = ({ id, slug, photo, title, date }) => {
   return (
     <div className='bg-light my-3'>
