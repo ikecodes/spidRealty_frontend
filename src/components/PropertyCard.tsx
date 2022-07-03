@@ -33,7 +33,7 @@ const PropertyCard: React.FC<Props> = ({
           <Image src={image} h={10} unit='rem' alt='property' />
           <Card.Body>
             <Card.Title className='text-capitalize fs-6 m-0 p-0'>
-              {title}
+              {`${title.substring(0, 45)}...`}
             </Card.Title>
             <Price className='my-2'>{currencyFormat(price)}</Price>
             <Location className='p-0 text-secondary d-flex justify-content-end align-items-center'>

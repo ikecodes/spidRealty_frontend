@@ -98,36 +98,51 @@ const MarketplaceView = () => {
             </DescriptionHeader>
             <p className='text-secondary'>{property?.description}</p>
 
-            <div className='text-dark d-flex my-3 py-2 justify-content-between text-capitalize border-bottom border-top'>
-              <div className='d-flex flex-column'>
-                <span>
-                  {property?.newlyBuilt ? "newly-built" : "fairly used"}
-                </span>
-                <span className='text-secondary'>condition</span>
-              </div>
-              <div className='d-flex flex-column'>
-                <span>{property?.furnished ? "furnished" : "unfurnished"}</span>
-                <span className='text-secondary'>furnishing</span>
-              </div>
-              <div className='d-flex flex-column'>
-                <span>{property?.size} sqm</span>
-                <span className='text-secondary'>size</span>
-              </div>
+            <div className='text-dark d-flex my-3 py-2 justify-content-around text-capitalize border-bottom border-top'>
+              {property?.category !== "Lands & Plots" && (
+                <>
+                  <div className='d-flex flex-column'>
+                    <span>
+                      {property?.newlyBuilt ? "newly-built" : "fairly used"}
+                    </span>
+                    <span className='text-secondary'>condition</span>
+                  </div>
+                  <div className='d-flex flex-column'>
+                    <span>
+                      {property?.furnished ? "furnished" : "unfurnished"}
+                    </span>
+                    <span className='text-secondary'>furnishing</span>
+                  </div>
+                </>
+              )}
+
+              {property?.size && (
+                <div className='d-flex flex-column'>
+                  <span>{property?.size} sqm</span>
+                  <span className='text-secondary'>size</span>
+                </div>
+              )}
             </div>
 
-            <div className='text-dark d-flex my-3 gap-3'>
-              <div>
-                <MdOutlineBedroomParent size={25} />
-                <span className='ms-1'>{property?.bedrooms} bedrooms</span>
+            {property?.category !== "Lands & Plots" && (
+              <div className='text-dark d-flex my-3 gap-3'>
+                <div>
+                  <MdOutlineBedroomParent size={25} />
+                  <span className='ms-1'>{property?.bedrooms} bedrooms</span>
+                </div>
+                <div>
+                  <MdOutlineBathroom size={25} />
+                  <span className='ms-1'>{property?.bathrooms} bathroom</span>
+                </div>
               </div>
-              <div>
-                <MdOutlineBathroom size={25} />
-                <span className='ms-1'>{property?.bathrooms} bathroom</span>
-              </div>
-            </div>
-            <h6 className='text-dark mb-3 bg-light p-2 text-center'>
-              key features
-            </h6>
+            )}
+
+            {property?.specialFeatures.length > 0 && (
+              <h6 className='text-dark mb-3 bg-light p-2 text-center'>
+                key features
+              </h6>
+            )}
+
             <ul>
               {property?.specialFeatures.map((feature: string) => (
                 <li className='my-1 text-capitalize' key={feature}>

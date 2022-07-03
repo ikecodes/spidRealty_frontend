@@ -59,7 +59,7 @@ const PurchaseForm = () => {
       <Section>
         <div className='row align-items-center flex-md-row-reverse'>
           <div className='col-lg-6'>
-            <Image src={images[1].original} h={20} unit='rem' alt='property' />
+            <Image src={images[0].original} h={20} unit='rem' alt='property' />
           </div>
           <div className='col-lg-6'>
             <h4 className='text-capitalize m-0 p-0 my-3  text-dark'>
