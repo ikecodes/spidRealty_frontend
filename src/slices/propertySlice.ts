@@ -64,6 +64,27 @@ export const getAllProperty: any = createAsyncThunk(
     }
   }
 );
+export const getAllRentalProperty: any = createAsyncThunk(
+  "property/getAllRentalProperty",
+  async (
+    { stateSlug, regionSlug, categorySlug, page, limit }: any,
+    { rejectWithValue }
+  ) => {
+    try {
+      const { data } = await api.getAllRentalProperty(
+        stateSlug,
+        regionSlug,
+        categorySlug,
+        page,
+        limit
+      );
+      return data;
+    } catch (error: any) {
+      rejectWithValue(error);
+      Toast(error?.response?.data?.message, "info");
+    }
+  }
+);
 export const getSimilarProperty: any = createAsyncThunk(
   "property/getSimilarProperty",
   async ({ stateSlug, categorySlug }: any, { rejectWithValue }) => {
@@ -150,6 +171,13 @@ export const propertySlice: any = createSlice({
       state.loading = true;
     },
     [getAllProperty.fulfilled]: (state, { payload }) => {
+      state.properties = payload;
+      state.loading = false;
+    },
+    [getAllRentalProperty.pending]: (state, { payload }) => {
+      state.loading = true;
+    },
+    [getAllRentalProperty.fulfilled]: (state, { payload }) => {
       state.properties = payload;
       state.loading = false;
     },

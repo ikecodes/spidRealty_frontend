@@ -68,6 +68,28 @@ export const getAllProperty = (
       limit,
     },
   });
+export const getAllRentalProperty = (
+  stateSlug: any,
+  regionSlug: any,
+  categorySlug: any,
+  page: number,
+  limit: number
+) =>
+  API.get("/properties/getAllRentalProperty", {
+    params: {
+      ...(stateSlug && {
+        stateSlug,
+      }),
+      ...(regionSlug && {
+        regionSlug,
+      }),
+      ...(categorySlug && {
+        categorySlug,
+      }),
+      page,
+      limit,
+    },
+  });
 export const getSimilarProperty = (stateSlug: any, categorySlug: any) =>
   API.get("/properties/getSimilarProperty", {
     params: {

@@ -1,6 +1,7 @@
 import Home from "./Home";
 import About from "./About";
 import Marketplace from "./Marketplace";
+import RentalMarketplace from "./RentalMarketplace";
 import MarketplaceView from "./MarketplaceView";
 import Blog from "./Blog";
 import BlogView from "./BlogView";
@@ -35,6 +36,7 @@ export {
   Home,
   About,
   Marketplace,
+  RentalMarketplace,
   MarketplaceView,
   Blog,
   BlogView,

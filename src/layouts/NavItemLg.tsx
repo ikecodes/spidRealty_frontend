@@ -4,6 +4,7 @@ import colors from "../constants/colors";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { getAllProperty } from "../slices/propertySlice";
+import { setFilter } from "../slices/paramSlice";
 
 interface Props {
   menu: {
@@ -22,6 +23,13 @@ const NavItemLg: React.FC<Props> = ({ menu }) => {
       const categorySlug = "";
       const page = 1;
       const limit = 10;
+      dispatch(
+        setFilter({
+          stateSlug,
+          regionSlug,
+          categorySlug,
+        })
+      );
       dispatch(
         getAllProperty({ stateSlug, regionSlug, categorySlug, page, limit })
       );

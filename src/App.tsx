@@ -4,6 +4,7 @@ import {
   Home,
   About,
   Marketplace,
+  RentalMarketplace,
   MarketplaceView,
   Blog,
   BlogView,
@@ -65,6 +66,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about-us' element={<About />} />
           <Route path='/marketplace' element={<Marketplace />} />
+          <Route path='/rental-marketplace' element={<RentalMarketplace />} />
           <Route path='/marketplace/:id' element={<MarketplaceView />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/blog/:id' element={<BlogView />} />

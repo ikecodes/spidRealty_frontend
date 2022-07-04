@@ -39,7 +39,7 @@ const HomeInfo = () => {
               With the right information and tools, we give our highly esteemed
               clients the freedom to help themselves on their own terms{" "}
             </p>
-            <Link to='/advertise'>
+            <Link to='/rental-marketplace'>
               <Button title='Explore Rentals' primary rounded />
             </Link>
           </div>
