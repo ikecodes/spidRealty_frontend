@@ -1,7 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import colors from '../constants/colors';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import colors from "../constants/colors";
+import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { getAllProperty } from "../slices/propertySlice";
 
 interface Props {
   menu: {
@@ -11,9 +13,24 @@ interface Props {
   };
 }
 const NavItemLg: React.FC<Props> = ({ menu }) => {
+  const dispatch = useDispatch();
+
+  const resetProperty = () => {
+    if (menu.name === "marketplace") {
+      const stateSlug = "";
+      const regionSlug = "";
+      const categorySlug = "";
+      const page = 1;
+      const limit = 10;
+      dispatch(
+        getAllProperty({ stateSlug, regionSlug, categorySlug, page, limit })
+      );
+    }
+    return;
+  };
   return (
     <div className='position-relative'>
-      <NavItem role='button'>
+      <NavItem role='button' onClick={resetProperty}>
         <Link to={menu.path}>{menu.name}</Link>
         <MenuLine></MenuLine>
       </NavItem>
