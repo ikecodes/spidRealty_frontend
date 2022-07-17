@@ -18,10 +18,10 @@ const Footer = () => {
             <ul className='text-capitalize m-0 p-0'>
               <li className='mb-3 fw-bolder'>quick links</li>
               <li className='mb-3'>
-                <Link to='/about'>about us</Link>
+                <Link to='/about-us'>about us</Link>
               </li>
               <li className='my-3'>
-                <Link to='/contact-us'>contact</Link>
+                <a href='mailto:support@spidrealty.com'>contact us</a>
               </li>
               <li className='my-3'>
                 <Link to='/blog'>blog</Link>
