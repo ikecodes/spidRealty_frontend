@@ -18,10 +18,11 @@ const BlogView = () => {
     (state: AdminState) => state.admin
   );
 
+  const articleId = location.search.split("?")[1];
   useEffect(() => {
-    dispatch(getArticle(location.state));
+    dispatch(getArticle(articleId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.state]);
+  }, [articleId]);
   if (loading) return <Loader />;
   return (
     <Layout>

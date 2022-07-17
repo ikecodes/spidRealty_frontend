@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import Layout from "../layouts/Layout";
 import Section from "../layouts/Section";
 import Image from "../shared/Image";
@@ -9,19 +10,25 @@ import { useLocation } from "react-router-dom";
 import Toast from "../utils/Toast";
 import { useDispatch, useSelector } from "react-redux";
 import { createEnquiry } from "../slices/enquirySlice";
-import { EnquiryState } from "../constants/interfaces";
+import { EnquiryState, PropertyState } from "../constants/interfaces";
+import { getProperty } from "../slices/propertySlice";
 
 const PurchaseForm = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { loading } = useSelector((state: EnquiryState) => state.enquiry);
-  const { _id, images }: any = location.state;
   const [formData, setFormdata] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
   });
+
+  const id = location.search.split("?")[1];
+  const { property } = useSelector((state: PropertyState) => state.property);
+  useEffect(() => {
+    dispatch(getProperty(id));
+  }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormdata({
@@ -42,7 +49,7 @@ const PurchaseForm = () => {
       return Toast("Please fill all inputs", "info");
     const formdata = {
       ...formData,
-      propertyId: _id,
+      propertyId: id,
     };
 
     dispatch(createEnquiry(formdata));
@@ -59,7 +66,12 @@ const PurchaseForm = () => {
       <Section>
         <div className='row align-items-center flex-md-row-reverse'>
           <div className='col-lg-6'>
-            <Image src={images[0].original} h={20} unit='rem' alt='property' />
+            <Image
+              src={property?.images[0].original}
+              h={20}
+              unit='rem'
+              alt='property'
+            />
           </div>
           <div className='col-lg-6'>
             <h4 className='text-capitalize m-0 p-0 my-3  text-dark'>

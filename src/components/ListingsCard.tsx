@@ -60,7 +60,7 @@ const ListingsCard: React.FC<Props> = ({
         </div>
         <div className='col-lg-2'>
           <div className='d-flex gap-2 flex-column justify-content-between  h-100 '>
-            <Link to={`/marketplace/${slug}`} state={id}>
+            <Link to={`/marketplace/${slug}?${id}`}>
               <Button title='view' primary />
             </Link>
             <button

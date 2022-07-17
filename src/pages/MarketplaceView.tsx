@@ -24,12 +24,13 @@ const MarketplaceView = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
+  const propertyId = location.search.split("?")[1];
   const { property, similarProperties, loading } = useSelector(
     (state: PropertyState) => state.property
   );
   useEffect(() => {
-    dispatch(getProperty(location.state));
-  }, [location.state]);
+    dispatch(getProperty(propertyId));
+  }, [propertyId]);
   useEffect(() => {
     let stateSlug = property?.stateSlug || "x";
     let categorySlug = property?.categorySlug || "x";
@@ -151,7 +152,7 @@ const MarketplaceView = () => {
               ))}
             </ul>
             <div className='d-flex justify-content-between mt-3'>
-              <Link to='/purchase-form' state={property}>
+              <Link to={`/purchase-form?${property?._id}`}>
                 <Button title='purchase property' />
               </Link>
               {/* <BsBookmarkHeart size={25} role='button' color={colors.primary} /> */}

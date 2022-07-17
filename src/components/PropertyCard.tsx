@@ -43,7 +43,7 @@ const PropertyCard: React.FC<Props> = ({
               </span>
             </Location>
             <div className='text-center mt-3'>
-              <Link to={`/marketplace/${slug}`} state={id}>
+              <Link to={`/marketplace/${slug}?${id}`}>
                 <Button title='view' loading={false} primary />
               </Link>
             </div>

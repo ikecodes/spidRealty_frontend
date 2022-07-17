@@ -20,11 +20,7 @@ const SimilarPostCard: React.FC<Props> = ({ id, slug, photo, title, date }) => {
           <Image src={photo} alt='similar' />
         </div>
         <div className='col-lg-7 text-dark'>
-          <Link
-            to={`/blog/${slug}`}
-            state={id}
-            style={{ textDecoration: "none" }}
-          >
+          <Link to={`/blog/${slug}?${id}`} style={{ textDecoration: "none" }}>
             <h6 className='fw-bold mt-2 text-secondary'>{title}</h6>
           </Link>
           <div className='d-flex align-items-center'>

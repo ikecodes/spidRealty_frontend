@@ -39,7 +39,7 @@ const ArticleCard: React.FC<IProps> = ({
                 {moment(date).format("MM Do YYYY")}
               </span>
             </div>
-            <Link to={`/blog/${slug}`} state={id}>
+            <Link to={`/blog/${slug}?${id}`}>
               <Button title='read' inverse />
             </Link>
           </div>
