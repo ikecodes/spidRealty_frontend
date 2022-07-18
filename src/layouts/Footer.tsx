@@ -35,10 +35,10 @@ const Footer = () => {
             <ul className='text-capitalize m-0 p-0'>
               <li className='mb-3 fw-bolder'>legal</li>
               <li className='mb-3'>
-                <Link to='/about'>privacy policy</Link>
+                <Link to='/privacy-policy'>privacy policy</Link>
               </li>
               <li className='my-3'>
-                <Link to='/contact-us'>terms of use</Link>
+                <Link to='/terms-of-use'>terms of use</Link>
               </li>
             </ul>
           </div>

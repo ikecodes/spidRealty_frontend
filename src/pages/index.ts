@@ -16,6 +16,8 @@ import EmailConfirmation from "./EmailConfirmation";
 import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
+import PrivacyPolicy from "./PrivacyPolicy";
+import TermsOfUse from "./TermsOfUse";
 
 // Agent
 import AgentDashboard from "./agent/AgentDashboard";
@@ -51,6 +53,8 @@ export {
   Login,
   ForgotPassword,
   ResetPassword,
+  PrivacyPolicy,
+  TermsOfUse,
   AgentDashboard,
   AgentPost,
   AgentListings,
