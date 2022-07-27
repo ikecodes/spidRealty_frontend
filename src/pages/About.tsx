@@ -29,25 +29,6 @@ const About = () => {
             <div className='col-lg-6'>
               <Image src={AboutImg1} alt='about' h={50} unit='vh' />
             </div>
-            <div className='col-lg-6'>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-                accusamus, corrupti praesentium, culpa quo magnam eum, eos
-                consequatur blanditiis at deleniti enim doloremque quisquam
-                neque eveniet repellendus? Assumenda, beatae nam!
-              </p>
-
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                laboriosam consequuntur et dolorum, debitis, doloribus inventore
-                praesentium unde explicabo rerum est, aspernatur vero? Et
-                maiores quaerat qui unde blanditiis commodi. Lorem ipsum dolor
-                sit, amet consectetur adipisicing elit. Dicta totam voluptates
-                in, voluptatibus, animi qui quisquam voluptatum quis, vero porro
-                neque error libero dolorum officiis. Recusandae accusamus
-                quibusdam ducimus quaerat.
-              </p>
-            </div>
           </div>
         </div>
         <div className='my-3'>
